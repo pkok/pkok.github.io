@@ -1,0 +1,28 @@
+# Dependencies
+markdown:         redcarpet
+redcarpet:
+  extensions:     ["tables", "no_intra_emphasis", "autolink", "strikethrough", "space_after_headers", "superscript"]
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            "Patrick de Kok"
+tagline:          "Robotics, augmented reality and rowing"
+description:      "On robotics, augmented reality and rowing."
+url:              
+
+author:
+  name:           "Patrick de Kok"
+  url:            
+  phone:          +31653285375
+  email:          dhrdekok@gmail.com
+  facebook:       patrick.dekok
+  twitter:        pdkok
+  github:         pkok
+  linkedin:       pdkok
+  disqus:         pdkok
+  google_plus:    https://plus.google.com/u/0/+PatrickdeKok
+
+paginate:         5

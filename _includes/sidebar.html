@@ -1,0 +1,66 @@
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <aside class="sidebar-about">
+      <h1>{{ site.title }}</h1>
+      <p class="lead">{{ site.description }}</p>
+    </aside>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item{% if page.title == "Home" %} active{% endif %}">
+          <a href="/">Home</a>
+        </li>
+
+        {% comment %}
+          The code below dynamically generates a sidebar nav of pages with
+          `layout: page` in the front-matter. See readme for usage.
+        {% endcomment %}
+
+        {% assign pages_list = site.pages %}
+        {% for node in pages_list %}
+          {% if node.title != null %}
+            {% if node.layout == "page" and node.in-menu == yes %}
+              <li class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}">
+                <a href="{{ node.url }}">{{ node.title }}</a>
+              </li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+
+    {% if site.categories != empty %}
+      <nav>
+        Topics:
+        <ul class="sidebar-nav">
+          {% comment %}
+            The code below dynamically generates a sidebar nav of post categories.
+          {% endcomment %}
+          {% for category in site.categories %}
+            {% assign category_name = category | first %}
+            <li class="sidebar-nav-item{% if (page.categories contains category_name) or (category_name == (page.title | downcase)) %} active{% endif %}">
+              <a href="/{{ category_name | slugize }}">
+                {{ category_name | capitalize }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+
+
+    <address>
+    {% if site.author.facebook %}<a href="https://facebook.com/{{ site.author.facebook }}"><i class="icon-facebook" title="Facebook"></i></a>{% endif %}
+    {% if site.author.twitter %}<a href="https://twitter.com/{{ site.author.twitter }}"><i class="icon-twitter" title="Twitter"></i></a>{% endif %}
+    {% if site.author.github %}<a href="http://github.com/{{ site.author.github }}"><i class="icon-octopus" title="Github"></i></a>{% endif %}
+    {% if site.author.linkedin %}<a href="http://linkedin.com/in/{{ site.author.linkedin }}"><i class="icon-linked_in" title="LinkedIn"></i></a>{% endif %}
+    {% if site.author.google_plus %}<a href="{{ site.author.google_plus }}?rel=author"><i class="icon-google_plus" title="Google+"></i></a>{% endif %}
+    {% if site.author.email %}<a href="mailto:{{ site.author.email }}" title="email"><i class="icon-mail"></i></a>{% endif %}
+    {% if site.author.phone %}<a href="{{ site.author.phone }}" title="telephone">☎</a>{% endif %}
+    </address>
+
+    <footer>
+      All content is, unless otherwise stated, published under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+    </footer>
+  </div>
+</div>
