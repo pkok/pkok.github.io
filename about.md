@@ -3,6 +3,4 @@ layout: page
 title: About
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+This is my general notebook.  It will mainly function as a lab book for my master's thesis, but there might be some other notes.  Those will most probably include my experiences with the [Dutch Nao Team](http://dutchnaoteam.nl) (a RoboCup soccer team) and the Paralympic training center for rowing.
