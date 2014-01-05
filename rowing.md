@@ -1,5 +1,4 @@
 ---
 layout: postlisting
+title: Rowing
 ---
-
-Blabla rowing.

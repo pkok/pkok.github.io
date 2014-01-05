@@ -1,4 +1,4 @@
 ---
 layout: postlisting
-title: Robotics
+title: RoboCup
 ---
