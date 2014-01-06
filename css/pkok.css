@@ -1,0 +1,55 @@
+/* My own edits on top of the Hyde style sheets. */
+
+/* Legal notice */
+footer {
+  font-size: 0.7rem;
+}
+
+/* Bibliography display */
+.bibliography {
+  padding-left: 0em;
+  font-size: 0.8rem;
+  padding: 0em;
+  margin: 0em;
+}
+
+/* Hiding a bug from Jekyll 
+ * Jekyll is processing {%include%}ed files as if they contain Markdown 
+ * inbetween their HTML tags.  This results in <p> elements on undesired 
+ * positions.  This will remove their effects :)
+ */
+.bibliography p {
+  display: inline;
+}
+
+.bibliography li {
+  padding-left: 0em;
+  list-style-type: none;
+  text-indent: 1em;
+}
+
+.bibliography li:target {
+  color: #717171;
+  background-color: #f9f9f9;
+}
+
+/* In-article styles */
+article.post > p:first-of-type,
+figure {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: #717171;
+  background-color: #f9f9f9;
+  padding: 0.7rem;
+}
+
+figure figcaption, figure figcaption small {
+  font-size: 0.8rem;
+}
+
+figure img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
