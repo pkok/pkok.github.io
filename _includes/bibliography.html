@@ -1,0 +1,132 @@
+{% if include.keys != nil %}
+{% assign keys = include.keys | split: "," %}
+{% endif %}
+
+<section>
+<h3>References</h3>
+<ul class="bibliography">
+{% if (keys contains "tamura2002steady") or (keys == nil) %}
+<li id="tamura2002steady">
+Hideyuki Tamura.
+ Steady steps and giant leap toward practical mixed reality systems
+  and applications.
+ In <em>Proceedings of the International Status Conference on Virtual
+  and Augmented Reality</em>, pages 3&ndash;12, nov 2002.
+ Leipzig, Germany.
+[&nbsp;<a href="http://www.rm.is.ritsumei.ac.jp/~tamura/paper/vr-ar2002.pdf">.pdf</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "schon2005marginalized") or (keys == nil) %}
+<li id="schon2005marginalized">
+Thomas Schon, Fredrik Gustafsson, and P-J Nordlund.
+ Marginalized particle filters for mixed linear/nonlinear state-space
+  models.
+ <em>Signal Processing, IEEE Transactions on</em>, 53(7):2279&ndash;2289,
+  2005.
+[&nbsp;<a href="http://dx.doi.org/10.1109/TSP.2005.849151">DOI</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "caarls2009pose") or (keys == nil) %}
+<li id="caarls2009pose">
+Jurjen Caarls.
+ <em>Pose estimation for mobile devices and augmented reality</em>.
+ PhD thesis, Delft University of Technology, 2009.
+</li>
+{% endif %}{% if (keys contains "vankrevelen2010survey") or (keys == nil) %}
+<li id="vankrevelen2010survey">
+D.W.F. Van&nbsp;Krevelen and R.&nbsp;Poelman.
+ A survey of augmented reality technologies, applications and
+  limitations.
+ <em>International Journal of Virtual Reality</em>, 9(2):1, 2010.
+[&nbsp;<a href="http://kjcomps.6te.net/upload/paper1%20.pdf">.pdf</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "siegwart2011autonomous") or (keys == nil) %}
+<li id="siegwart2011autonomous">
+Roland Siegwart, Illah&nbsp;Reza Nourbakhsh, and Davide Scaramuzza.
+ <em>Autonomous Mobile Robots</em>.
+ MIT Press, 2011.
+</li>
+{% endif %}{% if (keys contains "akman2012robust") or (keys == nil) %}
+<li id="akman2012robust">
+Oytun Akman.
+ <em>Robust Augmented Reality</em>.
+ PhD thesis, Delft University of Technology, 2012.
+</li>
+{% endif %}{% if (keys contains "dekok2012pga") or (keys == nil) %}
+<li id="dekok2012pga">
+Patrick&nbsp;M. de&nbsp;Kok.
+ Visualization of the projective line geometry for geometric algebra.
+ Bachelor's thesis, Universiteit van Amsterdam, aug 2012.
+[&nbsp;<a href="http://staff.science.uva.nl/~bredeweg/pdf/BSc/20112012/deKok.pdf">.pdf</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "gudi2013feature") or (keys == nil) %}
+<li id="gudi2013feature">
+Amogh Gudi, Patrick de&nbsp;Kok, Georgios Methenitis, and Nikolaas Steenbergen.
+ Feature detection and localization for the RoboCup Soccer
+  SPL.
+ Project report, Universiteit van Amsterdam, feb 2013.
+[&nbsp;<a href="http://www.dutchnaoteam.nl/wp-content/uploads/2013/03/GudiDeKokMethenitisSteenbergen.pdf">.pdf</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "dnt2013tdp") or (keys == nil) %}
+<li id="dnt2013tdp">
+Patrick de&nbsp;Kok, Nicolò Girardi, Amogh Gudi, Chiel Kooijman, Georgios
+  Methenitis, Sébastien Negrijn, Nikolaas Steenbergen, Duncan ten Velthuis,
+  Camiel Verschoor, Auke Wiggers, and Arnoud Visser.
+ Team Description for RoboCup 2013 in Eindhoven, the
+  Netherlands.
+ In <em>Proceedings of the 17th RoboCup International
+  Symposium</em>. Dutch Nao Team, Universiteit van Amsterdam &amp; TU
+  Delft, may 2013.
+[&nbsp;<a href="http://www.dutchnaoteam.nl/wp-content/uploads/2013/06/Dutchnaoteam_2013_TeamDescriptionPaper.pdf">.pdf</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "verschoor2013irl") or (keys == nil) %}
+<li id="verschoor2013irl">
+Camiel Verschoor, Patrick de&nbsp;Kok, and Arnoud Visser.
+ Intelligent Robotics Lab.
+ White paper, Universiteit van Amsterdam, jun 2013.
+[&nbsp;<a href="http://www.science.uva.nl/~arnoud/publications/Vision_Document.pdf">.pdf</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "dekok2013victoria") or (keys == nil) %}
+<li id="dekok2013victoria">
+Patrick&nbsp;M. de&nbsp;Kok, Georgios Methenitis, and Sander Nugteren.
+ ViCTOriA: Visual Compass To Orientate Accurately.
+ Project report, Universiteit van Amsterdam, jul 2013.
+[&nbsp;<a href="http://www.dutchnaoteam.nl/wp-content/uploads/2013/07/ViCTOriA.pdf">.pdf</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "methenitis2013orientation") or (keys == nil) %}
+<li id="methenitis2013orientation">
+Georgios Methenitis, Patrick&nbsp;M. de&nbsp;Kok, Sander Nugteren, and Arnoud Visser.
+ Orientation finding using a grid based visual compass.
+ In <em>25th Belgian-Netherlands Conference on Artificial
+  Intelligence (BNAIC 2013)</em>, pages 128&ndash;135, nov 2013.
+[&nbsp;<a href="http://www.science.uva.nl/~arnoud/publications/GridBasedVisualCompass.pdf">.pdf</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "pirchheim2013handling") or (keys == nil) %}
+<li id="pirchheim2013handling">
+Christian Pirchheim, Dieter Schmalstieg, and Gerhard Reitmayr.
+ Handling pure camera rotation in keyframe-based SLAM.
+ In <em>Mixed and Augmented Reality (ISMAR), 2013 IEEE International
+  Symposium on</em>, pages 229&ndash;238. IEEE, 2013.
+[&nbsp;<a href="http://dx.doi.org/10.1109/ISMAR.2013.6671783">DOI</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "tan2013robust") or (keys == nil) %}
+<li id="tan2013robust">
+Wei Tan, Haomin Liu, Zilong Dong, Guofeng Zhang, and Hujun Bao.
+ Robust monocular SLAM in dynamic environments.
+ In <em>Mixed and Augmented Reality (ISMAR), 2013 IEEE International
+  Symposium on</em>, pages 209&ndash;218. IEEE, 2013.
+[&nbsp;<a href="http://dx.doi.org/10.1109/ISMAR.2013.6671781">DOI</a>&nbsp;]
+</li>
+{% endif %}{% if (keys contains "dnt2014tdp") or (keys == nil) %}
+<li id="dnt2014tdp">
+Patrick de&nbsp;Kok, Sébastien Negrijn, Eugenio Bargiacchi, Amogh Gudi, Chiel
+  Kooijman, Ilse van&nbsp;der Linden, Georgios Methenitis, Duncan ten Velthuis,
+  Camiel Verschoor, Auke Wiggers, and Arnoud Visser.
+ Team Description for RoboCup 2014 in João Pessoa,
+  Brasil.
+ In <em>Proceedings of the 17th RoboCup International
+  Symposium</em>. Dutch Nao Team, Universiteit van Amsterdam &amp; TU
+  Delft &amp; Maastricht University, nov 2013.
+[&nbsp;<a href="http://www.dutchnaoteam.nl/wp-content/uploads/2013/11/DNT_TDP_2014.pdf">.pdf</a>&nbsp;]
+</li>
+{% endif %}
+</ul>
+</section>
