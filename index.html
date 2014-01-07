@@ -4,20 +4,12 @@ title: Home
 ---
 
 <section class="message">
-  {{ site.description | markupify }}
+  {{ site.description }}
 </section>
 
 <div class="posts">
   {% for post in paginator.posts %}
-  <article class="post">
-    <h2 class="post-title">
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h2>
-    <time pubdate="{{ post.date }}" class="post-date">{{ post.date | date_to_string }}</span>
-    {{ post.excerpt }}
-  </article>
+    {% include post_snippet.html post="{{post}}" %}
   {% endfor %}
 </div>
 
