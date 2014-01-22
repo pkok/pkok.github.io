@@ -19,8 +19,7 @@ A small report on what I have done in a little less than a week's time.
 
 ### Theoretical todo's ###
 4. **Read in on Kalman filters:**
-   I have watched and done the homework for several of the 2012 lectures of  
-[Cyrill Stachniss](http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/).  I now understand the "ordinary" Kalman filter (KF), extended Kalman filter (EKF), unscented Kalman filter (UKF), extended information filter (EIF), and sparse extended information filter (SEIF).  I will write a part for my thesis about the KF methods soon, which might be included in my final thesis.
+   I have watched and done the homework for several of the 2012 lectures of  [Cyrill Stachniss](http://ais.informatik.uni-freiburg.de/teaching/ws12/mapping/).  I now understand the "ordinary" Kalman filter (KF), extended Kalman filter (EKF), unscented Kalman filter (UKF), extended information filter (EIF), and sparse extended information filter (SEIF).  I will write a part for my thesis about the KF methods soon, which might be included in my final thesis.
 
 5. **In [Caarls](#caarls2009pose)' PhD thesis, read up on specific Kalman filters and "continuous time processes":**
    Nothing done yet.
