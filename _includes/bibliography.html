@@ -1,3 +1,4 @@
+
 {% if include.keys != nil %}
 {% assign keys = include.keys | split: "," %}
 {% endif %}
@@ -5,14 +6,17 @@
 <section>
 <h3>References</h3>
 <ul class="bibliography">
+
 {% if (keys contains "dorstCombining") or (keys == nil) %}
 <li id="dorstCombining">
 Leo Dorst.
  Combining orientation estimates.
+ Available from author on request.
 [&nbsp;<a href="#dorstCombining_bib">bib</a>&nbsp;]<pre id="dorstCombining_bib"><code>
 @unpublished{dorstCombining,
   title = {Combining orientation estimates},
-  author = {Dorst, Leo}
+  author = {Dorst, Leo},
+  note = {Available from author on request}
 }
 </code>
 </pre>
@@ -120,6 +124,29 @@ Gabriele Bleser and Didier Stricker.
 </code>
 </pre>
 </li>
+{% endif %}{% if (keys contains "dunser2008survey") or (keys == nil) %}
+<li id="dunser2008survey">
+Andreas D&uuml;nser, Raphael Grasset, and Mark Billinghurst.
+ A survey of evaluation techniques used in augmented reality
+  studies.
+ In <em>ACM SIGGRAPH ASIA 2008 courses</em>, pages 5:1&ndash;5:27, New York,
+  NY, USA, 2008. ACM.
+[&nbsp;<a href="#dunser2008survey_bib">bib</a>&nbsp;|&nbsp;<a href="http://www.hitlabnz.org/administrator/components/com_jresearch/files/publications/a5-dunser.pdf">.pdf</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1145/1508044.1508049">DOI</a>&nbsp;]<pre id="dunser2008survey_bib"><code>
+@inproceedings{dunser2008survey,
+  author = {D{\"u}nser, Andreas and Grasset, Raphael and Billinghurst, Mark},
+  address = {New York, NY, USA},
+  booktitle = {ACM SIGGRAPH ASIA 2008 courses},
+  doi = {10.1145/1508044.1508049},
+  pages = {5:1--5:27},
+  publisher = {ACM},
+  title = { {A} survey of evaluation techniques used in augmented reality studies},
+  url = {<a href="http://dl.acm.org/citation.cfm?doid=1508044.1508049">http://dl.acm.org/citation.cfm?doid=1508044.1508049</a>},
+  url = {<a href="http://www.hitlabnz.org/administrator/components/com_jresearch/files/publications/a5-dunser.pdf">http://www.hitlabnz.org/administrator/components/com_jresearch/files/publications/a5-dunser.pdf</a>},
+  year = {2008}
+}
+</code>
+</pre>
+</li>
 {% endif %}{% if (keys contains "caarls2009pose") or (keys == nil) %}
 <li id="caarls2009pose">
 Jurjen Caarls.
@@ -155,14 +182,37 @@ D.W.F. Van&nbsp;Krevelen and R.&nbsp;Poelman.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "nutzi2010fusion") or (keys == nil) %}
-<li id="nutzi2010fusion">
+{% endif %}{% if (keys contains "dunser2011evaluating") or (keys == nil) %}
+<li id="dunser2011evaluating">
+Andreas D&uuml;nser and Mark Billinghurst.
+ Evaluating Augmented Reality Systems.
+ In Borko Furht, editor, <em>In Handbook of Augmented Reality, Borko
+  Furht</em>, chapter Part 1, pages 289&ndash;307. Springer, 2011.
+[&nbsp;<a href="#dunser2011evaluating_bib">bib</a>&nbsp;|&nbsp;<a href="http://www.hitlabnz.org/administrator/components/com_jresearch/files/publications/Evaluating%20Augmented%20Reality%20Systems%20Final.pdf">.pdf</a>&nbsp;]<pre id="dunser2011evaluating_bib"><code>
+@incollection{dunser2011evaluating,
+  author = {D{\"u}nser, Andreas and Billinghurst, Mark},
+  booktitle = {In Handbook of Augmented Reality, Borko Furht},
+  chapter = {Part 1},
+  editor = {Borko Furht},
+  isbn = {978-1461400639},
+  pages = {289-307},
+  publisher = {Springer},
+  title = { {E}valuating {A}ugmented {R}eality {S}ystems},
+  year = {2011},
+  url = {<a href="http://www.hitlabnz.org/administrator/components/com_jresearch/files/publications/Evaluating%20Augmented%20Reality%20Systems%20Final.pdf">http://www.hitlabnz.org/administrator/components/com_jresearch/files/publications/Evaluating%20Augmented%20Reality%20Systems%20Final.pdf</a>}
+}
+</code>
+</pre>
+</li>
+{% endif %}{% if (keys contains "nutzi2011fusion") or (keys == nil) %}
+<li id="nutzi2011fusion">
 Gabriel Nützi, Weiss Stephan, Davide Scaramuzza, and Roland Siegwart.
  Fusion of IMU and vision for absolute scale estimation in monocular
   SLAM.
- volume&nbsp;61, pages 287&ndash;299. Springer, January 2011.
-[&nbsp;<a href="#nutzi2010fusion_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1007/s10846-010-9490-z">DOI</a>&nbsp;]<pre id="nutzi2010fusion_bib"><code>
-@inproceedings{nutzi2010fusion,
+ <em>Journal of intelligent &amp; robotic systems</em>, 61(1-4):287&ndash;299,
+  January 2011.
+[&nbsp;<a href="#nutzi2011fusion_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1007/s10846-010-9490-z">DOI</a>&nbsp;]<pre id="nutzi2011fusion_bib"><code>
+@article{nutzi2011fusion,
   title = {Fusion of {IMU} and Vision for Absolute Scale Estimation in Monocular {SLAM}},
   author = {Nützi, Gabriel and Weiss Stephan and Scaramuzza, Davide and Siegwart, Roland},
   journal = {Journal of intelligent \& robotic systems},
