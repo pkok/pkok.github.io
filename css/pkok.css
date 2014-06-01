@@ -1,4 +1,7 @@
 /* My own edits on top of the Hyde style sheets. */
+body {
+  font-size: 0.8rem;
+}
 
 /* Legal notice */
 footer {
@@ -40,17 +43,26 @@ footer {
 
 .bibliography li:target {
   color: #717171;
-  background-color: #f9f9f9;
+  background-color: #eeeeee;
+}
+
+.post {
+  margin: 0;
+  padding: 0;
 }
 
 /* In-article styles */
 article.post > p:first-of-type,
-figure {
-  margin-bottom: 1rem;
-  padding: 1rem;
+figure,
+#intro {
   color: #717171;
-  background-color: #f9f9f9;
-  padding: 0.7rem;
+  background-color: #eeeeee;
+  font-style: italic;
+  padding: 0.5rem;
+}
+
+#intro {
+  margin-bottom: 1rem;
 }
 
 figure figcaption, figure figcaption small {
@@ -70,8 +82,18 @@ figure img {
   color: #717171;
 }
 
+header > .post-title {
+  display: inline-block;
+  margin: 0;
+}
+
+header > .metadata {
+  font-size: smaller;
+  font-style: italic;
+}
+
 ul.categories {
-  font-size: 0.8rem;
+  /*font-size: 0.8rem;*/
   padding: 0rem;
   display: inline;
 }
@@ -91,3 +113,5 @@ ul.categories li:after {
 ul.categories li:last-of-type:after {
   content: "";
 }
+
+hr { margin: 0; padding: 0; }

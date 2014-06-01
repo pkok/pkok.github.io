@@ -5,14 +5,16 @@
         {{ post.title }}
       </a>
     </h3>
-    <time class="published" datetime="{{ post.date }}">{{ post.date | date_to_string }}</time>
-  {% if post.categories != empty %}
-    <ul class="categories">
-      {% for category in post.categories %}
-        <li><a href="{{ site.url }}/{{ category }}">{{ category }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+    <span class="metadata">
+      <time class="published" datetime="{{ post.date }}">{{ post.date | date_to_string }}</time>
+      {% if post.categories != empty %}
+      <ul class="categories">
+        {% for category in post.categories %}
+          <li><a href="{{ site.url }}/{{ category }}">{{ category }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </span>
   </header>
   <section>
     {{ post.excerpt }}
