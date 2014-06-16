@@ -2,11 +2,11 @@
   <header>
     <h3 class="post-title">
       <a href="{{ post.url }}">
-        {{ post.title }}
+        {% if post.title != empty %}{{ post.title }}{% else %}<time class="published" datetime="{{ post.date }}">{{ post.date | date: "%-d %B %Y" }}</time>{% endif %}
       </a>
     </h3>
     <span class="metadata">
-      <time class="published" datetime="{{ post.date }}">{{ post.date | date_to_string }}</time>
+      {% if post.title != empty %}<time class="published" datetime="{{ post.date }}">{{ post.date | date: "%-d %B %Y" }}</time>{% endif %}
       {% if post.categories != empty %}
       <ul class="categories">
         {% for category in post.categories %}
