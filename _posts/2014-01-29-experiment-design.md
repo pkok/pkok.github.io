@@ -1,6 +1,7 @@
 ---
 layout: post
 categories:
+  - thesis
   - augmented reality
 ---
 

@@ -1,10 +1,10 @@
 ---
 layout: post
 categories:
-  - augmented reality
+  - thesis
 ---
 
-**FINALLY** I got some basic tracking working under OpenGL!
+**FINALLY** I got some basic tracking working under OpenGL! *EDIT: Sorry, a lie.*
 
 Alright, this sounds way too basic to take serious.  I have been building a simple test application, so I can compile and run my experiments under Linux.  The maintainers of the framework have a licensed Unity SDK which works under Windows.  I must admit that I don't have any C++ development experience under Windows, and got attached to my Linux terminal tools for no better reason than "I have always done things this way, why change?".  
 

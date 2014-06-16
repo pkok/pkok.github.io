@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Progress report
+categories:
+  - thesis
 ---
 
 A small report on what I have done in a little less than a week's time.
