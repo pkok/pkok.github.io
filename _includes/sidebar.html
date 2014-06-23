@@ -39,7 +39,7 @@
           {% for category in site.categories %}
             {% assign category_name = category | first %}
             <li class="sidebar-nav-item{% if (page.categories contains category_name) or (category_name == (page.title | downcase)) %} active{% endif %}">
-              <a href="/{{ category_name | slugize }}">
+              <a href="/{{ category_name | slugize }}.html">
                 {{ category_name | capitalize }}
               </a>
             </li>

@@ -12,7 +12,7 @@ layout: default
       {% if page.categories != empty %}
       <ul class="categories">
         {% for category in page.categories %}
-          <li><a href="{{ site.url }}/{{ category[0] }}">{{ category }}</a></li>
+          <li><a href="{{ site.url }}/{{ category }}.html">{{ category }}</a></li>
         {% endfor %}
       </ul>
       {% endif %}
