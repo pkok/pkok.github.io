@@ -273,6 +273,31 @@ Jurjen Caarls.
 </code>
 </pre>
 </li>
+{% endif %}{% if (keys contains "hol2010modeling") or (keys == nil) %}
+<li id="hol2010modeling">
+Jeroen&nbsp;D. Hol, Thomas&nbsp;B. Schön, and Fredrik Gustafsson.
+ Modeling and calibration of inertial and vision sensors.
+ <em>The International Journal of Robotics Research</em>,
+  29(2-3):231&ndash;244, 2010.
+[&nbsp;<a href="#hol2010modeling_bib">bib</a>&nbsp;|&nbsp;<a href="http://ijr.sagepub.com/content/29/2-3/231.abstract">ract</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1177/0278364909356812">DOI</a>&nbsp;]<pre id="hol2010modeling_bib"><code>
+@article{hol2010modeling,
+  author = {Hol, Jeroen D. and Schön, Thomas B. and Gustafsson, Fredrik},
+  title = {Modeling and Calibration of Inertial and Vision Sensors},
+  volume = {29},
+  number = {2-3},
+  pages = {231-244},
+  year = {2010},
+  doi = {10.1177/0278364909356812},
+  abstract = {
+    This paper is concerned with the problem of estimating the relative translation and orientation of an inertial measurement unit and a camera, which are rigidly connected. The key is to realize that this problem is in fact an instance of a standard problem within the area of system identification, referred to as a gray-box problem. We propose a new algorithm for estimating the relative translation and orientation, which does not require any additional hardware, except a piece of paper with a checkerboard pattern on it. The method is based on a physical model which can also be used in solving, for example, sensor fusion problems. The experimental results show that the method works well in practice, both for perspective and spherical cameras.
+  },
+  url = {<a href="http://ijr.sagepub.com/content/29/2-3/231.abstract">http://ijr.sagepub.com/content/29/2-3/231.abstract</a>},
+  eprint = {<a href="http://ijr.sagepub.com/content/29/2-3/231.full.pdf+html">http://ijr.sagepub.com/content/29/2-3/231.full.pdf+html</a>},
+  journal = {The International Journal of Robotics Research}
+}
+</code>
+</pre>
+</li>
 {% endif %}{% if (keys contains "vankrevelen2010survey") or (keys == nil) %}
 <li id="vankrevelen2010survey">
 D.W.F. Van&nbsp;Krevelen and R.&nbsp;Poelman.
@@ -351,6 +376,32 @@ Gabriel Nützi, Weiss Stephan, Davide Scaramuzza, and Roland Siegwart.
   year = {2011},
   publisher = {Springer},
   doi = {10.1007/s10846-010-9490-z}
+}
+</code>
+</pre>
+</li>
+{% endif %}{% if (keys contains "Kelly2011visualinertial") or (keys == nil) %}
+<li id="Kelly2011visualinertial">
+Jonathan Kelly and Gaurav&nbsp;S Sukhatme.
+ Visual-inertial sensor fusion: Localization, mapping and
+  sensor-to-sensor self-calibration.
+ <em>The International Journal of Robotics Research</em>, 30(1):56&ndash;79,
+  2011.
+[&nbsp;<a href="#Kelly2011visualinertial_bib">bib</a>&nbsp;|&nbsp;<a href="http://ijr.sagepub.com/content/30/1/56.abstract">ract</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1177/0278364910382802">DOI</a>&nbsp;]<pre id="Kelly2011visualinertial_bib"><code>
+@article{Kelly2011visualinertial,
+  author = {Kelly, Jonathan and Sukhatme, Gaurav S},
+  title = {Visual-Inertial Sensor Fusion: Localization, Mapping and Sensor-to-Sensor Self-calibration},
+  volume = {30},
+  number = {1},
+  pages = {56-79},
+  year = {2011},
+  doi = {10.1177/0278364910382802},
+  abstract = {
+    Visual and inertial sensors, in combination, are able to provide accurate motion estimates and are well suited for use in many robot navigation tasks. However, correct data fusion, and hence overall performance, depends on careful calibration of the rigid body transform between the sensors. Obtaining this calibration information is typically difficult and time-consuming, and normally requires additional equipment. In this paper we describe an algorithm, based on the unscented Kalman filter, for self-calibration of the transform between a camera and an inertial measurement unit (IMU). Our formulation rests on a differential geometric analysis of the observability of the camera—IMU system; this analysis shows that the sensor-to-sensor transform, the IMU gyroscope and accelerometer biases, the local gravity vector, and the metric scene structure can be recovered from camera and IMU measurements alone. While calibrating the transform we simultaneously localize the IMU and build a map of the surroundings, all without additional hardware or prior knowledge about the environment in which a robot is operating. We present results from simulation studies and from experiments with a monocular camera and a low-cost IMU, which demonstrate accurate estimation of both the calibration parameters and the local scene structure.
+  },
+  url = {<a href="http://ijr.sagepub.com/content/30/1/56.abstract">http://ijr.sagepub.com/content/30/1/56.abstract</a>},
+  eprint = {<a href="http://ijr.sagepub.com/content/30/1/56.full.pdf+html">http://ijr.sagepub.com/content/30/1/56.full.pdf+html</a>},
+  journal = {The International Journal of Robotics Research}
 }
 </code>
 </pre>
