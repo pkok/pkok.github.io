@@ -60,9 +60,17 @@ def html2jekyll(html_str):
 
 
 if __name__ == "__main__":
+    print sys.argv
+    if len(sys.argv) == 2 and sys.argv[1] == "--default":
+        sys.argv = [sys.argv[0], 
+                    "../msc-thesis/thesis/bibliography.bib",
+                    "./_includes/bibliography.html"]
+    print sys.argv
+
     if len(sys.argv) <= 2:
-        print "Incorrect usage.  Proper call:"
+        print "Incorrect usage.  Proper calls"
         print "    python %s bibtex_in html_out" % sys.argv[0]
+        print "    python %s --default" % sys.argv[0]
         print ""
         print "I use this program to generate a bibtex overview for my blog."
         sys.exit(1)
