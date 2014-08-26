@@ -2,7 +2,7 @@
 markdown:         redcarpet
 redcarpet:
   extensions:     ["tables", "no_intra_emphasis", "autolink", "strikethrough", "space_after_headers", "superscript"]
-pygments:         true
+highlighter:      pygments
 
 # Permalinks
 permalink:        :year/:month/:day/:title/
