@@ -16,7 +16,7 @@ layout: default
     <ul>
     {% assign this_category = page.title | downcase %}
     {% for post in site.categories[this_category] %}
-      {% include post_snippet.html post="{{post}}" %}
+      {% include post_snippet.html %}
     {% endfor %}
     </ul>
 
