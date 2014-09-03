@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <title>
-    {% if page.title %}
+    {% if page.title and page.title != empty %}
       {{ page.title }} &middot; {{ site.title }}
+    {% elsif page.date %}
+    Post of {{ page.date | date: "%-d %B %Y" }} &middot; {{ site.title }}
     {% else %}
       {{ site.title }} &middot; {{ site.tagline }}
     {% endif %}
