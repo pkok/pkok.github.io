@@ -173,6 +173,28 @@ Jorge Lobo and Jorge Dias.
 </code>
 </pre>
 </li>
+{% endif %}{% if (keys contains "ko2007gp-ukf") or (keys == nil) %}
+<li id="ko2007gp-ukf">
+Jonathan Ko, Daniel&nbsp;J. Klein, Dieter Fox, and Dirk Haehnel.
+ GP-UKF: Unscented Kalman filters with Gaussian process
+  prediction and observation models.
+ In <em>Proceedings of the International Conference on Intelligent
+  Robots and Systems (IROS)</em>, pages 1901&ndash;1907, October 2007.
+[&nbsp;<a href="#ko2007gp-ukf_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1109/IROS.2007.4399284">DOI</a>&nbsp;]<pre id="ko2007gp-ukf_bib"><code>
+@inproceedings{ko2007gp-ukf,
+  author = {Ko, Jonathan and Klein, Daniel J. and Fox, Dieter and Haehnel, Dirk},
+  booktitle = {Proceedings of the International Conference on Intelligent Robots and Systems ({IROS})},
+  title = { {GP-UKF}: Unscented {K}alman filters with {G}aussian process prediction and observation models},
+  year = {2007},
+  month = oct,
+  pages = {1901-1907},
+  abstract = {This paper considers the use of non-parametric system models for sequential state estimation. In particular, motion and observation models are learned from training examples using Gaussian process (GP) regression. The state estimator is an unscented Kalman filter (UKF). The resulting GP-UKF algorithm has a number of advantages over standard (parametric) UKFs. These include the ability to estimate the state of arbitrary nonlinear systems, improved tracking quality compared to a parametric UKF, and graceful degradation with increased model uncertainty. These advantages stem from the fact that GPs consider both the noise in the system and the uncertainty in the model. If an approximate parametric model is available, it can be incorporated into the GP; resulting in further performance improvements. In experiments, we show how the GP-UKF algorithm can be applied to the problem of tracking an autonomous micro-blimp.},
+  keywords = {Gaussian processes;Kalman filters;regression analysis;robots;state estimation;GP-UKF;Gaussian process prediction;Gaussian process regression;arbitrary nonlinear systems;autonomous micro-blimp;nonparametric system models;observation models;sequential state estimation;tracking quality;unscented Kalman filters;Bayesian methods;Gaussian processes;Intelligent robots;Parametric statistics;Particle filters;Predictive models;State estimation;Training data;USA Councils;Uncertainty},
+  doi = {10.1109/IROS.2007.4399284}
+}
+</code>
+</pre>
+</li>
 {% endif %}{% if (keys contains "klein2007ptam") or (keys == nil) %}
 <li id="klein2007ptam">
 Georg Klein and David Murray.
@@ -258,6 +280,32 @@ Andreas D&uuml;nser, Raphael Grasset, and Mark Billinghurst.
 </code>
 </pre>
 </li>
+{% endif %}{% if (keys contains "ko2009gp-bayesfilter") or (keys == nil) %}
+<li id="ko2009gp-bayesfilter">
+Jonathan Ko and Dieter Fox.
+ GP-BayesFilters: Bayesian filtering using Gaussian process
+  prediction and observation models.
+ <em>Autonomous Robots</em>, 27(1):75&ndash;90, July 2009.
+[&nbsp;<a href="#ko2009gp-bayesfilter_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1007/s10514-009-9119-x">DOI</a>&nbsp;]<pre id="ko2009gp-bayesfilter_bib"><code>
+@article{ko2009gp-bayesfilter,
+  year = {2009},
+  month = jul,
+  issn = {0929-5593},
+  journal = {Autonomous Robots},
+  volume = {27},
+  number = {1},
+  doi = {10.1007/s10514-009-9119-x},
+  title = { {GP-B}ayes{F}ilters: {B}ayesian filtering using {G}aussian process prediction and observation models},
+  url = {<a href="http://dx.doi.org/10.1007/s10514-009-9119-x">http://dx.doi.org/10.1007/s10514-009-9119-x</a>},
+  publisher = {Springer US},
+  keywords = {Gaussian process; Bayesian filtering; Dynamic modelling; Machine learning; Regression},
+  author = {Ko, Jonathan and Fox, Dieter},
+  pages = {75-90},
+  language = {English}
+}
+</code>
+</pre>
+</li>
 {% endif %}{% if (keys contains "caarls2009pose") or (keys == nil) %}
 <li id="caarls2009pose">
 Jurjen Caarls.
@@ -318,6 +366,55 @@ D.W.F. Van&nbsp;Krevelen and R.&nbsp;Poelman.
 </code>
 </pre>
 </li>
+{% endif %}{% if (keys contains "ko2011gpbf-learn") or (keys == nil) %}
+<li id="ko2011gpbf-learn">
+Jonathan Ko and Dieter Fox.
+ Learning GP-BayesFilters via Gaussian process latent variable
+  models.
+ <em>Autonomous Robots</em>, 30(1):3&ndash;23, January 2011.
+[&nbsp;<a href="#ko2011gpbf-learn_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1007/s10514-010-9213-0">DOI</a>&nbsp;]<pre id="ko2011gpbf-learn_bib"><code>
+@article{ko2011gpbf-learn,
+  year = {2011},
+  month = jan,
+  issn = {0929-5593},
+  journal = {Autonomous Robots},
+  volume = {30},
+  number = {1},
+  doi = {10.1007/s10514-010-9213-0},
+  title = {Learning {GP-B}ayes{F}ilters via {G}aussian process latent variable models},
+  url = {<a href="http://dx.doi.org/10.1007/s10514-010-9213-0">http://dx.doi.org/10.1007/s10514-010-9213-0</a>},
+  publisher = {Springer US},
+  keywords = {Gaussian process; System identification; Bayesian filtering; Time alignment; System control; Machine learning},
+  author = {Ko, Jonathan and Fox, Dieter},
+  pages = {3-23},
+  language = {English}
+}
+</code>
+</pre>
+</li>
+{% endif %}{% if (keys contains "nutzi2011fusion") or (keys == nil) %}
+<li id="nutzi2011fusion">
+Gabriel Nützi, Weiss Stephan, Davide Scaramuzza, and Roland Siegwart.
+ Fusion of IMU and vision for absolute scale estimation in monocular
+  SLAM.
+ <em>Journal of intelligent &amp; robotic systems</em>, 61(1-4):287&ndash;299,
+  January 2011.
+[&nbsp;<a href="#nutzi2011fusion_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1007/s10846-010-9490-z">DOI</a>&nbsp;]<pre id="nutzi2011fusion_bib"><code>
+@article{nutzi2011fusion,
+  title = {Fusion of {IMU} and Vision for Absolute Scale Estimation in Monocular {SLAM}},
+  author = {Nützi, Gabriel and Weiss Stephan and Scaramuzza, Davide and Siegwart, Roland},
+  journal = {Journal of intelligent \& robotic systems},
+  volume = {61},
+  number = {1-4},
+  pages = {287--299},
+  month = jan,
+  year = {2011},
+  publisher = {Springer},
+  doi = {10.1007/s10846-010-9490-z}
+}
+</code>
+</pre>
+</li>
 {% endif %}{% if (keys contains "dunser2011evaluating") or (keys == nil) %}
 <li id="dunser2011evaluating">
 Andreas D&uuml;nser and Mark Billinghurst.
@@ -353,29 +450,6 @@ Jeroen&nbsp;D Hol.
   year = {2011},
   school = {Link{\"o}ping University, Institute of Technology},
   url = {<a href="http://user.it.uu.se/~thosc112/team/hol2011.pdf">http://user.it.uu.se/~thosc112/team/hol2011.pdf</a>}
-}
-</code>
-</pre>
-</li>
-{% endif %}{% if (keys contains "nutzi2011fusion") or (keys == nil) %}
-<li id="nutzi2011fusion">
-Gabriel Nützi, Weiss Stephan, Davide Scaramuzza, and Roland Siegwart.
- Fusion of IMU and vision for absolute scale estimation in monocular
-  SLAM.
- <em>Journal of intelligent &amp; robotic systems</em>, 61(1-4):287&ndash;299,
-  January 2011.
-[&nbsp;<a href="#nutzi2011fusion_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1007/s10846-010-9490-z">DOI</a>&nbsp;]<pre id="nutzi2011fusion_bib"><code>
-@article{nutzi2011fusion,
-  title = {Fusion of {IMU} and Vision for Absolute Scale Estimation in Monocular {SLAM}},
-  author = {Nützi, Gabriel and Weiss Stephan and Scaramuzza, Davide and Siegwart, Roland},
-  journal = {Journal of intelligent \& robotic systems},
-  volume = {61},
-  number = {1-4},
-  pages = {287--299},
-  month = jan,
-  year = {2011},
-  publisher = {Springer},
-  doi = {10.1007/s10846-010-9490-z}
 }
 </code>
 </pre>
@@ -570,6 +644,28 @@ Duy-Nguyen Ta, Kyel Ok, and Frank Dellaert.
   year = {2013},
   organization = {IEEE},
   url = {<a href="http://rpg.ifi.uzh.ch/docs/IROS13workshop/Nguyen.pdf">http://rpg.ifi.uzh.ch/docs/IROS13workshop/Nguyen.pdf</a>}
+}
+</code>
+</pre>
+</li>
+{% endif %}{% if (keys contains "furgale2013unified") or (keys == nil) %}
+<li id="furgale2013unified">
+Paul Furgale, Joern Rehder, and Roland Siegwart.
+ Unified temporal and spatial calibration for multi-sensor systems.
+ In <em>Proceedings of the IEEE/RSJ International Conference on
+  Intelligent Robots and Systems (IROS)</em>, pages 1280&ndash;1286, Nov 2013.
+[&nbsp;<a href="#furgale2013unified_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1109/IROS.2013.6696514">DOI</a>&nbsp;]<pre id="furgale2013unified_bib"><code>
+@inproceedings{furgale2013unified,
+  title = {Unified Temporal and Spatial Calibration for Multi-Sensor Systems},
+  author = {Furgale, Paul and Rehder, Joern and Siegwart, Roland},
+  booktitle = {Proceedings of the {IEEE/RSJ} International Conference on Intelligent Robots and Systems ({IROS})},
+  year = 2013,
+  location = {Tokyo, Japan},
+  month = {Nov},
+  pages = {1280-1286},
+  keywords = {maximum likelihood estimation;robots;sensor fusion;state estimation;IMU calibration;continuous-time batch estimation;inertial measurement unit;maximum likelihood estimation;multisensor systems;robotics;sensor fusion;spatial calibration;spatial displacement;spatial transformation;state estimation;time offsets;unified temporal calibration;Calibration;Cameras;Estimation;Measurement uncertainty;Sensors;Splines (mathematics);Time measurement},
+  doi = {10.1109/IROS.2013.6696514},
+  issn = {2153-0858}
 }
 </code>
 </pre>
