@@ -1,6 +1,7 @@
 /* My own edits on top of the Hyde style sheets. */
 body {
   font-size: 0.8rem;
+  counter-reset: htwo hthree hfour hfive hsix;
 }
 
 /* Legal notice */
@@ -134,3 +135,45 @@ hr { margin: 0; padding: 0; }
 code {
   color: #717171;
 }
+
+h2 {
+  counter-reset: hthree;
+}
+
+h2, h3 {
+  counter-reset: hfour;
+}
+
+h2, h3, h4 {
+  counter-reset: hfive;
+}
+
+h2, h3, h4, h5 {
+  counter-reset: hsix;
+}
+
+h2:before {
+  counter-increment: htwo;
+  content: counter(htwo) ". ";
+}
+
+h3:before {
+  counter-increment: hthree;
+  content: counter(htwo) "." counter(hthree) ". ";
+}
+
+h4:before {
+  counter-increment: hfour;
+  content: counter(htwo) "." counter(hthree) "." counter(hfour) ". ";
+}
+
+h5:before {
+  counter-increment: hfive;
+  content: counter(htwo) "." counter(hthree) "." counter(hfour) "." counter(hfive) ". ";
+}
+
+h6:before {
+  counter-increment: hsix;
+  content: counter(htwo) "." counter(hthree) "." counter(hfour) "." counter(hfive) "." counter(hsix) ". ";
+}
+
