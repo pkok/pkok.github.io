@@ -1,7 +1,7 @@
 # Dependencies
 markdown:         redcarpet
 redcarpet:
-  extensions:     ["tables", "no_intra_emphasis", "autolink", "fenced_code_blocks", "strikethrough", "space_after_headers", "superscript"]
+  extensions:     ["tables", "no_intra_emphasis", "autolink", "fenced_code_blocks", "strikethrough", "space_after_headers", "superscript", "footnotes"]
 highlighter:      pygments
 
 # Permalinks
