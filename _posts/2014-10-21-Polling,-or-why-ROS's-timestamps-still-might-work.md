@@ -1,0 +1,21 @@
+---
+layout: post
+categories:
+  - thesis
+---
+
+[Previously](/2014/10/16/Why-ROS's-timestamps-are-not-enough) I made a case against sensors which don't provide an own timestamp for sensor fusion.  By using a device you can poll, you still can use your main device (laptop)'s timestamps.
+
+Ashwin came with the idea to use a camera you can poll.  Sending a message over TCP probably happens almost-instantaneously (with a constant $$d$$), so I got that going for me, which is nice.  Boris has a Prosilica GE680C laying around, which I took home together with a 12 V power supply and a "Pentax TV LENS 16 mm 1:1.4".  Because the camera gets warm the IMU cannot be taped on it (IMUs get less precise when heated).  Guus is willing to make a plate on which I can screw both device.
+
+I got it to work to stream images (like a regular webcam) over ROS with `avt_vimba_camera`.  First, I had to install [VIMBA](http://www.alliedvisiontec.com/emea/products/software/vimba-sdk.html), but after that, `apt-get`ing `ros-indigo-avt-vimba-camera` worked.
+
+To connect to the camera on Ubuntu 14.04, set the ethernet connection to "Shared to other computers".  To do this, click on the Connection Manager in the top bar and select "Edit Connections..." or open Network Connections from the dash.  Select an ethernet connection to edit.  Click on the "IPv4 Settings" tab and from the "Method:" dropdown menu select "Shared to other computers".  If the camera is set to use DHCP, it will have an IP address in the range 10.42.0.2 -- 10.42.0.255 (your own IP address is 10.42.0.1).  In [another ROS Prosilica package's tutorial](http://wiki.ros.org/prosilica_camera/Tutorials/DeterminingProsilicaIPAddress) is provided a command to find the camera's IP.  That didn't work for me.  This does work:
+
+```bash
+sudo nmap -PU 3956 $(ip -o addr show | grep inet\  | grep eth | cut -d\  -f 7)
+```
+
+VIMBA's `VimbaViewer` from `Vimba_1_3/Tools/Viewer/Bin/x86_64bit` can also autodetect the camera.
+
+Polling over the ROS service `/camera/request_image` does not work yet.
