@@ -136,43 +136,47 @@ code {
   color: #717171;
 }
 
-h2 {
+.MathJax, .MathJax * {
+  color: #717171;
+}
+
+.post h2 {
   counter-reset: hthree;
 }
 
-h2, h3 {
+.post h2, h3 {
   counter-reset: hfour;
 }
 
-h2, h3, h4 {
+.post h2, h3, h4 {
   counter-reset: hfive;
 }
 
-h2, h3, h4, h5 {
+.post h2, h3, h4, h5 {
   counter-reset: hsix;
 }
 
-h2:before {
+.post h2:before {
   counter-increment: htwo;
   content: counter(htwo) ". ";
 }
 
-h3:before {
+.post h3:before {
   counter-increment: hthree;
   content: counter(htwo) "." counter(hthree) ". ";
 }
 
-h4:before {
+.post h4:before {
   counter-increment: hfour;
   content: counter(htwo) "." counter(hthree) "." counter(hfour) ". ";
 }
 
-h5:before {
+.post h5:before {
   counter-increment: hfive;
   content: counter(htwo) "." counter(hthree) "." counter(hfour) "." counter(hfive) ". ";
 }
 
-h6:before {
+.post h6:before {
   counter-increment: hsix;
   content: counter(htwo) "." counter(hthree) "." counter(hfour) "." counter(hfive) "." counter(hsix) ". ";
 }

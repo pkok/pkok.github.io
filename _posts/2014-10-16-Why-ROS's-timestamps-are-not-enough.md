@@ -8,48 +8,31 @@ The timestamps of observations are important for sensor fusion.  Sensor fusion f
 
 First I will introduce the problem in a single-sensor setting.  After that I will point at the implications in the multisensor setting.  Then some causes of the issues will be discussed.  Possible solutions will be presented.  As a demonstration that this effect occurs in real-life systems, a short analysis of experimental results concludes this post.
 
-$$
-\begin{align*}
-  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
-  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
-  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
-      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
-      \vdots & \ddots & \vdots \\
-      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
-    \end{array} \right)
-  \left( \begin{array}{c}
-      y_1 \\
-      \vdots \\
-      y_n
-    \end{array} \right)
-\end{align*}
-$$
-
 ## Single-sensor setting
-Assume we have a single sensor \$$s\$$.  The observation of \$$s\$$ at (unobserved) time $$t$$ is denoted as $$o(s,t)$$.  Its timestamp is given by $$τ(s,t)$$.  The system receives a message $$m(s,t) = (o(s,t), τ(s,t))$$ containing both values.  In real-world systems, an observation's timestamp and the time of observation will be different.  The magnitude of this temporal offset $$d^s = τ(s,t) - t$$ does not matter much, as long as it is (fairly?) constant.  Detecting whether $$d^s$$ is constant or not is a different topic which will not be discussed here.  We will assume that observations are done with a constant interval.  In this case, $$d^s$$ can be considered constant if the standard deviation $$σ^d^s > ε$$ where $$ε$$ is some small constant, depending on the refresh rate of the sensor.  Otherwise, one might be able to model $$d^s$$ as drawn from a distribution $$D^s$$.  Note that this introduces a variance when interpolating between two observations.
+Assume we have a single sensor $$s$$.  The observation of $$s$$ at (unobserved) time $$t$$ is denoted as $$o(s,t)$$.  Its timestamp is given by $$τ(s,t)$$.  The system receives a message $$m(s,t) = (o(s,t), τ(s,t))$$ containing both values.  In real-world systems, an observation's timestamp and the time of observation will be different.  The magnitude of this temporal offset $$d^s = τ(s,t) - t$$ does not matter much, as long as it is (fairly?) constant.  Detecting whether $$d^s$$ is constant or not is a different topic which will not be discussed here.  We will assume that observations are done with a constant interval.  In this case, $$d^s$$ can be considered constant if the standard deviation $$\sigma^{d^s} > \epsilon$$ where $$\epsilon$$ is some small constant, depending on the refresh rate of the sensor.  Otherwise, one might be able to model $$d^s$$ as drawn from a distribution $$D^s$$.  Note that this introduces a variance when interpolating between two observations.
 
 The big problem here does not lay with a constant temporal offset.  If $$d$$ is constant, we still know the exact offset between events.
 
 
 ## Multisensor setting
-Let us now consider the setting where we have *n* sensors *s^0, ..., s^n-1* with associated temporal offsets *d^0, ..., d^n-1* (we simplify the notation of a sensor *s^i* in superscripts to its identifier *i* such that *d^s^i := d^i*).  We can describe this problem of timestamping in several scenarios:
+Let us now consider the setting where we have $$n$$ sensors $$s^0, ..., s^{n-1}$$ with associated temporal offsets $$d^0, ..., d^{n-1}$$ (we simplify the notation of a sensor $$s^i$$ in superscripts to its identifier $$i$$ such that $$d^{s^i} := d^i$$).  We can describe this problem of timestamping in several scenarios:
 
-1. All offsets are constant and equal to each other: *&forall;i, j &lt; n: d^i = d^j*;
-2. All offsets are constant and at least some are different from others: *&exist;i, j &lt; n: d^i &ne; d^j*;
+1. All offsets are constant and equal to each other: $$\forall i, j \lt n: d^i = d^j$$;
+2. All offsets are constant and at least some are different from others: $$\exists i, j \lt n: d^i \neq d^j$$;
 3. All offsets are stochastic and drawn from unknown distributions;
 4. Some offsets are constant, some offsets are stochastic.
 
 I will discuss each scenario below, some a bit more thorough than the other because of my current needs.
 
-### All offsets are constant and equal to each other: *&forall;i, j &lt; n: d^i = d^j*
+### All offsets are constant and equal to each other: $$\forall i, j \lt n: d^i = d^j$$
 The first scenario is trivial and does not increase the problem from the similar case in the single-sensor setting.  This is also the scenario least likely to occur in real-life systems, as they tend to have some sort of variation between clock speeds and processing time.
 
 No new problems here.
 
-### All offsets are constant and at least some are different from others: *&exist;i, j &lt; n: d^i &ne; d^j*
+### All offsets are constant and at least some are different from others: $$\exists i, j \lt n: d^i \neq d^j$$
 Consider the case where all temporal offsets are constant, but some differ from others.
 
-Consider the diagram below.  It schematically shows a set of occurances: some events occur at time *t^0*, *t^1* and *t^2*, and are observed at the same time by sensors *s^0* and *s^1*.  The temporal offsets of their timestamps differ: *d^0* is fairly small, but *d^1* is so big that the timestamping *τ( s^1, t^0 )* occurs after *t^1*.  Symbols on the bottom line indicate the order of events: observations `o`, timestamping of sensor *s^0*'s data `■` and timestamping of sensor *s^1*'s data `▲`.
+Consider the diagram below.  It schematically shows a set of occurances: some events occur at time $$t^0$$, $$t^1$$ and $$t^2$$, and are observed at the same time by sensors $$s^0$$ and $$s^1$$.  The temporal offsets of their timestamps differ: $$d^0$$ is fairly small, but $$d^1$$ is so big that the timestamping $$τ( s^1, t^0 )$$ occurs after $$t^1$$.  Symbols on the bottom line indicate the order of events: observations `o`, timestamping of sensor $$s^0$$'s data `■` and timestamping of sensor $$s^1$$'s data `▲`.
 
 ```
 o(s0, t0)          τ(s0, t0)
@@ -67,15 +50,15 @@ o(s1, t0)              |         τ(s1, t0)
 ----o------------------■-----o-------▲----------■-----o-------▲⋯
 ```
 
-The problem here is that we need to categories the observations as belonging to the right observation.  Or, posed as a machine learning, cluster the sensor readings accordingly.  We could assume that the sequence of timestamps starts to be generated when our system has started and we do not miss readings.  This situation is sketched in the above diagram.  If it has been recorded somewhere later, there would be an extra instance of timestamping by *s^1* (the sequence on the bottom timeline `o■o▲■o▲⋯`  would be `⋯o▲■o▲■o▲⋯`).  
+The problem here is that we need to categories the observations as belonging to the right observation.  Or, posed as a machine learning, cluster the sensor readings accordingly.  We could assume that the sequence of timestamps starts to be generated when our system has started and we do not miss readings.  This situation is sketched in the above diagram.  If it has been recorded somewhere later, there would be an extra instance of timestamping by $$s^1$$ (the sequence on the bottom timeline `o■o▲■o▲⋯`  would be `⋯o▲■o▲■o▲⋯`).  
 
 If we start observing the sequence of timestamps while it is being generated, associating the timestamps of the same observation can be done in several approaches:
 
-1. Associate the *n*th occurance of each sensor's timestamp to an *n*th event.  Here we make the assumption that a consistently wrong association does not impose too much of a problem for the sensor fusion method later.
+1. Associate the $$n$$th occurance of each sensor's timestamp to an $$n$$th event.  Here we make the assumption that a consistently wrong association does not impose too much of a problem for the sensor fusion method later.
 2. Associate the messages by inspecting the observations.  This should be attempted with machine learning algorithms.
 3. **Any more methods?**
 
-The special case where some *d^i* approximately equals some other *d^j* modulo refresh time is difficult to disambiguate from the former case.
+The special case where some $$d^i$$ approximately equals some other $$d^j$$ modulo refresh time is difficult to disambiguate from the former case.
 
 For the rest of this discussion we assume that the sequence of timestamps starts to be generated when our system has started and we do not miss readings.
 
@@ -83,7 +66,7 @@ For the rest of this discussion we assume that the sequence of timestamps starts
 This case inherits the issues of the single-sensor stochastic setting and the multisensor constant but mutually unequal temporal offsets.  The combination of the problems makes this harder to solve than Scenario 2.  Approach 1. is surely to be invalid, as there are no guaranteed repetitive patterns.  Approach 2. will also be more problematic, as it is even noisier, while relating the events is already difficult for multimodal (or multi-viewpoint) data.  This will be outside the scope of my thesis (but it seems, without other hardware, this is the problem I am facing).
 
 ### Some offsets are constant, some offsets are stochastic
-Probability theory lets non-stochastic processes be modeled just like processes that are stochastic.  For some sensor *s^i* which has a constant *d^i*, setting the standard deviation to *σ^d^i = 0* and the average to *μ^d^i = d^i* of a normal distribution has this case converted to the scenario above.
+Probability theory lets non-stochastic processes be modeled just like processes that are stochastic.  For some sensor $$s^i$$ which has a constant $$d^i$$, setting the standard deviation to $$\sigma^{d^i} = 0$$ and the average to $$\mu^{d^i} = d^i$$ of a normal distribution has this case converted to the scenario above.
 
 No new problems here (but other solutions might have room for optimization).
 
@@ -91,7 +74,7 @@ No new problems here (but other solutions might have room for optimization).
 ## What is causing this delay?
 We will break down the (perhaps non-exhaustive) list of possible causes of the problems states above.
 
-The act of making an observation of some event always consumes some time; information has to travel from the source to the sensor (for cameras: speed of light), the sensor needs some exposure to capture enough data (for cameras: exposure time), and stored data needs to travel to the processing unit.  Whether *t* is taken at the onset or ending of an observation does not matter for this discussion.  If the sensor supports this, data could be timestamped by the sensor itself.  This does reduce the problem heavily, but not completely.  The clocks of sensor and processing unit are probably unsynchronized, so there still is some *d^s &ne; 0*.
+The act of making an observation of some event always consumes some time; information has to travel from the source to the sensor (for cameras: speed of light), the sensor needs some exposure to capture enough data (for cameras: exposure time), and stored data needs to travel to the processing unit.  Whether $$t$$ is taken at the onset or ending of an observation does not matter for this discussion.  If the sensor supports this, data could be timestamped by the sensor itself.  This does reduce the problem heavily, but not completely.  The clocks of sensor and processing unit are probably unsynchronized, so there still is some $$d^s \neq 0$$.
 
 When the sensor cannot timestamp its own data, we will most probably be stuck with the stochastic case.  This can have several origins:
 
