@@ -140,19 +140,29 @@ code {
   color: #717171;
 }
 
+ul#markdown-toc, ul#markdown-toc ul {
+  counter-reset: toc_counter;
+  list-style-type: none;
+}
+
+ul#markdown-toc li:before, ul#markdown-toc ul li:before {
+  counter-increment: toc_counter;
+  content: counters(toc_counter,".") ". ";
+}
+
 .post h2 {
   counter-reset: hthree;
 }
 
-.post h2, h3 {
+.post h2, .post h3 {
   counter-reset: hfour;
 }
 
-.post h2, h3, h4 {
+.post h2, .post h3, .post h4 {
   counter-reset: hfive;
 }
 
-.post h2, h3, h4, h5 {
+.post h2, .post h3, .post h4, .post h5 {
   counter-reset: hsix;
 }
 
@@ -181,3 +191,7 @@ code {
   content: counter(htwo) "." counter(hthree) "." counter(hfour) "." counter(hfive) "." counter(hsix) ". ";
 }
 
+.post .no_toc:before {
+  counter-increment: none;
+  content: "";
+}
