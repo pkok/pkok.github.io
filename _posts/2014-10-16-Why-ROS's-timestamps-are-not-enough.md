@@ -8,11 +8,27 @@ The timestamps of observations are important for sensor fusion.  Sensor fusion f
 
 First I will introduce the problem in a single-sensor setting.  After that I will point at the implications in the multisensor setting.  Then some causes of the issues will be discussed.  Possible solutions will be presented.  As a demonstration that this effect occurs in real-life systems, a short analysis of experimental results concludes this post.
 
+$$
+\begin{align*}
+  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
+  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
+  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
+      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
+      \vdots & \ddots & \vdots \\
+      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
+    \end{array} \right)
+  \left( \begin{array}{c}
+      y_1 \\
+      \vdots \\
+      y_n
+    \end{array} \right)
+\end{align*}
+$$
 
 ## Single-sensor setting
-Assume we have a single sensor *s*.  The observation of *s* at (unobserved) time *t* is denoted as *o(s,t)*.  Its timestamp is given by *τ(s,t)*.  The system receives a message *m(s,t) = (o(s,t), τ(s,t))* containing both values.  In real-world systems, an observation's timestamp and the time of observation will be different.  The magnitude of this temporal offset *d^s = τ(s,t) - t* does not matter much, as long as it is (fairly?) constant.  Detecting whether *d^s* is constant or not is a different topic which will not be discussed here.  We will assume that observations are done with a constant interval.  In this case, *d^s* can be considered constant if the standard deviation *σ^d^s > ε* where *ε* is some small constant, depending on the refresh rate of the sensor.  Otherwise, one might be able to model *d^s* as drawn from a distribution *D^s*.  Note that this introduces a variance when interpolating between two observations.
+Assume we have a single sensor \$$s\$$.  The observation of \$$s\$$ at (unobserved) time $$t$$ is denoted as $$o(s,t)$$.  Its timestamp is given by $$τ(s,t)$$.  The system receives a message $$m(s,t) = (o(s,t), τ(s,t))$$ containing both values.  In real-world systems, an observation's timestamp and the time of observation will be different.  The magnitude of this temporal offset $$d^s = τ(s,t) - t$$ does not matter much, as long as it is (fairly?) constant.  Detecting whether $$d^s$$ is constant or not is a different topic which will not be discussed here.  We will assume that observations are done with a constant interval.  In this case, $$d^s$$ can be considered constant if the standard deviation $$σ^d^s > ε$$ where $$ε$$ is some small constant, depending on the refresh rate of the sensor.  Otherwise, one might be able to model $$d^s$$ as drawn from a distribution $$D^s$$.  Note that this introduces a variance when interpolating between two observations.
 
-The big problem here does not lay with a constant temporal offset.  If *d* is constant, we still know the exact offset between events.
+The big problem here does not lay with a constant temporal offset.  If $$d$$ is constant, we still know the exact offset between events.
 
 
 ## Multisensor setting

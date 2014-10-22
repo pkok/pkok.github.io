@@ -1,5 +1,7 @@
 # Dependencies
-markdown:         redcarpet
+markdown:         kramdown
+kramdown:
+  input: GFM
 redcarpet:
   extensions:     ["tables", "no_intra_emphasis", "autolink", "fenced_code_blocks", "strikethrough", "space_after_headers", "superscript", "footnotes"]
 highlighter:      pygments
