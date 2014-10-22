@@ -4,6 +4,7 @@ kramdown:
   input: GFM
   parse_block_html: true
   parse_span_html: true
+  smart_quotes:  sbquo,rsquo,bdquo,rdquo
 highlighter:      pygments
 
 # Permalinks
