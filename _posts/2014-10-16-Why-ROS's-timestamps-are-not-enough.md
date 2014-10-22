@@ -6,6 +6,11 @@ categories:
 
 The timestamps of observations are important for sensor fusion.  Sensor fusion finds a relation between observations of multiple sensors with respect to the time of observation.  The necessary precision of these timestamps is related to the highest update frequency.  When timestamps are made on a non-dedicated unit, timestamps have a variable offset from the time of observation.  An experimental analysis is given and possible approaches for solving this problem are presented.
 
+## Contents:
+{:.no_toc}
+* The TOC
+{:toc}
+
 First I will introduce the problem in a single-sensor setting.  After that I will point at the implications in the multisensor setting.  Then some causes of the issues will be discussed.  Possible solutions will be presented.  As a demonstration that this effect occurs in real-life systems, a short analysis of experimental results concludes this post.
 
 ## Single-sensor setting
