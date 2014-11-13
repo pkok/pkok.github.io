@@ -56,7 +56,8 @@
     {% if site.author.linkedin %}<a href="http://linkedin.com/in/{{ site.author.linkedin }}"><i class="icon-linked_in" title="LinkedIn"></i></a>{% endif %}
     {% if site.author.google_plus %}<a href="{{ site.author.google_plus }}?rel=author"><i class="icon-google_plus" title="Google+"></i></a>{% endif %}
     {% if site.author.email %}<a href="mailto:{{ site.author.email }}" title="email"><i class="icon-mail"></i></a>{% endif %}
-    {% if site.author.url %}<a href="{{ site.author.url }}" title="url"><i class="icon-link"></i></a>{% endif %}
+    {% if site.author.pgp_fingerprint %}<a href="http://{% if site.author.pgp_keyserver %}{{ site.author.pgp_keyserver }}{% else %}keys.gnupg.net{% endif %}/pks/lookup?op=vindex&fingerprint=on&search=0x{{ site.author.pgp_fingerprint }}" title="PGP key info"><i class="icon-lock"></i></a>{% endif %}
+    {% if site.author.url %}<a href="{{ site.author.url }}" title="URL"><i class="icon-link"></i></a>{% endif %}
     {% if site.author.phone %}<a href="{{ site.author.phone }}" title="telephone">☎</a>{% endif %}
     </address>
 
