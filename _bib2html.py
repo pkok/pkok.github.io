@@ -48,7 +48,7 @@ def html2jekyll(html_str):
 {% endif %}
 
 <section>
-<h3>References</h3>
+<h3 class="no_toc">References</h3>
 <ul class="bibliography">
 """
     jekyll_str += html_str
