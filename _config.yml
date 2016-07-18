@@ -5,7 +5,7 @@ kramdown:
   parse_block_html: true
   parse_span_html: true
   smart_quotes:  sbquo,rsquo,bdquo,rdquo
-highlighter:      pygments
+highlighter:      rouge
 
 # Permalinks
 permalink:        :year/:month/:day/:title/
