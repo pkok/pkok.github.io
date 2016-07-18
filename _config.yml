@@ -30,4 +30,7 @@ author:
   pgp_fingerprint: 916AF090DE430ADB
   #pgp_keyserver:  pgp.surfnet.nl
 
+gems:
+  - jekyll-paginate
+
 paginate:         20

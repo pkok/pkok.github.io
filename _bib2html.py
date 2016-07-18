@@ -22,7 +22,7 @@ def html2jekyll(html_str):
     html_str = re.sub(r'<!--[\S\s]*-->', r'', html_str)
     html_str = re.sub(r'\n\n+', r'\n', html_str)
     html_str = re.sub(r'<p><a name="(?P<key>[^"]+)"></a>',
-                  r'{% if (keys contains "\g<key>") or (keys == nil) %}\n<li id="\g<key>">',
+                  r'{% if (keys contains "\g<key>") or !(keys | size) %}\n<li id="\g<key>">',
                   html_str)
     html_str = re.sub(r'<a name="(?P<key>[^"]+)"></a><pre>',
                   r'[&nbsp;<a href="#\g<key>_bib">bib</a>&nbsp;]<pre id="\g<key>_bib"><code>',
@@ -43,9 +43,7 @@ def html2jekyll(html_str):
     html_str = re.sub(r'{{', r'{ {', html_str)
 
     jekyll_str = """
-{% if include.keys != nil %}
 {% assign keys = include.keys | split: "," %}
-{% endif %}
 
 <section>
 <h3 class="no_toc">References</h3>

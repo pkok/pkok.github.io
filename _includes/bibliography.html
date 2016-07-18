@@ -1,13 +1,11 @@
 
-{% if include.keys != nil %}
 {% assign keys = include.keys | split: "," %}
-{% endif %}
 
 <section>
 <h3 class="no_toc">References</h3>
 <ul class="bibliography">
 
-{% if (keys contains "dorstCombining") or (keys == nil) %}
+{% if (keys contains "dorstCombining") or !(keys | size) %}
 <li id="dorstCombining">
 Leo Dorst.
  Combining orientation estimates.
@@ -21,7 +19,34 @@ Leo Dorst.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "horn1987closed") or (keys == nil) %}
+{% endif %}{% if (keys contains "potmesil1983modeling") or !(keys | size) %}
+<li id="potmesil1983modeling">
+Michael Potmesil and Indranil Chakravarty.
+ Modeling motion blur in computer-generated images.
+ In <em>Proceedings of the 10th Annual Conference on Computer
+  Graphics and Interactive Techniques</em>, SIGGRAPH '83, pages 389&ndash;399, New
+  York, NY, USA, 1983. ACM.
+[&nbsp;<a href="#potmesil1983modeling_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1145/800059.801169">DOI</a>&nbsp;]<pre id="potmesil1983modeling_bib"><code>
+@inproceedings{potmesil1983modeling,
+  author = {Potmesil, Michael and Chakravarty, Indranil},
+  title = {Modeling Motion Blur in Computer-generated Images},
+  booktitle = {Proceedings of the 10th Annual Conference on Computer Graphics and Interactive Techniques},
+  series = { {SIGGRAPH} '83},
+  year = {1983},
+  isbn = {0-89791-109-1},
+  location = {Detroit, Michigan, USA},
+  pages = {389--399},
+  numpages = {11},
+  doi = {10.1145/800059.801169},
+  acmid = {801169},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+  keywords = {Camera model, Digital optics, Image restoration, Motion blur, Point-spread function}
+}
+</code>
+</pre>
+</li>
+{% endif %}{% if (keys contains "horn1987closed") or !(keys | size) %}
 <li id="horn1987closed">
 Berthold&nbsp;KP Horn.
  Closed-form solution of absolute orientation using unit quaternions.
@@ -43,7 +68,7 @@ Berthold&nbsp;KP Horn.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "thomas1997free-d") or (keys == nil) %}
+{% endif %}{% if (keys contains "thomas1997free-d") or !(keys | size) %}
 <li id="thomas1997free-d">
 G.A. Thomas, J.&nbsp;Jin, T.&nbsp;Niblett, and C.&nbsp;Urquhart.
  A versatile camera position measurement system for virtual reality tv
@@ -66,7 +91,7 @@ G.A. Thomas, J.&nbsp;Jin, T.&nbsp;Niblett, and C.&nbsp;Urquhart.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "you1999hybrid") or (keys == nil) %}
+{% endif %}{% if (keys contains "you1999hybrid") or !(keys | size) %}
 <li id="you1999hybrid">
 Suya You, Ulrich Neumann, and Ronald Azuma.
  Hybrid inertial and vision tracking for augmented reality
@@ -87,7 +112,33 @@ Suya You, Ulrich Neumann, and Ronald Azuma.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "tamura2002steady") or (keys == nil) %}
+{% endif %}{% if (keys contains "brostow2001image") or !(keys | size) %}
+<li id="brostow2001image">
+Gabriel&nbsp;J. Brostow and Irfan Essa.
+ Image-based motion blur for stop motion animation.
+ In <em>Proceedings of the 28th Annual Conference on Computer
+  Graphics and Interactive Techniques</em>, SIGGRAPH '01, pages 561&ndash;566, New York,
+  NY, USA, 2001. ACM.
+[&nbsp;<a href="#brostow2001image_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1145/383259.383325">DOI</a>&nbsp;]<pre id="brostow2001image_bib"><code>
+@inproceedings{brostow2001image,
+  author = {Brostow, Gabriel J. and Essa, Irfan},
+  title = {Image-based Motion Blur for Stop Motion Animation},
+  booktitle = {Proceedings of the 28th Annual Conference on Computer Graphics and Interactive Techniques},
+  series = {SIGGRAPH '01},
+  year = {2001},
+  isbn = {1-58113-374-X},
+  pages = {561--566},
+  numpages = {6},
+  doi = {10.1145/383259.383325},
+  acmid = {383325},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+  keywords = {animation, computer vision, image-based rendering, motion blur, stop motion animation, temporal antialiasing, video post-processing}
+}
+</code>
+</pre>
+</li>
+{% endif %}{% if (keys contains "tamura2002steady") or !(keys | size) %}
 <li id="tamura2002steady">
 Hideyuki Tamura.
  Steady steps and giant leap toward practical mixed reality systems
@@ -108,7 +159,7 @@ Hideyuki Tamura.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "chen2003bayesian") or (keys == nil) %}
+{% endif %}{% if (keys contains "chen2003bayesian") or !(keys | size) %}
 <li id="chen2003bayesian">
 Zhe Chen.
  Bayesian filtering: from Kalman filters to particle filters, and
@@ -127,7 +178,7 @@ Zhe Chen.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "hol2005model") or (keys == nil) %}
+{% endif %}{% if (keys contains "hol2005model") or !(keys | size) %}
 <li id="hol2005model">
 Jeroen Hol, Per Slycke, Thomas Schoen, and Fredrik Gustafsson.
  2D-3D model correspondence for camera pose estimation using sensor
@@ -145,7 +196,7 @@ Jeroen Hol, Per Slycke, Thomas Schoen, and Fredrik Gustafsson.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "schon2005marginalized") or (keys == nil) %}
+{% endif %}{% if (keys contains "schon2005marginalized") or !(keys | size) %}
 <li id="schon2005marginalized">
 Thomas Sch&ouml;n, Fredrik Gustafsson, and Per-Johan Nordlund.
  Marginalized particle filters for mixed linear/nonlinear state-space
@@ -167,7 +218,7 @@ Thomas Sch&ouml;n, Fredrik Gustafsson, and Per-Johan Nordlund.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "hol2006sensor") or (keys == nil) %}
+{% endif %}{% if (keys contains "hol2006sensor") or !(keys | size) %}
 <li id="hol2006sensor">
 J.D. Hol, T.B. Schon, F.&nbsp;Gustafsson, and P.J. Slycke.
  Sensor fusion for augmented reality.
@@ -187,7 +238,7 @@ J.D. Hol, T.B. Schon, F.&nbsp;Gustafsson, and P.J. Slycke.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "lobo2007relative") or (keys == nil) %}
+{% endif %}{% if (keys contains "lobo2007relative") or !(keys | size) %}
 <li id="lobo2007relative">
 Jorge Lobo and Jorge Dias.
  Relative pose calibration between visual and inertial sensors.
@@ -210,7 +261,7 @@ Jorge Lobo and Jorge Dias.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "ko2007gp-ukf") or (keys == nil) %}
+{% endif %}{% if (keys contains "ko2007gp-ukf") or !(keys | size) %}
 <li id="ko2007gp-ukf">
 Jonathan Ko, Daniel&nbsp;J. Klein, Dieter Fox, and Dirk Haehnel.
  GP-UKF: Unscented Kalman filters with Gaussian process
@@ -232,7 +283,7 @@ Jonathan Ko, Daniel&nbsp;J. Klein, Dieter Fox, and Dirk Haehnel.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "klein2007ptam") or (keys == nil) %}
+{% endif %}{% if (keys contains "klein2007ptam") or !(keys | size) %}
 <li id="klein2007ptam">
 Georg Klein and David Murray.
  Parallel tracking and mapping for small AR workspaces.
@@ -252,7 +303,7 @@ Georg Klein and David Murray.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "hol2008new") or (keys == nil) %}
+{% endif %}{% if (keys contains "hol2008new") or !(keys | size) %}
 <li id="hol2008new">
 Jeroen&nbsp;D. Hol, Thomas&nbsp;B. Sch&ouml;n, and Fredrik Gustafsson.
  A new algorithm for calibrating a combined camera and imu sensor
@@ -275,7 +326,31 @@ Jeroen&nbsp;D. Hol, Thomas&nbsp;B. Sch&ouml;n, and Fredrik Gustafsson.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "bleser2008advanced") or (keys == nil) %}
+{% endif %}{% if (keys contains "mirzaei2008kfbased") or !(keys | size) %}
+<li id="mirzaei2008kfbased">
+Faraz&nbsp;M. Mirzaei and Stergios&nbsp;I. Roumeliotis.
+ A kalman filter-based algorithm for imu-camera calibration:
+  Observability analysis and performance evaluation.
+ <em>Robotics, IEEE Transactions on</em>, 24(5):1143&ndash;1156, October 2008.
+[&nbsp;<a href="#mirzaei2008kfbased_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1109/TRO.2008.2004486">DOI</a>&nbsp;]<pre id="mirzaei2008kfbased_bib"><code>
+@article{mirzaei2008kfbased,
+  author = {Mirzaei, Faraz M. and Roumeliotis, Stergios I.},
+  journal = {Robotics, IEEE Transactions on},
+  title = {A Kalman Filter-Based Algorithm for IMU-Camera Calibration: Observability Analysis and Performance Evaluation},
+  year = {2008},
+  month = oct,
+  volume = {24},
+  number = {5},
+  pages = {1143-1156},
+  abstract = {Vision-aided inertial navigation systems (V-INSs) can provide precise state estimates for the 3-D motion of a vehicle when no external references (e.g., GPS) are available. This is achieved by combining inertial measurements from an inertial measurement unit (IMU) with visual observations from a camera under the assumption that the rigid transformation between the two sensors is known. Errors in the IMU-camera extrinsic calibration process cause biases that reduce the estimation accuracy and can even lead to divergence of any estimator processing the measurements from both sensors. In this paper, we present an extended Kalman filter for precisely determining the unknown transformation between a camera and an IMU. Contrary to previous approaches, we explicitly account for the time correlation of the IMU measurements and provide a figure of merit (covariance) for the estimated transformation. The proposed method does not require any special hardware (such as spin table or 3-D laser scanner) except a calibration target. Furthermore, we employ the observability rank criterion based on Lie derivatives and prove that the nonlinear system describing the IMU-camera calibration process is observable. Simulation and experimental results are presented that validate the proposed method and quantify its accuracy.},
+  keywords = {Kalman filters;calibration;computer vision;image sensors;inertial navigation;observability;state estimation;Kalman filter-based algorithm;inertial measurement unit;observability analysis;observability rank criterion;performance evaluation;vision-aided inertial navigation systems;Extended Kalman filter;Lie derivatives;inertial measurement unit (IMU)-camera calibration;observability of nonlinear systems;vision-aided inertial navigation},
+  doi = {10.1109/TRO.2008.2004486},
+  issn = {1552-3098}
+}
+</code>
+</pre>
+</li>
+{% endif %}{% if (keys contains "bleser2008advanced") or !(keys | size) %}
 <li id="bleser2008advanced">
 Gabriele Bleser and Didier Stricker.
  Advanced tracking through efficient image processing and
@@ -294,11 +369,10 @@ Gabriele Bleser and Didier Stricker.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dunser2008survey") or (keys == nil) %}
+{% endif %}{% if (keys contains "dunser2008survey") or !(keys | size) %}
 <li id="dunser2008survey">
 Andreas D&uuml;nser, Raphael Grasset, and Mark Billinghurst.
- A survey of evaluation techniques used in augmented reality
-  studies.
+ A survey of evaluation techniques used in augmented reality studies.
  In <em>ACM SIGGRAPH ASIA 2008 courses</em>, pages 5:1&ndash;5:27, New York,
   NY, USA, 2008. ACM.
 [&nbsp;<a href="#dunser2008survey_bib">bib</a>&nbsp;|&nbsp;<a href="http://www.hitlabnz.org/administrator/components/com_jresearch/files/publications/a5-dunser.pdf">.pdf</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1145/1508044.1508049">DOI</a>&nbsp;]<pre id="dunser2008survey_bib"><code>
@@ -309,15 +383,14 @@ Andreas D&uuml;nser, Raphael Grasset, and Mark Billinghurst.
   doi = {10.1145/1508044.1508049},
   pages = {5:1--5:27},
   publisher = {ACM},
-  title = { {A} survey of evaluation techniques used in augmented reality studies},
-  url = {<a href="http://dl.acm.org/citation.cfm?doid=1508044.1508049">http://dl.acm.org/citation.cfm?doid=1508044.1508049</a>},
+  title = {A survey of evaluation techniques used in augmented reality studies},
   url = {<a href="http://www.hitlabnz.org/administrator/components/com_jresearch/files/publications/a5-dunser.pdf">http://www.hitlabnz.org/administrator/components/com_jresearch/files/publications/a5-dunser.pdf</a>},
   year = {2008}
 }
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "bleser2009towards") or (keys == nil) %}
+{% endif %}{% if (keys contains "bleser2009towards") or !(keys | size) %}
 <li id="bleser2009towards">
 Gabriele Bleser.
  <em>Towards visual-inertial SLAM for mobile augmented reality</em>.
@@ -333,7 +406,7 @@ Gabriele Bleser.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "ko2009gp-bayesfilter") or (keys == nil) %}
+{% endif %}{% if (keys contains "ko2009gp-bayesfilter") or !(keys | size) %}
 <li id="ko2009gp-bayesfilter">
 Jonathan Ko and Dieter Fox.
  GP-BayesFilters: Bayesian filtering using Gaussian process
@@ -349,7 +422,6 @@ Jonathan Ko and Dieter Fox.
   number = {1},
   doi = {10.1007/s10514-009-9119-x},
   title = { {GP-B}ayes{F}ilters: {B}ayesian filtering using {G}aussian process prediction and observation models},
-  url = {<a href="http://dx.doi.org/10.1007/s10514-009-9119-x">http://dx.doi.org/10.1007/s10514-009-9119-x</a>},
   publisher = {Springer US},
   keywords = {Gaussian process; Bayesian filtering; Dynamic modelling; Machine learning; Regression},
   author = {Ko, Jonathan and Fox, Dieter},
@@ -359,7 +431,7 @@ Jonathan Ko and Dieter Fox.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "caarls2009pose") or (keys == nil) %}
+{% endif %}{% if (keys contains "caarls2009pose") or !(keys | size) %}
 <li id="caarls2009pose">
 Jurjen Caarls.
  <em>Pose estimation for mobile devices and augmented reality</em>.
@@ -374,13 +446,13 @@ Jurjen Caarls.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "hol2010modeling") or (keys == nil) %}
+{% endif %}{% if (keys contains "hol2010modeling") or !(keys | size) %}
 <li id="hol2010modeling">
 Jeroen&nbsp;D. Hol, Thomas&nbsp;B. Schön, and Fredrik Gustafsson.
  Modeling and calibration of inertial and vision sensors.
  <em>The International Journal of Robotics Research</em>,
   29(2-3):231&ndash;244, 2010.
-[&nbsp;<a href="#hol2010modeling_bib">bib</a>&nbsp;|&nbsp;<a href="http://ijr.sagepub.com/content/29/2-3/231.abstract">ract</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1177/0278364909356812">DOI</a>&nbsp;]<pre id="hol2010modeling_bib"><code>
+[&nbsp;<a href="#hol2010modeling_bib">bib</a>&nbsp;|&nbsp;<a href="http://ijr.sagepub.com/content/29/2-3/231">/231</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1177/0278364909356812">DOI</a>&nbsp;]<pre id="hol2010modeling_bib"><code>
 @article{hol2010modeling,
   author = {Hol, Jeroen D. and Schön, Thomas B. and Gustafsson, Fredrik},
   title = {Modeling and Calibration of Inertial and Vision Sensors},
@@ -392,14 +464,14 @@ Jeroen&nbsp;D. Hol, Thomas&nbsp;B. Schön, and Fredrik Gustafsson.
   abstract = {
     This paper is concerned with the problem of estimating the relative translation and orientation of an inertial measurement unit and a camera, which are rigidly connected. The key is to realize that this problem is in fact an instance of a standard problem within the area of system identification, referred to as a gray-box problem. We propose a new algorithm for estimating the relative translation and orientation, which does not require any additional hardware, except a piece of paper with a checkerboard pattern on it. The method is based on a physical model which can also be used in solving, for example, sensor fusion problems. The experimental results show that the method works well in practice, both for perspective and spherical cameras.
   },
-  url = {<a href="http://ijr.sagepub.com/content/29/2-3/231.abstract">http://ijr.sagepub.com/content/29/2-3/231.abstract</a>},
+  url = {<a href="http://ijr.sagepub.com/content/29/2-3/231">http://ijr.sagepub.com/content/29/2-3/231</a>},
   eprint = {<a href="http://ijr.sagepub.com/content/29/2-3/231.full.pdf+html">http://ijr.sagepub.com/content/29/2-3/231.full.pdf+html</a>},
   journal = {The International Journal of Robotics Research}
 }
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "vankrevelen2010survey") or (keys == nil) %}
+{% endif %}{% if (keys contains "vankrevelen2010survey") or !(keys | size) %}
 <li id="vankrevelen2010survey">
 D.W.F. Van&nbsp;Krevelen and R.&nbsp;Poelman.
  A survey of augmented reality technologies, applications and
@@ -419,7 +491,7 @@ D.W.F. Van&nbsp;Krevelen and R.&nbsp;Poelman.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "ko2011gpbf-learn") or (keys == nil) %}
+{% endif %}{% if (keys contains "ko2011gpbf-learn") or !(keys | size) %}
 <li id="ko2011gpbf-learn">
 Jonathan Ko and Dieter Fox.
  Learning GP-BayesFilters via Gaussian process latent variable
@@ -435,7 +507,6 @@ Jonathan Ko and Dieter Fox.
   number = {1},
   doi = {10.1007/s10514-010-9213-0},
   title = {Learning {GP-B}ayes{F}ilters via {G}aussian process latent variable models},
-  url = {<a href="http://dx.doi.org/10.1007/s10514-010-9213-0">http://dx.doi.org/10.1007/s10514-010-9213-0</a>},
   publisher = {Springer US},
   keywords = {Gaussian process; System identification; Bayesian filtering; Time alignment; System control; Machine learning},
   author = {Ko, Jonathan and Fox, Dieter},
@@ -445,7 +516,7 @@ Jonathan Ko and Dieter Fox.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "nutzi2011fusion") or (keys == nil) %}
+{% endif %}{% if (keys contains "nutzi2011fusion") or !(keys | size) %}
 <li id="nutzi2011fusion">
 Gabriel Nützi, Weiss Stephan, Davide Scaramuzza, and Roland Siegwart.
  Fusion of IMU and vision for absolute scale estimation in monocular
@@ -468,7 +539,31 @@ Gabriel Nützi, Weiss Stephan, Davide Scaramuzza, and Roland Siegwart.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dunser2011evaluating") or (keys == nil) %}
+{% endif %}{% if (keys contains "navarro2011motionblur") or !(keys | size) %}
+<li id="navarro2011motionblur">
+Fernando Navarro, Francisco&nbsp;J. Serón, and Diego Gutierrez.
+ Motion blur rendering: State of the art.
+ <em>Computer Graphics Forum</em>, 30(1):3&ndash;26, 2011.
+[&nbsp;<a href="#navarro2011motionblur_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1111/j.1467-8659.2010.01840.x">DOI</a>&nbsp;]<pre id="navarro2011motionblur_bib"><code>
+@article{navarro2011motionblur,
+  author = {Navarro, Fernando and Serón, Francisco J. and Gutierrez, Diego},
+  title = {Motion Blur Rendering: State of the Art},
+  journal = {Computer Graphics Forum},
+  volume = {30},
+  number = {1},
+  publisher = {Blackwell Publishing Ltd},
+  issn = {1467-8659},
+  doi = {10.1111/j.1467-8659.2010.01840.x},
+  pages = {3--26},
+  keywords = {motion blur, temporal antialiasing, sampling and reconstruction, rendering, shading, visibility, analytic methods, geometric substitution, Monte Carlo sampling, postprocessing, hybrid methods},
+  keywords = {I.3.3 [Computer Graphics]: Picture/Image Generation—Antialiasing},
+  year = {2011},
+  abstract = {Motion blur is a fundamental cue in the perception of objects in motion. This phenomenon manifests as a visible trail along the trajectory of the object and is the result of the combination of relative motion and light integration taking place in film and electronic cameras. In this work, we analyse the mechanisms that produce motion blur in recording devices and the methods that can simulate it in computer generated images. Light integration over time is one of the most expensive processes to simulate in high-quality renders, as such, we make an in-depth review of the existing algorithms and we categorize them in the context of a formal model that highlights their differences, strengths and limitations. We finalize this report proposing a number of alternative classifications that will help the reader identify the best technique for a particular scenario.}
+}
+</code>
+</pre>
+</li>
+{% endif %}{% if (keys contains "dunser2011evaluating") or !(keys | size) %}
 <li id="dunser2011evaluating">
 Andreas D&uuml;nser and Mark Billinghurst.
  Evaluating Augmented Reality Systems.
@@ -490,7 +585,7 @@ Andreas D&uuml;nser and Mark Billinghurst.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "hol2011sensor") or (keys == nil) %}
+{% endif %}{% if (keys contains "hol2011sensor") or !(keys | size) %}
 <li id="hol2011sensor">
 Jeroen&nbsp;D Hol.
  <em>Sensor fusion and calibration of inertial sensors, vision,
@@ -507,15 +602,15 @@ Jeroen&nbsp;D Hol.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "Kelly2011visualinertial") or (keys == nil) %}
-<li id="Kelly2011visualinertial">
+{% endif %}{% if (keys contains "kelly2011visualinertial") or !(keys | size) %}
+<li id="kelly2011visualinertial">
 Jonathan Kelly and Gaurav&nbsp;S Sukhatme.
  Visual-inertial sensor fusion: Localization, mapping and
   sensor-to-sensor self-calibration.
  <em>The International Journal of Robotics Research</em>, 30(1):56&ndash;79,
   2011.
-[&nbsp;<a href="#Kelly2011visualinertial_bib">bib</a>&nbsp;|&nbsp;<a href="http://ijr.sagepub.com/content/30/1/56.abstract">ract</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1177/0278364910382802">DOI</a>&nbsp;]<pre id="Kelly2011visualinertial_bib"><code>
-@article{Kelly2011visualinertial,
+[&nbsp;<a href="#kelly2011visualinertial_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1177/0278364910382802">DOI</a>&nbsp;]<pre id="kelly2011visualinertial_bib"><code>
+@article{kelly2011visualinertial,
   author = {Kelly, Jonathan and Sukhatme, Gaurav S},
   title = {Visual-Inertial Sensor Fusion: Localization, Mapping and Sensor-to-Sensor Self-calibration},
   volume = {30},
@@ -526,14 +621,14 @@ Jonathan Kelly and Gaurav&nbsp;S Sukhatme.
   abstract = {
     Visual and inertial sensors, in combination, are able to provide accurate motion estimates and are well suited for use in many robot navigation tasks. However, correct data fusion, and hence overall performance, depends on careful calibration of the rigid body transform between the sensors. Obtaining this calibration information is typically difficult and time-consuming, and normally requires additional equipment. In this paper we describe an algorithm, based on the unscented Kalman filter, for self-calibration of the transform between a camera and an inertial measurement unit (IMU). Our formulation rests on a differential geometric analysis of the observability of the camera—IMU system; this analysis shows that the sensor-to-sensor transform, the IMU gyroscope and accelerometer biases, the local gravity vector, and the metric scene structure can be recovered from camera and IMU measurements alone. While calibrating the transform we simultaneously localize the IMU and build a map of the surroundings, all without additional hardware or prior knowledge about the environment in which a robot is operating. We present results from simulation studies and from experiments with a monocular camera and a low-cost IMU, which demonstrate accurate estimation of both the calibration parameters and the local scene structure.
   },
-  url = {<a href="http://ijr.sagepub.com/content/30/1/56.abstract">http://ijr.sagepub.com/content/30/1/56.abstract</a>},
+  url = {<a href="http://ijr.sagepub.com/content/30/1/56">http://ijr.sagepub.com/content/30/1/56</a>},
   eprint = {<a href="http://ijr.sagepub.com/content/30/1/56.full.pdf+html">http://ijr.sagepub.com/content/30/1/56.full.pdf+html</a>},
   journal = {The International Journal of Robotics Research}
 }
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "siegwart2011autonomous") or (keys == nil) %}
+{% endif %}{% if (keys contains "siegwart2011autonomous") or !(keys | size) %}
 <li id="siegwart2011autonomous">
 Roland Siegwart, Illah&nbsp;Reza Nourbakhsh, and Davide Scaramuzza.
  <em>Autonomous Mobile Robots</em>.
@@ -549,7 +644,7 @@ Roland Siegwart, Illah&nbsp;Reza Nourbakhsh, and Davide Scaramuzza.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "akman2012robust") or (keys == nil) %}
+{% endif %}{% if (keys contains "akman2012robust") or !(keys | size) %}
 <li id="akman2012robust">
 Oytun Akman.
  <em>Robust Augmented Reality</em>.
@@ -564,7 +659,7 @@ Oytun Akman.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dekok2012pga") or (keys == nil) %}
+{% endif %}{% if (keys contains "dekok2012pga") or !(keys | size) %}
 <li id="dekok2012pga">
 Patrick&nbsp;M. de&nbsp;Kok.
  Visualization of the projective line geometry for geometric algebra.
@@ -582,7 +677,7 @@ Patrick&nbsp;M. de&nbsp;Kok.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "gudi2013feature") or (keys == nil) %}
+{% endif %}{% if (keys contains "gudi2013feature") or !(keys | size) %}
 <li id="gudi2013feature">
 Amogh Gudi, Patrick de&nbsp;Kok, Georgios Methenitis, and Nikolaas Steenbergen.
  Feature detection and localization for the RoboCup Soccer
@@ -601,7 +696,7 @@ Amogh Gudi, Patrick de&nbsp;Kok, Georgios Methenitis, and Nikolaas Steenbergen.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dnt2013tdp") or (keys == nil) %}
+{% endif %}{% if (keys contains "dnt2013tdp") or !(keys | size) %}
 <li id="dnt2013tdp">
 Patrick de&nbsp;Kok, Nicolò Girardi, Amogh Gudi, Chiel Kooijman, Georgios
   Methenitis, Sébastien Negrijn, Nikolaas Steenbergen, Duncan ten Velthuis,
@@ -624,7 +719,7 @@ Patrick de&nbsp;Kok, Nicolò Girardi, Amogh Gudi, Chiel Kooijman, Georgios
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "verschoor2013irl") or (keys == nil) %}
+{% endif %}{% if (keys contains "verschoor2013irl") or !(keys | size) %}
 <li id="verschoor2013irl">
 Camiel Verschoor, Patrick de&nbsp;Kok, and Arnoud Visser.
  Intelligent Robotics Lab.
@@ -641,7 +736,7 @@ Camiel Verschoor, Patrick de&nbsp;Kok, and Arnoud Visser.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dekok2013victoria") or (keys == nil) %}
+{% endif %}{% if (keys contains "dekok2013victoria") or !(keys | size) %}
 <li id="dekok2013victoria">
 Patrick&nbsp;M. de&nbsp;Kok, Georgios Methenitis, and Sander Nugteren.
  ViCTOriA: Visual Compass To Orientate Accurately.
@@ -659,7 +754,7 @@ Patrick&nbsp;M. de&nbsp;Kok, Georgios Methenitis, and Sander Nugteren.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "methenitis2013orientation") or (keys == nil) %}
+{% endif %}{% if (keys contains "methenitis2013orientation") or !(keys | size) %}
 <li id="methenitis2013orientation">
 Georgios Methenitis, Patrick&nbsp;M. de&nbsp;Kok, Sander Nugteren, and Arnoud Visser.
  Orientation finding using a grid based visual compass.
@@ -679,7 +774,7 @@ Georgios Methenitis, Patrick&nbsp;M. de&nbsp;Kok, Sander Nugteren, and Arnoud Vi
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "ta2013monocular") or (keys == nil) %}
+{% endif %}{% if (keys contains "ta2013monocular") or !(keys | size) %}
 <li id="ta2013monocular">
 Duy-Nguyen Ta, Kyel Ok, and Frank Dellaert.
  Monocular parallel tracking and mapping with odometry fusion for
@@ -701,7 +796,7 @@ Duy-Nguyen Ta, Kyel Ok, and Frank Dellaert.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "furgale2013unified") or (keys == nil) %}
+{% endif %}{% if (keys contains "furgale2013unified") or !(keys | size) %}
 <li id="furgale2013unified">
 Paul Furgale, Joern Rehder, and Roland Siegwart.
  Unified temporal and spatial calibration for multi-sensor systems.
@@ -723,7 +818,7 @@ Paul Furgale, Joern Rehder, and Roland Siegwart.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "pirchheim2013handling") or (keys == nil) %}
+{% endif %}{% if (keys contains "pirchheim2013handling") or !(keys | size) %}
 <li id="pirchheim2013handling">
 Christian Pirchheim, Dieter Schmalstieg, and Gerhard Reitmayr.
  Handling pure camera rotation in keyframe-based SLAM.
@@ -742,7 +837,7 @@ Christian Pirchheim, Dieter Schmalstieg, and Gerhard Reitmayr.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "tan2013robust") or (keys == nil) %}
+{% endif %}{% if (keys contains "tan2013robust") or !(keys | size) %}
 <li id="tan2013robust">
 Wei Tan, Haomin Liu, Zilong Dong, Guofeng Zhang, and Hujun Bao.
  Robust monocular SLAM in dynamic environments.
@@ -761,7 +856,7 @@ Wei Tan, Haomin Liu, Zilong Dong, Guofeng Zhang, and Hujun Bao.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dnt2014tdp") or (keys == nil) %}
+{% endif %}{% if (keys contains "dnt2014tdp") or !(keys | size) %}
 <li id="dnt2014tdp">
 Patrick de&nbsp;Kok, Sébastien Negrijn, Eugenio Bargiacchi, Amogh Gudi, Chiel
   Kooijman, Ilse van&nbsp;der Linden, Georgios Methenitis, Duncan ten Velthuis,
