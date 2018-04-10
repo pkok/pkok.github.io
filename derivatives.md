@@ -1,44 +1,19 @@
 ---
 layout: page
-text: Derivatives of formulas I use
+text: Derivatives cheat sheet
 ---
 
-Derivatives of some functions I need to use:
+This document includes an overview of derivatives of functions I will need to use. Kind of like a personal, very specific, math cheat sheet.
+
+Some derivatives will be available in a "general representation", and as a "matrix representation".  With a general representation, I intend the notational representation of a function as other functions would be notated in that domain.  For its matrix representation, the partial derivative $$\partial_\mathbf{x} f = \frac{\partial f}{\partial \mathbf{x}}$$ of a function $$f(\mathbf{x}, \ldots)$$ with $$n$$-dimensional result and an $$m$$-dimensional vector $$\mathbf{x}$$, is decomposed to a linear mapping of its partial derivatives $$\frac{\partial f_i}{\partial x_j}$$ with $$0 \leq i < n$$ and $$0 \leq j < m$$.  This is equivalent to an $$n \times m$$ matrix $$F$$ with partial derivative $$\frac{\partial f_i}{\partial x_j}$$ at the $$i$$th row and $$j$$th column. For an example, please see the quaternion product.
 
 ## Basic/helper derivatives
 
 ### Vector norm
 
-$$
-\begin{align}
+$$ \begin{align}
 \partial_\mathbf{v} \|\mathbf{v}\|
-  &= \frac{\mathbf{v}}{\|\mathbf{v}\|}
-\end{align}
-$$
-
-### Quaternion exponential
-The trick here is to keep your values on the right basis; if you "blindly" differentiate the composed-vector-notation-version, you would get $$\begin{bmatrix}\frac{-\mathbf{v}}{\|\mathbf{v}\|} \sin \|\mathbf{v}\| \\ \cos \|\mathbf{v}\| \end{bmatrix}$$.
-
-With $$\mathbf{q}^* = q_0 - q_1 \mathbf{i} - q_2 \mathbf{j} - q_3 \mathbf{k}$$ the [quaternion conjugate](http://mathworld.wolfram.com/QuaternionConjugate.html):
-
-$$
-\begin{align}
-\partial_\mathbf{v} \exp(\mathbf{v}) 
-  &= \partial_\mathbf{v} \begin{bmatrix} \cos \|\mathbf{v}\| \\ 
-                                         \frac{\mathbf{v}}{\|\mathbf{v}\|} \sin \|\mathbf{v}\| 
-                         \end{bmatrix} \\
-  &= \partial_\mathbf{v} \left( \cos \|\mathbf{v}\| + \frac{\mathbf{v}}{\|\mathbf{v}\|} \sin \|\mathbf{v}\| \right) \\
-  &= \partial_\mathbf{v} \|\mathbf{v}\| \partial_{\|\mathbf{v}\|} \cos \|\mathbf{v}\| + \left(\partial_\mathbf{v} \frac{\mathbf{v}}{\|\mathbf{v}\|}\right) \sin\|\mathbf{v}\| + \frac{\mathbf{v}}{\|\mathbf{v}\|} \partial_\mathbf{v} \sin\|\mathbf{v}\| \\
-  &= -\frac{\mathbf{v}}{\|\mathbf{v}\|} \sin \|\mathbf{v}\| + \frac{\partial_\mathbf{v} \mathbf{v} \|\mathbf{v}\| - \mathbf{v} \partial_\mathbf{v} \|\mathbf{v}\|}{\|\mathbf{v}\|^2} \sin \|\mathbf{v}\| + \frac{\mathbf{v}}{\|\mathbf{v}\|} \partial_\mathbf{v} \|\mathbf{v}\| \partial_{\|\mathbf{v}\|} \sin \|\mathbf{v}\| \\
-  &= -\frac{\mathbf{v}}{\|\mathbf{v}\|} \sin \|\mathbf{v}\| + \frac{\mathbf{I}_3 \|\mathbf{v}\| - \mathbf{v} \frac{\mathbf{v}}{\|\mathbf{v}\|}}{\|\mathbf{v}\|^2} \sin \|\mathbf{v}\| + \frac{\mathbf{v}}{\|\mathbf{v}\|} \frac{\mathbf{v}}{\|\mathbf{v}\|} \cos \|\mathbf{v}\| \\
-  &= \frac{-\mathbf{v}\|\mathbf{v}\| + \mathbf{I}_3\|\mathbf{v}\| - \frac{\mathbf{v} \mathbf{v}}{\|\mathbf{v}\|}}{\|\mathbf{v}\|^2} \sin \|\mathbf{v}\| + \cos \|\mathbf{v}\| \\
-  &= \frac{-\mathbf{v}\|\mathbf{v}\| + \mathbf{I}_3\|\mathbf{v}\| - \|\mathbf{v}\|}{\|\mathbf{v}\|^2} \sin \|\mathbf{v}\| + \cos \|\mathbf{v}\| \\
-  &= \frac{-\mathbf{v} + \mathbf{I}_3 - 1}{\|\mathbf{v}\|} \sin \|\mathbf{v}\| + \cos \|\mathbf{v}\| \\
-  &= \frac{-\mathbf{v}}{\|\mathbf{v}\|} \sin \|\mathbf{v}\| + \cos \|\mathbf{v}\| \\
-  &= \begin{bmatrix} \cos \|\mathbf{v}\| \\ 
-                     \frac{-\mathbf{v}}{\|\mathbf{v}\|} \sin \|\mathbf{v}\| 
-     \end{bmatrix} \\
-  &= \exp(\mathbf{v})^*
+  &= \frac{\mathbf{v}^\intercal}{\|\mathbf{v}\|}
 \end{align}
 $$
 
@@ -51,17 +26,167 @@ $$
   &\phantom{=} + (q_0 p_1 + q_1 p_0 - q_2 p_3 + q_3 p_2) \mathbf{i} \\
   &\phantom{=} + (q_0 p_2 + q_1 p_3 + q_2 p_0 - q_3 p_1) \mathbf{j} \\
   &\phantom{=} + (q_0 p_3 - q_1 p_2 + q_2 p_1 + q_3 p_0) \mathbf{k} \\
+\end{align}
+$$
+$$
+\begin{align}
+\begin{split}
 \partial_\mathbf{p} (\mathbf{p} \odot \mathbf{q})
-  &= \phantom{+} (q_0 - q_1 - q_2 - q_3)            & 
-                                                    \partial_\mathbf{q} (\mathbf{p} \odot \mathbf{q})
-                                                        &= \phantom{+} (p_0 - p_1 - p_2 - p_3)            \\
-  &\phantom{=} + (q_1 + q_0 + q_3 - q_2) \mathbf{i} &   &\phantom{=} + (p_1 + p_0 - p_3 + p_2) \mathbf{i} \\
-  &\phantom{=} + (q_2 - q_3 + q_0 + q_1) \mathbf{j} &   &\phantom{=} + (p_2 + p_3 + p_0 - p_1) \mathbf{j} \\
-  &\phantom{=} + (q_3 + q_2 - q_1 + q_0) \mathbf{k} &   &\phantom{=} + (p_3 - p_2 + p_1 + p_0) \mathbf{k} \\
-  &= \phantom{+} (q_0 - q_1 - q_2 - q_3)            &   &= \phantom{+} (p_0 - p_1 - p_2 - p_3)            \\
-  &\phantom{=} + (q_0 + q_1 - q_2 + q_3) \mathbf{i} &   &\phantom{=} + (p_0 + p_1 + p_2 - p_3) \mathbf{i} \\
-  &\phantom{=} + (q_0 + q_1 + q_2 - q_3) \mathbf{j} &   &\phantom{=} + (p_0 - p_1 + p_2 + p_3) \mathbf{j} \\
-  &\phantom{=} + (q_0 - q_1 + q_2 + q_3) \mathbf{k} &   &\phantom{=} + (p_0 + p_1 - p_2 + p_3) \mathbf{k} \\
+  &= \phantom{+} (q_0 - q_1 - q_2 - q_3) \\
+  &\phantom{=} + (q_1 + q_0 + q_3 - q_2) \mathbf{i} \\
+  &\phantom{=} + (q_2 - q_3 + q_0 + q_1) \mathbf{j} \\
+  &\phantom{=} + (q_3 + q_2 - q_1 + q_0) \mathbf{k} \\
+  &= \phantom{+} (q_0 - q_1 - q_2 - q_3) \\
+  &\phantom{=} + (q_0 + q_1 - q_2 + q_3) \mathbf{i} \\
+  &\phantom{=} + (q_0 + q_1 + q_2 - q_3) \mathbf{j} \\
+  &\phantom{=} + (q_0 - q_1 + q_2 + q_3) \mathbf{k} \\
+\end{split}
+\begin{split}
+\partial_\mathbf{q} (\mathbf{p} \odot \mathbf{q})
+  &= \phantom{+} (p_0 - p_1 - p_2 - p_3) \\
+  &\phantom{=} + (p_1 + p_0 - p_3 + p_2) \mathbf{i} \\
+  &\phantom{=} + (p_2 + p_3 + p_0 - p_1) \mathbf{j} \\
+  &\phantom{=} + (p_3 - p_2 + p_1 + p_0) \mathbf{k} \\
+  &= \phantom{+} (p_0 - p_1 - p_2 - p_3) \\
+  &\phantom{=} + (p_0 + p_1 + p_2 - p_3) \mathbf{i} \\
+  &\phantom{=} + (p_0 - p_1 + p_2 + p_3) \mathbf{j} \\
+  &\phantom{=} + (p_0 + p_1 - p_2 + p_3) \mathbf{k} \\
+\end{split}
+\end{align}
+$$
+
+In matrix representation (smallest element partial derivatives), with $$f(\mathbf{p}, \mathbf{q}) = \mathbf{p} \odot \mathbf{q}$$:
+
+$$
+\begin{align}
+\begin{split}
+\partial_\mathbf{p} f
+  &= \begin{bmatrix} 
+         \frac{\partial f}{\partial p_0} 
+       & \frac{\partial f}{\partial p_1} 
+       & \frac{\partial f}{\partial p_2}
+       & \frac{\partial f}{\partial p_3}
+     \end{bmatrix} \\
+  &= \begin{bmatrix}
+         \frac{\partial f_0}{\partial p_0} 
+       & \frac{\partial f_0}{\partial p_1} 
+       & \frac{\partial f_0}{\partial p_2}
+       & \frac{\partial f_0}{\partial p_3} \\
+         \frac{\partial f_1}{\partial p_0} 
+       & \frac{\partial f_1}{\partial p_1} 
+       & \frac{\partial f_1}{\partial p_2}
+       & \frac{\partial f_1}{\partial p_3} \\
+         \frac{\partial f_2}{\partial p_0} 
+       & \frac{\partial f_2}{\partial p_1} 
+       & \frac{\partial f_2}{\partial p_2}
+       & \frac{\partial f_2}{\partial p_3} \\
+         \frac{\partial f_3}{\partial p_0} 
+       & \frac{\partial f_3}{\partial p_1} 
+       & \frac{\partial f_3}{\partial p_2}
+       & \frac{\partial f_3}{\partial p_3}
+     \end{bmatrix} \\
+  &= \begin{bmatrix}
+       q_0 & -q_1 & -q_2 & -q_3 \\
+       q_1 &  q_0 &  q_3 & -q_2 \\
+       q_2 & -q_3 &  q_0 &  q_1 \\
+       q_3 &  q_2 & -q_1 &  q_0
+    \end{bmatrix}
+\end{split}
+%
+\begin{split}
+\partial_\mathbf{q} f
+  &= \begin{bmatrix} 
+         \frac{\partial f}{\partial q_0} 
+       & \frac{\partial f}{\partial q_1} 
+       & \frac{\partial f}{\partial q_2}
+       & \frac{\partial f}{\partial q_3}
+     \end{bmatrix} \\
+  &= \begin{bmatrix}
+         \frac{\partial f_0}{\partial q_0} 
+       & \frac{\partial f_0}{\partial q_1} 
+       & \frac{\partial f_0}{\partial q_2}
+       & \frac{\partial f_0}{\partial q_3} \\
+         \frac{\partial f_1}{\partial q_0} 
+       & \frac{\partial f_1}{\partial q_1} 
+       & \frac{\partial f_1}{\partial q_2}
+       & \frac{\partial f_1}{\partial q_3} \\
+         \frac{\partial f_2}{\partial q_0} 
+       & \frac{\partial f_2}{\partial q_1} 
+       & \frac{\partial f_2}{\partial q_2}
+       & \frac{\partial f_2}{\partial q_3} \\
+         \frac{\partial f_3}{\partial q_0} 
+       & \frac{\partial f_3}{\partial q_1} 
+       & \frac{\partial f_3}{\partial q_2}
+       & \frac{\partial f_3}{\partial q_3}
+     \end{bmatrix} \\
+  &= \begin{bmatrix}
+       p_0 & -p_1 & -p_2 & -p_3 \\
+       p_1 &  p_0 & -p_3 &  p_2 \\
+       p_2 &  p_3 &  p_0 & -p_1 \\
+       p_3 & -p_2 &  p_1 &  p_0
+    \end{bmatrix} \\
+\end{split}
+\end{align}
+$$
+
+### Quaternion exponential
+Let $$\mathbf{v}_\Sigma = v_0 + \ldots + v_n$$ for an $$n$$-dimensional vector $$\mathbf{v}$$.
+
+$$
+\begin{align}
+\partial_\mathbf{v} \exp(\mathbf{v}) 
+  &= \begin{bmatrix}
+       -\mathbf{v}_\Sigma \frac{\sin\|\mathbf{v}\|}{\|\mathbf{v}\|} \\
+       \mathbf{v} \mathbf{v}_\Sigma \frac{\|\mathbf{v}\| \cos\|\mathbf{v}\| - \frac{\sin\|\mathbf{v}\|}{\|\mathbf{v}\|}}{\mathbf{v} \cdot \mathbf{v}} + \frac{\sin\|\mathbf{v}\|}{\|\mathbf{v}\|}
+    \end{bmatrix} \\
+  &= \begin{bmatrix}
+       -\mathbf{v}_\Sigma s \\
+       \mathbf{v} \mathbf{v}_\Sigma \frac{\|\mathbf{v}\| c - s}{\mathbf{v} \cdot \mathbf{v}} + s
+     \end{bmatrix} \\
+  &= -\mathbf{v}_\Sigma s + \left(v_0\mathbf{i} + v_1\mathbf{j} + v_2\mathbf{k}\right)\left(\mathbf{v}_\Sigma \frac{\|\mathbf{v}\| c - s}{\mathbf{v} \cdot \mathbf{v}} + s\right)\\
+  &\phantom{=}\mbox{ with } c = \cos\|\mathbf{v}\|\\
+  &\phantom{=\mbox{ with }} s = \frac{\sin\|\mathbf{v}\|}{\|\mathbf{v}\|}
+\end{align}
+$$
+
+In matrix representation (smallest element partial derivatives), with $$f(\mathbf{v}) = \exp(\mathbf{v})$$:
+
+$$
+\begin{align}
+\partial_\mathbf{v} f
+  &= \begin{bmatrix}
+         \frac{\partial f}{\partial v_0} 
+       & \frac{\partial f}{\partial v_1} 
+       & \frac{\partial f}{\partial v_2}
+     \end{bmatrix} \\
+  &= \begin{bmatrix}
+         \frac{\partial f_0}{\partial v_0} 
+       & \frac{\partial f_0}{\partial v_1} 
+       & \frac{\partial f_0}{\partial v_2} \\
+         \frac{\partial f_1}{\partial v_0} 
+       & \frac{\partial f_1}{\partial v_1} 
+       & \frac{\partial f_1}{\partial v_2} \\
+         \frac{\partial f_2}{\partial v_0} 
+       & \frac{\partial f_2}{\partial v_1} 
+       & \frac{\partial f_2}{\partial v_2} \\
+         \frac{\partial f_3}{\partial v_0} 
+       & \frac{\partial f_3}{\partial v_1} 
+       & \frac{\partial f_3}{\partial v_2} \\
+     \end{bmatrix} \\
+  &= \begin{bmatrix}
+       -v_0 s & -v_1 s & -v_2 s \\
+       \frac{v_0^2}{\mathbf{v}\cdot\mathbf{v}} c - \frac{v_0^2}{\|\mathbf{v}\|^3} + s
+         & \frac{v_0 v_1}{\mathbf{v}\cdot\mathbf{v}} \left(c - s\right)
+         & \frac{v_0 v_2}{\mathbf{v}\cdot\mathbf{v}} \left(c - s\right) \\
+       \frac{v_0 v_1}{\mathbf{v}\cdot\mathbf{v}} \left(c - s\right)
+         & \frac{v_1^2}{\mathbf{v}\cdot\mathbf{v}} c - \frac{v_1^2}{\|\mathbf{v}\|^3} + s
+         & \frac{v_1 v_2}{\mathbf{v}\cdot\mathbf{v}} \left(c - s\right) \\
+       \frac{v_0 v_2}{\mathbf{v}\cdot\mathbf{v}} \left(c - s\right)
+         & \frac{v_1 v_2}{\mathbf{v}\cdot\mathbf{v}} \left(c - s\right)
+         & \frac{v_2^2}{\mathbf{v}\cdot\mathbf{v}} c - \frac{v_2^2}{\|\mathbf{v}\|^3} + s
+     \end{bmatrix} \\
+  &\phantom{=}\mbox{ with } c = \cos\|\mathbf{v}\|\\
+  &\phantom{=\mbox{ with }} s = \frac{\sin\|\mathbf{v}\|}{\|\mathbf{v}\|}
 \end{align}
 $$
 
