@@ -237,10 +237,12 @@ f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
                      0                 & 0                                        & I_3
      \end{bmatrix} \\
   &\phantom{=}\mbox{ with } \mathbf{a} = \frac{T}{2}(\mathbf{\omega}_{s,t-T} + \mathbf{v}^\omega_{s,t})\\
-  &\phantom{=\mbox{ with }} \mathbf{r} = \left( \partial_{\exp(\mathbf{a})} \left(\exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}\right) \right) \left(-\frac{T}{2} \exp(\mathbf{a})\right)\\
-  &\phantom{=\mbox{ with }} \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} = \begin{bmatrix} \mathbf{r}\mathbf{i} & \mathbf{r}\mathbf{j} & \mathbf{r}\mathbf{k} \end{bmatrix}\\
+  &\phantom{=\mbox{ with }} \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} = \frac{\partial \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}}{\partial \exp(\mathbf{a})} \frac{\partial \exp(\mathbf{a})}{\mathbf{a}} \frac{\mathbf{a}}{\partial \mathbf{\omega}_{s,t-T}} \\
+  &\phantom{=\mbox{ with } \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}}} = \left(\partial_{\exp(\mathbf{a})} \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}\right) \left(\partial_\mathbf{a} \exp(\mathbf{a})\right) \frac{T}{2} I_3
 \end{align}
 $$
+
+Use matrix representations in $$\mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}}$$!
 
 ### Measurement model
 
