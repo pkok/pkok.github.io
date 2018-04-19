@@ -13,7 +13,7 @@ Some derivatives will be available in a "general representation", and as a "matr
 
 $$ \begin{align}
 \partial_\mathbf{v} \|\mathbf{v}\|
-  &= \frac{\mathbf{v}^\intercal}{\|\mathbf{v}\|}
+    &= \frac{\mathbf{v}^\intercal}{\|\mathbf{v}\|}
 \end{align}
 $$
 
@@ -190,6 +190,80 @@ $$
 \end{align}
 $$
 
+### Rotation
+
+Let $$Q$$ be the rotation matrix corresponding to the same rotation as unit quaternion $$\mathbf{q}$$, and let $$Q^*$$ correspond to the rotation of $$\mathbf{q}^*$$.  The derivatives $$\partial_\mathbf{q} Q$$ and $$\partial_\mathbf{q} Q^*$$ are both third-rank tensors, see also [Wikipedia](https://en.wikipedia.org/wiki/Matrix_calculus#Other_matrix_derivatives).
+
+$$
+\begin{align}
+\partial_\mathbf{q} Q 
+    &= \begin{bmatrix}
+        \frac{\partial Q}{\partial q_0} & \frac{\partial Q}{\partial q_1} & \frac{\partial Q}{\partial q_2} & \frac{\partial Q}{q_3}
+    \end{bmatrix}
+\end{align}
+$$
+
+Each element $$\frac{\partial Q}{\partial q_i}$$ is a second-rank mapping, and can be represented by $$3 \times 3$$ matrices:
+
+$$
+\begin{align}
+\begin{split}
+\frac{\partial Q}{\partial q_0}
+    &= \begin{bmatrix}
+            0 &  2q_3 & -2q_2 \\
+        -2q_3 &     0 &  2q_1 \\
+         2q_2 & -2q_1 &     0 \\
+    \end{bmatrix} \\
+\frac{\partial Q}{\partial q_1}
+    &= \begin{bmatrix}
+            0 &  2q_2 &  2q_3 \\
+         2q_2 & -4q_1 &  2q_0 \\
+         2q_3 & -2q_0 & -4q_1 \\
+    \end{bmatrix} \\
+\frac{\partial Q}{\partial q_2}
+    &= \begin{bmatrix}
+        -4q_2 &  2q_1 & -2q_0 \\
+         2q_1 &     0 &  2q_3 \\
+         2q_0 &  2q_3 & -4q_2 \\
+    \end{bmatrix} \\
+\frac{\partial Q}{\partial q_3}
+    &= \begin{bmatrix}
+        -4q_3 &  2q_0 &  2q_1 \\
+        -2q_0 & -4q_3 &  2q_2 \\
+         2q_1 &  2q_2 &     0 \\
+    \end{bmatrix} \\
+\end{split}
+\begin{split}
+\frac{\partial Q^*}{\partial q_0}
+    &= \begin{bmatrix}
+            0 & -2q_3 &  2q_2 \\
+         2q_3 &     0 & -2q_1 \\
+        -2q_2 &  2q_1 &     0 \\
+    \end{bmatrix} \\
+\frac{\partial Q^*}{\partial q_1}
+    &= \begin{bmatrix}
+            0 &  2q_2 &  2q_3 \\
+         2q_2 & -4q_1 & -2q_0 \\
+         2q_3 &  2q_0 & -4q_1 \\
+    \end{bmatrix} \\
+\frac{\partial Q^*}{\partial q_2}
+    &= \begin{bmatrix}
+        -4q_2 &  2q_1 &  2q_0 \\
+         2q_1 &     0 &  2q_3 \\
+        -2q_0 &  2q_3 & -4q_2 \\
+    \end{bmatrix} \\
+\frac{\partial Q^*}{\partial q_3}
+    &= \begin{bmatrix}
+        -4q_3 & -2q_0 &  2q_1 \\
+         2q_0 & -4q_3 &  2q_2 \\
+         2q_1 &  2q_2 &     0 \\
+    \end{bmatrix} \\
+\end{split}
+\end{align}
+$$
+
+When applied to a vector $$\mathbf{v}$$, both rotation derivatives will produce a regular vector.
+
 -----------
 
 ## Bleser Model 1 (gyro)
@@ -225,20 +299,20 @@ f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
 \partial_\mathbf{x} f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
   &= \begin{bmatrix} I_3 & T I_3 & 0 & 0   & 0 \\
                      0   & I_3   & 0 & 0   & 0 \\
-                     0   & 0     & \partial_{\mathbf{q}_{sw}} \left(\exp(\mathbf{a}) \odot \mathbf{q}_{sw} \right) & \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} & 0 \\
+                     0   & 0     & \partial_{\mathbf{q}_{sw}} \left(\exp(\mathbf{a}) \odot \mathbf{q}_{sw} \right) & \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{\omega}_{s,t-T}\right) & 0 \\
                      0   & 0     & 0 & I_3 & 0 \\
                      0   & 0     & 0 & 0   & I_3
      \end{bmatrix} \\
 \partial_\mathbf{v} f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
-  &= \begin{bmatrix} \frac{T^2}{2} I_3 & 0                                        & 0 \\
-                     T I_3             & 0                                        & 0 \\
-                     0                 & \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} & 0 \\
-                     0                 & I_3                                      & 0 \\
-                     0                 & 0                                        & I_3
+  &= \begin{bmatrix} \frac{T^2}{2} I_3 & 0                                                 & 0 \\
+                     T I_3             & 0                                                 & 0 \\
+                     0                 & \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{v}^{\omega_{s,t-T}}\right) & 0 \\
+                     0                 & I_3                                                                      & 0 \\
+                     0                 & 0                                                                        & I_3
      \end{bmatrix} \\
   &\phantom{=}\mbox{ with } \mathbf{a} = \frac{T}{2}(\mathbf{\omega}_{s,t-T} + \mathbf{v}^\omega_{s,t})\\
-  &\phantom{=\mbox{ with }} \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} = \frac{\partial \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}}{\partial \exp(\mathbf{a})} \frac{\partial \exp(\mathbf{a})}{\mathbf{a}} \frac{\mathbf{a}}{\partial \mathbf{\omega}_{s,t-T}} \\
-  &\phantom{=\mbox{ with } \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}}} = \left(\partial_{\exp(\mathbf{a})} \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}\right) \left(\partial_\mathbf{a} \exp(\mathbf{a})\right) \frac{T}{2} I_3
+  &\phantom{=\mbox{ with }} \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{\omega}\right) = \frac{\partial \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}}{\partial \exp(\mathbf{a})} \frac{\partial \exp(\mathbf{a})}{\partial \mathbf{a}} \frac{\partial \mathbf{a}}{\partial \mathbf{\omega}} \\
+  &\phantom{=\mbox{ with } \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{\omega}\right)} = \left(\partial_{\exp(\mathbf{a})} \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}\right) \left(\partial_\mathbf{a} \exp(\mathbf{a})\right) \frac{T}{2} I_3
 \end{align}
 $$
 
@@ -337,23 +411,23 @@ f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
     &= \begin{bmatrix} %
         I_3 & T I_3 & 0 & 0   & 0   & 0\\
         0   & I_3   & 0 & 0   & 0   & 0\\
-        0   & 0     & \partial_{\mathbf{q}_{sw}} \left(\exp(\mathbf{a}) \odot \mathbf{q}_{sw} \right) & \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} & 0   & 0\\
+        0   & 0     & \partial_{\mathbf{q}_{sw}} \left(\exp(\mathbf{a}) \odot \mathbf{q}_{sw} \right) & \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{\omega}_{s,t-T}\right) & 0   & 0\\
         0   & 0     & 0 & I_3 & 0   & 0 \\
         0   & 0     & 0 & 0   & I_3 & 0 \\
         0   & 0     & 0 & 0   & 0   & I_3 \\
     \end{bmatrix} \\
 \partial_\mathbf{v} f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
     &= \begin{bmatrix} 
-        \frac{T^2}{2} I_3 & 0                                        & 0   & 0 \\
-        T I_3             & 0                                        & 0   & 0 \\
-        0                 & \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} & 0   & 0 \\
-        0                 & I_3                                      & 0   & 0 \\
-        0                 & 0                                        & I_3 & 0 \\
-        0                 & 0                                        & 0   & I_3 \\
+        \frac{T^2}{2} I_3 & 0                                                                        & 0   & 0 \\
+        T I_3             & 0                                                                        & 0   & 0 \\
+        0                 & \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{v}^{\omega_{s,t-T}}\right) & 0   & 0 \\
+        0                 & I_3                                                                      & 0   & 0 \\
+        0                 & 0                                                                        & I_3 & 0 \\
+        0                 & 0                                                                        & 0   & I_3 \\
      \end{bmatrix} \\
   &\phantom{=}\mbox{ with } \mathbf{a} = \frac{T}{2}(\mathbf{\omega}_{s,t-T} + \mathbf{v}^\omega_{s,t})\\
-  &\phantom{=\mbox{ with }} \mathbf{r} = \left( \partial_{\exp(\mathbf{a})} \left(\exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}\right) \right) \left(-\frac{T}{2} \exp(\mathbf{a})\right)\\
-  &\phantom{=\mbox{ with }} \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} = \begin{bmatrix} \mathbf{r}\mathbf{i} & \mathbf{r}\mathbf{j} & \mathbf{r}\mathbf{k} \end{bmatrix}\\
+  &\phantom{=\mbox{ with }} \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{\omega}\right) = \frac{\partial \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}}{\partial \exp(\mathbf{a})} \frac{\partial \exp(\mathbf{a})}{\partial \mathbf{a}} \frac{\partial \mathbf{a}}{\partial \mathbf{\omega}} \\
+  &\phantom{=\mbox{ with } \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{\omega}\right)} = \left(\partial_{\exp(\mathbf{a})} \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}\right) \left(\partial_\mathbf{a} \exp(\mathbf{a})\right) \frac{T}{2} I_3
 \end{align}
 $$
 
@@ -402,24 +476,24 @@ f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
     &= \begin{bmatrix} %
         I_3 & T I_3 & \frac{T^2}{2} I_3   & 0 & 0   & 0   & 0\\
         0   & I_3   & T I_3               & 0 & 0   & 0   & 0\\
-        0   & 0     & I_3                 & \partial_{\mathbf{q}_{sw}} \left(\exp(\mathbf{a}) \odot \mathbf{q}_{sw} \right) & \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} & 0   & 0\\
+        0   & 0     & I_3                 & \partial_{\mathbf{q}_{sw}} \left(\exp(\mathbf{a}) \odot \mathbf{q}_{sw} \right) & \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{\omega}_{s,t-T}\right) & 0   & 0\\
         0   & 0     & 0                   & 0 & I_3 & 0   & 0 \\
         0   & 0     & 0                   & 0 & 0   & I_3 & 0 \\
         0   & 0     & 0                   & 0 & 0   & 0   & I_3 \\
     \end{bmatrix} \\
 \partial_\mathbf{v} f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
     &= \begin{bmatrix} 
-        \frac{T^2}{2} I_3 & 0                                        & 0   & 0 \\
-        T I_3             & 0                                        & 0   & 0 \\
-        I_3               & 0                                        & 0   & 0 \\
-        0                 & \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} & 0   & 0 \\
-        0                 & I_3                                      & 0   & 0 \\
-        0                 & 0                                        & I_3 & 0 \\
-        0                 & 0                                        & 0   & I_3 \\
+        \frac{T^2}{2} I_3 & 0                                                                        & 0   & 0 \\
+        T I_3             & 0                                                                        & 0   & 0 \\
+        I_3               & 0                                                                        & 0   & 0 \\
+        0                 & \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{v}^{\omega_{s,t-T}}\right) & 0   & 0 \\
+        0                 & I_3                                                                      & 0   & 0 \\
+        0                 & 0                                                                        & I_3 & 0 \\
+        0                 & 0                                                                        & 0   & I_3 \\
      \end{bmatrix} \\
   &\phantom{=}\mbox{ with } \mathbf{a} = \frac{T}{2}(\mathbf{\omega}_{s,t-T} + \mathbf{v}^\omega_{s,t})\\
-  &\phantom{=\mbox{ with }} \mathbf{r} = \left( \partial_{\exp(\mathbf{a})} \left(\exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}\right) \right) \left(-\frac{T}{2} \exp(\mathbf{a})\right)\\
-  &\phantom{=\mbox{ with }} \mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}} = \begin{bmatrix} \mathbf{r}\mathbf{i} & \mathbf{r}\mathbf{j} & \mathbf{r}\mathbf{k} \end{bmatrix}\\
+  &\phantom{=\mbox{ with }} \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{\omega}\right) = \frac{\partial \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}}{\partial \exp(\mathbf{a})} \frac{\partial \exp(\mathbf{a})}{\partial \mathbf{a}} \frac{\partial \mathbf{a}}{\partial \mathbf{\omega}} \\
+  &\phantom{=\mbox{ with } \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\mathbf{\omega}\right)} = \left(\partial_{\exp(\mathbf{a})} \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}\right) \left(\partial_\mathbf{a} \exp(\mathbf{a})\right) \frac{T}{2} I_3
 \end{align}
 $$
 
@@ -453,35 +527,36 @@ $$
 
 ### State transition function
 
+**Note:** If $$\mathbf{q}_{sw}$$ represents the rotation from frame $$w$$ to frame $$s$$, then rotating from frame $$s$$ to frame $$w$$ is represented by $$\mathbf{q}_{ws} = \mathbf{q}_{sw}^*$$.
+
 $$
 \begin{align}
 f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
-    &= \begin{bmatrix} 
-        \mathbf{s}_{w,t-T} + T \dot{\mathbf{s}}_{w,t-T} + \frac{T^2}{2} Q_{ws,t-T} \left(\mathbf{y}^a_{s,t} - \mathbf{b}^a_{s,t-T} - \mathbf{v}^a_{s,t}\right) + \frac{T^2}{2}\mathbf{g}_w \\
-        \dot{\mathbf{s}}_{w,t-T} + T Q_{ws,t-T} \left(\mathbf{y}^a_s - \mathbf{b}^a_{s,t-T} - \mathbf{v}^a_{s,t}\right) + T \mathbf{g}_w \\
-        \exp\left( -\frac{T}{2} \left(\mathbf{y}^\omega_{s,t} - \mathbf{b}^\omega_{s,t} - \mathbf{v}^\omega_{s,t}\right) \right) \odot \mathbf{q}_{sw,t-T} \\
+    &= \begin{bmatrix}
+        \mathbf{s}_{w,t-T} + T \dot{\mathbf{s}}_{w,t-T} + \frac{T^2}{2} Q_{ws,t-T} \left(\mathbf{y}^a_{s,t} - \mathbf{b}^a_{s,t-T} - \mathbf{v}^a_{s,t}\right) + \frac{T^2}{2} \mathbf{g}_w \\
+        \dot{\mathbf{s}}_{w,t-T} + T Q_{ws,t-T} \left(\mathbf{y}^a_{s,t} - \mathbf{b}^a_{s,t-T} - \mathbf{v}^a_{s,t}\right) + T \mathbf{g}_w \\
+        \exp\left(-\frac{T}{2} \left(\mathbf{y}^\omega_{s,t} - \mathbf{b}^\omega_{s,t-T} - \mathbf{v}^\omega_{s,t}\right)\right) \odot \mathbf{q}_{sw,t-T} \\
         \mathbf{b}^\omega_{s,t-T} + \mathbf{v}^{\mathbf{b}^\omega}_{s,t} \\
         \mathbf{b}^a_{s,t-T} + \mathbf{v}^{\mathbf{b}^a}_{s,t}
     \end{bmatrix} \\
 \partial_\mathbf{x} f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
     &= \begin{bmatrix}
-        I_3 & T I_3 & \frac{T^2}{2} \dot{Q} \left(\mathbf{y}^a_{s,t} - \mathbf{b}^a_{s,t-T} - \mathbf{v}^a_{s,t}\right) & 0                   & -\frac{T^2}{2} Q_{ws,t-T} I_3 \\
-        0   & I_3   & T \dot{Q} \left(\mathbf{y}^a_{s,t} - \mathbf{b}^a_{s,t-T} - \mathbf{v}^a_{s,t}\right)             & 0                   & -T Q_{ws,t-T}             I_3 \\
-        0   & 0     & \partial_{q_{sw,t-T}} \left(\exp(\mathbf{a}') \odot \mathbf{q}_{sw,t-T}\right)                    & D^{q_{sw,t-T}}_{a'} & 0                             \\
-        0   & 0     & 0                                                                                                 & I_3                 & 0                             \\
-        0   & 0     & 0                                                                                                 & 0                   & I_3
+        I_3 & T I_3 & \frac{T^2}{2} \left(\partial_{\mathbf{q}_{sw,t-T}} Q_{sw,t-T}^* \right) \left(\mathbf{y}^a_{s,t} - \mathbf{b}^a_{s,t-T} - \mathbf{v}^a_{s,t}\right) & 0   & -\frac{T^2}{2} Q_{ws,t-T} \\
+        0   & I_3   & T \left(\partial_{\mathbf{q}_{sw,t-T}} Q_{sw,t-T}^* \right) \left(\mathbf{y}^a_{s,t} - \mathbf{b}^a_{s,t-T} - \mathbf{v}^a_{s,t}\right)             & 0   & -T Q_{ws,t-T} \\
+        0   & 0     & \partial_{\mathbf{q}_{sw,t-T}} \left(\exp\left(\mathbf{a}'\right) \odot \mathbf{q}_{sw,t-T}\right)                                                & \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left({\mathbf{b}^\omega{s,t-T}}\right) & 0 \\
+        0   & 0     & 0                                                                                                                                                 & I_3 & 0 \\
+        0   & 0     & 0                                                                                                                                                 & 0   & I_3 \\
     \end{bmatrix} \\
 \partial_\mathbf{v} f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
-    &= \begin{bmatrix} 
-        -\frac{T^2}{2} Q_{ws,t-T} I_3 & 0                   & 0   & 0   \\
-        -T Q_{ws,t-T} I_3             & 0                   & 0   & 0   \\
-        0                             & D^{q_{sw,t-T}}_{a'} & 0   & 0   \\
-        0                             & 0                   & I_3 & 0   \\
-        0                             & 0                   & 0   & I_3 \\
+    &= \begin{bmatrix} \\
+       -\frac{T^2}{2} Q_{ws,t-T} & 0                                                                    & 0   & 0 \\
+       -T Q_{ws,t-T}             & 0                                                                    & 0   & 0 \\
+       0                         & \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left({\mathbf{v}^{\mathbf{b}^\omega_{s,t-T}}}\right) & 0   & 0 \\
+       0                         & 0                                                                    & I_3 & 0 \\
+       0                         & 0                                                                    & 0   & I_3 \\
     \end{bmatrix} \\
-    &\phantom{=}\mbox{ with } \mathbf{a}' = \frac{T}{2}(\mathbf{y}^\omega_{s,t} - \mathbf{b}^\omega_{s,t} - \mathbf{v}^\omega_{s,t})\\
-    &\phantom{=\mbox{ with }} \mathbf{r} = \left( \partial_{\exp(\mathbf{a}')} \left(\exp(\mathbf{a}') \odot \mathbf{q}_{sw,t-T}\right) \right) \left(-\frac{T}{2} \exp(\mathbf{a}')\right)\\
-    &\phantom{=\mbox{ with }} \mathbf{D}_{a'}^{q_{sw,t-T}} = \begin{bmatrix} \mathbf{r}\mathbf{i} & \mathbf{r}\mathbf{j} & \mathbf{r}\mathbf{k} \end{bmatrix}\\
-    &\phantom{=\mbox{ with }} \dot{Q} = ?
+    &\phantom{=}\mbox{ with } \mathbf{a}' = \frac{T}{2}\left(\mathbf{y}^\omega_{s,t} - \mathbf{b}^\omega_{s,t} - \mathbf{v}^\omega_{s,t}\right) \\
+    &\phantom{=\mbox{ with }} \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\omega\right) = \frac{\partial \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}}{\partial \exp(\mathbf{a})} \frac{\partial \exp(\mathbf{a})}{\partial \mathbf{a}} \frac{\partial \mathbf{a}}{\partial \mathbf{\omega}} \\
+    &\phantom{=\mbox{ with } \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left(\omega\right)} = \left(\partial_{\exp(\mathbf{a})} \exp(\mathbf{a}) \odot \mathbf{q}_{sw,t-T}\right) \left(\partial_\mathbf{a} \exp(\mathbf{a})\right) \frac{T}{2} I_3
 \end{align}
 $$
