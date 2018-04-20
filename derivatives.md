@@ -192,7 +192,7 @@ $$
 
 ### Rotation
 
-Let $$Q$$ be the rotation matrix corresponding to the same rotation as unit quaternion $$\mathbf{q}$$, and let $$Q^*$$ correspond to the rotation of $$\mathbf{q}^*$$.  The derivatives $$\partial_\mathbf{q} Q$$ and $$\partial_\mathbf{q} Q^*$$ are both third-rank tensors, see also [Wikipedia](https://en.wikipedia.org/wiki/Matrix_calculus#Other_matrix_derivatives).
+Let $$Q = \begin{bmatrix}1 - 2(q_2^2 + q_3^2) & 2(q_1q_2 - q_3q_0) & 2(q_1q_3 + q_2q_0) \\ 2(q_1q_2 + q_3q_0) & 1 - 2(q_1^2+q_3^2) & 2(q_2q_3 - q_1q_0) \\ 2(q_1 q_3 - q_2 q_0) & 2(q_2q_3 + q_1q_0) & 1 - 2(q_1^2 + q_2^2)\end{bmatrix}$$ be the rotation matrix corresponding to the same rotation as unit quaternion $$\mathbf{q}$$, and let $$Q^*$$ correspond to the rotation of $$\mathbf{q}^*$$.  The derivatives $$\partial_\mathbf{q} Q$$ and $$\partial_\mathbf{q} Q^*$$ are both third-rank tensors (mappings of mappings; see also [Wikipedia](https://en.wikipedia.org/wiki/Matrix_calculus#Other_matrix_derivatives)).
 
 $$
 \begin{align}
@@ -203,7 +203,7 @@ $$
 \end{align}
 $$
 
-Each element $$\frac{\partial Q}{\partial q_i}$$ is a second-rank mapping, and can be represented by $$3 \times 3$$ matrices:
+Each element $$\frac{\partial Q}{\partial q_i}$$ is a second-rank tensor, and can be represented by $$3 \times 3$$ matrices:
 
 $$
 \begin{align}
@@ -268,7 +268,7 @@ When applied to a vector $$\mathbf{v}$$, both rotation derivatives will produce 
 
 ## Bleser Model 1 (gyro)
 
-Given are state and process noise:
+Given are state, process noise, observation and observation noise:
 
 $$
 \begin{align}
@@ -281,6 +281,16 @@ $$
 \mathbf{v}_t &= \begin{bmatrix}\mathbf{v}^\ddot{s}_{w,t} \\
                                \mathbf{v}^\omega_{s,t} \\
                                \mathbf{v}^{\mathbf{b}^\omega}_{s,t}
+                \end{bmatrix} &
+\mathbf{y}_t &= \begin{bmatrix} \mathbf{y}^c_t \\
+                                \mathbf{y}^\omega_t
+                \end{bmatrix} &
+\mathbf{e}_t &= \begin{bmatrix} \mathbf{e}^c_t \\
+                                \mathbf{e}^\omega_t \\
+                \end{bmatrix}
+              = \begin{bmatrix} \mathbf{e}^c_{n,t} \\
+                                \mathbf{e}^c_{w,t} \\
+                                \mathbf{e}^\omega_t \\
                 \end{bmatrix}
 \end{align}
 $$
@@ -323,60 +333,56 @@ Use matrix representations in $$\mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}}$$!
 $$
 \begin{align}
 \mathbf{y}^\omega_{s,t}
-  &= h(\mathbf{x}_t, \mathbf{e}^\omega_{s,t}) \\
+  &= h^\omega(\mathbf{x}_t, \mathbf{e}^\omega_{s,t}) \\
   &= \mathbf{\omega}_{s,t} + \mathbf{b}^\omega_{s,t} + \mathbf{e}^\omega_{s,t} \\
-
-\partial_\mathbf{x} h(\mathbf{x}_t, \mathbf{e}^\omega_{s,t})
+%
+\partial_\mathbf{x} h^\omega(\mathbf{x}_t, \mathbf{e}^\omega_{s,t})
   &= \begin{bmatrix} 0 & 0 & 0 & I_3 & I_3 \end{bmatrix} \\
 
-\mathbf{e} 
-  &= \begin{bmatrix} \mathbf{e}^\omega_{s,t} \\ 
-                     \mathbf{e}^c_{n,t} \\ 
-                     \mathbf{e}^c_{w,t}
-     \end{bmatrix} \\
-
-\partial_\mathbf{e} h(\mathbf{x}_t, \mathbf{e}^\omega_{s,t})
-  &= \begin{bmatrix} I_3 & 0 & 0 \end{bmatrix} \\
-
-h(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_{n,t}, \mathbf{e}^c_{w,t})
-  &= \begin{bmatrix} I_2 & -(\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c) \end{bmatrix} Q_{cs} \left( Q_{sw,t} \left(\mathbf{m}_{w,t} + \mathbf{e}_{w,t}^c - \mathbf{s}_{w,t} \right) - \mathbf{c}_s \right) \\
-
-\partial_\mathbf{x} h(\mathbf{x}, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}_{n,t}^c, \mathbf{e}_{w,t}^c)
-  &= \left(\begin{bmatrix} I_2 & -(\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c) \end{bmatrix} Q_{cs}\right) \partial_\mathbf{x} \left( Q_{sw,t} \left(\mathbf{m}_{w,t} + \mathbf{e}_{w,t}^c - \mathbf{s}_{w,t} \right) - \mathbf{c}_s \right) \\
-  &= \left(\begin{bmatrix} I_2 & -(\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c) \end{bmatrix} Q_{cs}\right) \left( \partial_\mathbf{x} Q_{sw,t} \mathbf{m}_{w,t} + \partial_\mathbf{x} Q_{sw,t} \mathbf{e}_{w,t}^c - \partial_\mathbf{x} Q_{sw,t} \mathbf{s}_{w,t} - \partial_\mathbf{x} \mathbf{c}_s \right) \\
-  &= \left(\begin{bmatrix} I_2 & -(\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c) \end{bmatrix} Q_{cs}\right) \left( \mathbf{0} + \mathbf{0} - \partial_\mathbf{x} Q_{sw,t} \mathbf{s}_{w,t} - \mathbf{0} \right) \\
-  &= \left(\begin{bmatrix} I_2 & -(\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c) \end{bmatrix} Q_{cs}\right) \left(-Q_{sw,t} \begin{bmatrix}I_3 & \mathbf{0}_{3 \times \ldots} \end{bmatrix} \right) \\
-  &= -\begin{bmatrix} I_2 & -(\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c) \end{bmatrix} Q_{cs} Q_{sw,t} \begin{bmatrix}I_3 & 0 & 0 & 0 & 0 \end{bmatrix} \\
-
-\partial_\mathbf{e} h(\mathbf{x}, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}_{n,t}^c, \mathbf{e}_{w,t}^c)
-  &= \begin{bmatrix} \partial_{\mathbf{e}^\omega_{s,t}} h & \partial_{\mathbf{e}^c_{n,t}} h & \partial_{\mathbf{e}^c_{w,t}} h \end{bmatrix}(\mathbf{x}, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}_{n,t}^c, \mathbf{e}_{w,t}^c) \\
-\partial_{\mathbf{e}^\omega_{s,t}} h(\mathbf{x}, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}_{n,t}^c, \mathbf{e}_{w,t}^c)
-  &= 0_3 \\
-\partial_{\mathbf{e}^c_{n,t}} h(\mathbf{x}, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}_{n,t}^c, \mathbf{e}_{w,t}^c)
-  &= \partial_{\mathbf{e}^c_{n,t}} \left(\begin{bmatrix} I_2 & -(\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c) \end{bmatrix} \right) Q_{cs} \left( Q_{sw,t} \left(\mathbf{m}_{w,t} + \mathbf{e}_{w,t}^c - \mathbf{s}_{w,t} \right) - \mathbf{c}_s \right) \\
-  &= \begin{bmatrix} I_2 & -\partial_{\mathbf{e}^c_{n,t}} \mathbf{e}_{n,t}^c \end{bmatrix} Q_{cs} \left( Q_{sw,t} \left(\mathbf{m}_{w,t} + \mathbf{e}_{w,t}^c - \mathbf{s}_{w,t} \right) - \mathbf{c}_s \right) \\
-  &= \begin{bmatrix} \partial_{\mathbf{e}^c_{n,t,1}} & \partial_{\mathbf{e}^c_{n,t,2}} \end{bmatrix} \\
-  &\phantom{=} \mbox{ with } \partial_{\mathbf{e}^c_{n,t,1}} = \begin{bmatrix} 1 & 0 & -1 \\ 0 & 1 & 0 \end{bmatrix} \mathbf{b}, \\
-  &\phantom{=\mbox{ with }} \partial_{\mathbf{e}^c_{n,t,2}} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & -1 \end{bmatrix} \mathbf{b}, \\
-  &\phantom{=\mbox{ with }} \mathbf{b} = Q_{cs} \left( Q_{sw,t} \left(\mathbf{m}_{w,t} + \mathbf{e}_{w,t}^c - \mathbf{s}_{w,t} \right) - \mathbf{c}_s \right) \\
-\partial_{\mathbf{e}^c_{w,t}} h(\mathbf{x}, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}_{n,t}^c, \mathbf{e}_{w,t}^c)
-  &= \left(\begin{bmatrix} I_2 & -(\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c) \end{bmatrix} Q_{cs}\right) \left( \mathbf{0} + \partial_{\mathbf{e}^c_{w,t}} Q_{sw,t} \mathbf{e}^c_{w,t} - \mathbf{0} - \mathbf{0} \right) \\
-  &= \begin{bmatrix} I_2 & -(\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c) \end{bmatrix} Q_{cs} Q_{sw,t} I_3 \\
-  &= \begin{bmatrix} I_2 & -(\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c) \end{bmatrix} Q_{cs} Q_{sw,t} \\
-  &\phantom{=} \mbox{ (analogous to $\partial_\mathbf{x} h$)} \\
-
-\partial_{\mathbf{m}_{n,t}} h(\mathbf{x}, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}_{n,t}^c, \mathbf{e}_{w,t}^c)
-  &= \begin{bmatrix} \partial_{\mathbf{m}_{n,t,1}} & \partial_{\mathbf{m}_{n,t,2}} \end{bmatrix} \\
-  &= \begin{bmatrix} \partial_{\mathbf{e}^c_{n,t,1}} & \partial_{\mathbf{e}^c_{n,t,2}} \end{bmatrix} \\
-\partial_{\mathbf{m}_{w,t}} h(\mathbf{x}, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}_{n,t}^c, \mathbf{e}_{w,t}^c)
-  &= \begin{bmatrix} I_2 & -\mathbf{m}_{n,t} + \mathbf{e}_{n,t}^c \end{bmatrix} Q_{cs} Q_{sw,t} \\
-  &\phantom{=} \mbox{ (analogous to $\partial_{\mathbf{e}^c_{w,t}}$)} \\
+\partial_\mathbf{e} h^\omega(\mathbf{x}_t, \mathbf{e}^\omega_{s,t})
+  &= \begin{bmatrix} I_3 & 0 \end{bmatrix} \\
+%
+h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t)
+  &= \begin{bmatrix}I_2 & -\mathbf{m}_{n,t}\end{bmatrix} Q_{cs} \left(Q_{sw,t} \left(\mathbf{m}_{w,t} - \mathbf{s}_{w,t}\right) - \mathbf{c}_s\right) + \mathbf{e}^c_t \\
+%
+\partial_\mathbf{x} h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t)
+  &= \begin{bmatrix} \partial_\mathbf{s} h^c & 0 & \partial_\mathbf{q} h^c & 0  & 0 \end{bmatrix}(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t) \\
+%
+\partial_\mathbf{s} h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t)
+  &= \begin{bmatrix}I_2 & -\mathbf{m}_{n,t}\end{bmatrix} Q_{cs} \left(Q_{sw,t} \left(\partial_\mathbf{s} \mathbf{m}_{w,t} - \partial_\mathbf{s} \mathbf{s}_{w,t}\right) - \partial_\mathbf{s} \mathbf{c}_s\right) + \partial_\mathbf{s} \mathbf{e}^c_t \\
+  &= \begin{bmatrix}I_2 & -\mathbf{m}_{n,t}\end{bmatrix} Q_{cs} Q_{sw,t} \left(-I_3\right) \\
+  &= -\begin{bmatrix}I_2 & -\mathbf{m}_{n,t}\end{bmatrix} Q_{cs} Q_{sw,t}  \\
+%
+\partial_\mathbf{q} h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t)
+  &= \begin{bmatrix}I_2 & \mathbf{m}_{n,t}\end{bmatrix} Q_{cs} \left(\left(\partial_\mathbf{q} Q_{sw,t} \left(\mathbf{m}_{w,t} - \mathbf{s}_{w,t}\right)\right) - \partial_\mathbf{q} \mathbf{c}_s\right) + \partial_\mathbf{q} \mathbf{e}^c_t \\
+  &= \begin{bmatrix}I_2 & \mathbf{m}_{n,t}\end{bmatrix} Q_{cs} \left(\left(\partial_\mathbf{q} Q_{sw,t} \left(\mathbf{m}_{w,t} - \mathbf{s}_{w,t}\right)\right) - 0 \right) + 0 \\
+  &= \begin{bmatrix}I_2 & \mathbf{m}_{n,t}\end{bmatrix} Q_{cs} \left(\partial_\mathbf{q} Q_{sw,t}\right) \left(\mathbf{m}_{w,t} - \mathbf{s}_{w,t}\right) \\
+%
+\partial_{\mathbf{e}^c} h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t)
+  &= \partial_{\mathbf{e}^c} \left(\begin{bmatrix}I_2 & -\mathbf{m}_{n,t}\end{bmatrix} Q_{cs} \left(Q_{sw,t} \left(\mathbf{m}_{w,t} - \mathbf{s}_{w,t}\right) - \mathbf{c}_s\right)\right) + \partial_{\mathbf{e}^c} \mathbf{e}^c_t \\
+  &= 0 + I_3 \\
+  &= I_3 \\
 \end{align}
 $$
 
+To compute the camera measurement covariance $$R^c_t \approx \begin{bmatrix}\partial_{\mathbf{m}_{n,t}} h^c_t & \partial_{\mathbf{m}_{w,t}} h^c_t\end{bmatrix} \begin{bmatrix}R_{nn,t} & 0_{2 \times 3} \\ 0_{3 \times 2} & R_{ww,t} \end{bmatrix} \begin{bmatrix}\left(\partial_{\mathbf{m}_{n,t}} h^c_t\right)^\top \\ \left(\partial_{\mathbf{m}_{w,t}} h^c_t\right)^\top\end{bmatrix}$$, we need to know two more derivatives:
+
+$$
+\begin{align}
+\partial_{\mathbf{m}_n} h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t)
+  &= \left(\partial_{\mathbf{m}_n} \begin{bmatrix}I_2 & -\mathbf{m}_{n,t}\end{bmatrix}\right) Q_{cs} \left(Q_{sw,t} \left(\mathbf{m}_{w,t} - \mathbf{s}_{w,t}\right) - \mathbf{c}_s\right) + 0 \\
+  &= \begin{bmatrix}0_{2 \times 2} & -1_{2 \times 1}\end{bmatrix} Q_{cs} \left(Q_{sw,t} \left(\mathbf{m}_{w,t} - \mathbf{s}_{w,t}\right) - \mathbf{c}_s\right) \\
+%
+\partial_{\mathbf{m}_w} h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t)
+  &= \begin{bmatrix}I_2 & -\mathbf{m}_{n,t}\end{bmatrix} Q_{cs} \left(Q_{sw,t} \left(\partial_{\mathbf{m}_w} \mathbf{m}_{w,t} - \partial_{\mathbf{m}_w} \mathbf{s}_{w,t}\right) - \partial_{\mathbf{m}_w} \mathbf{c}_s\right) + \partial_{\mathbf{m}_w} \mathbf{e}^c_t \\
+  &= \begin{bmatrix}I_2 & -\mathbf{m}_{n,t}\end{bmatrix} Q_{cs} Q_{sw,t} I_3 \\
+\end{align}
+$$
+
+
 ## Bleser, Model 2 (gravity)
 
-Given are state and process noise:
+Given are state, process noise, observation and observation noise:
 
 $$
 \begin{align}
@@ -391,6 +397,14 @@ $$
                                \mathbf{v}^\omega_{s,t} \\
                                \mathbf{v}^{\mathbf{b}^\omega}_{s,t} \\
                                \mathbf{v}^{\mathbf{b}^a}_{s,t}
+                \end{bmatrix} &
+\mathbf{y}_t &= \begin{bmatrix} \mathbf{y}^c_t \\
+                                \mathbf{y}^\omega_t \\
+                                \mathbf{y}^a_t
+                \end{bmatrix} &
+\mathbf{e}_t &= \begin{bmatrix} \mathbf{e}^c_t \\
+                                \mathbf{e}^\omega_t \\
+                                \mathbf{e}^a_t
                 \end{bmatrix}
 \end{align}
 $$
@@ -433,12 +447,32 @@ $$
 
 ### Measurement model
 
-_Work in progress_
+For $$\mathbf{y}^c_t$$, $$\mathbf{y}^\omega_t$$, $$\mathbf{e}^c_t$$ and $$\mathbf{e}^\omega_t$$, please see above.
+
+$$
+\begin{align}
+\mathbf{y}^a_{s,t}
+  &= h^a(\mathbf{x}_t, \mathbf{e}^a_t) \\
+  &= -\left(Q_{sw,t} \mathbf{g}_w\right) + \mathbf{b}^a_{s,t} + \mathbf{e}^a_{s,t} \\
+%
+\partial_\mathbf{x} h^a(\mathbf{x}_t, \mathbf{e}^a_t) 
+  &= \begin{bmatrix} 0 & 0 & \partial_\mathbf{q} h^a & 0 & 0 & \partial_{\mathbf{b}^a} h^a \end{bmatrix}(\mathbf{x}_t, \mathbf{e}^a_t) \\
+%
+\partial_\mathbf{q} h^a(\mathbf{x}_t, \mathbf{e}^a_t) 
+  &= -\left(\partial_\mathbf{q} Q_{sw,t} \right) \mathbf{g}_w \\
+%
+\partial_{\mathbf{b}^a} h^a(\mathbf{x}_t, \mathbf{e}^a_t) 
+  &= I_3 \\
+%
+\partial_{\mathbf{e}^a} h^a(\mathbf{x}_t, \mathbf{e}^a_t) 
+  &= I_3 \\
+\end{align}
+$$
 
 
 ## Bleser Model 3 (acc)
 
-Given are state and process noise:
+Given are state, process noise, observation and observation noise:
 
 $$
 \begin{align}
@@ -454,6 +488,14 @@ $$
                                \mathbf{v}^\omega_{s,t} \\
                                \mathbf{v}^{\mathbf{b}^\omega}_{s,t} \\
                                \mathbf{v}^{\mathbf{b}^a}_{s,t}
+                \end{bmatrix} &
+\mathbf{y}_t &= \begin{bmatrix} \mathbf{y}^c_t \\
+                                \mathbf{y}^\omega_t \\
+                                \mathbf{y}^a_t
+                \end{bmatrix} &
+\mathbf{e}_t &= \begin{bmatrix} \mathbf{e}^c_t \\
+                                \mathbf{e}^\omega_t \\
+                                \mathbf{e}^a_t
                 \end{bmatrix}
 \end{align}
 $$
@@ -499,12 +541,33 @@ $$
 
 ### Measurement model
 
-_Work in progress_
+For $$\mathbf{y}^c_t$$, $$\mathbf{y}^\omega_t$$, $$\mathbf{e}^c_t$$ and $$\mathbf{e}^\omega_t$$, please see above.
 
+$$
+\begin{align}
+\mathbf{y}^a_{s,t}
+  &= h^a(\mathbf{x}_t, \mathbf{e}^a_t) \\
+  &= Q_{sw,t}\left(\ddot{\mathbf{s}}_{w,t} - \mathbf{g}_w\right) + \mathbf{b}^a_{s,t} + \mathbf{e}^a_{s,t} \\
+%
+\partial_\mathbf{x} h^a(\mathbf{x}_t, \mathbf{e}^a_t) 
+  &= \begin{bmatrix} 0 & 0 & \partial_{\ddot{\mathbf{s}}_{w,t}} h^a & \partial_\mathbf{q} h^a & 0 & 0 & \partial_{\mathbf{b}^a} h^a \end{bmatrix}(\mathbf{x}_t, \mathbf{e}^a_t) \\
+%
+\partial_{\ddot{\mathbf{s}}} h^a(\mathbf{x}_t, \mathbf{e}^a_t)
+  &= Q_{sw,t} \\
+\partial_\mathbf{q} h^a(\mathbf{x}_t, \mathbf{e}^a_t) 
+  &= \left(\partial_\mathbf{q} Q_{sw,t} \right) \left(\ddot{\mathbf{s}}_{w,t} - \mathbf{g}_w\right) \\
+%
+\partial_{\mathbf{b}^a} h^a(\mathbf{x}_t, \mathbf{e}^a_t) 
+  &= I_3 \\
+%
+\partial_{\mathbf{e}^a} h^a(\mathbf{x}_t, \mathbf{e}^a_t) 
+  &= I_3 \\
+\end{align}
+$$
 
 ## Bleser Model 4 (acc input)
 
-Given are control vector, state vector and process noise:
+Given are control vector, state, process noise, observation and observation noise:
 
 $$
 \begin{align}
@@ -521,6 +584,10 @@ $$
                                \mathbf{v}^\omega_{s,t} \\
                                \mathbf{v}^{\mathbf{b}^\omega}_{s,t} \\
                                \mathbf{v}^{\mathbf{b}^a}_{s,t}
+                \end{bmatrix} &
+\mathbf{y}_t &= \begin{bmatrix} \mathbf{y}^c_t \\
+                \end{bmatrix} &
+\mathbf{e}_t &= \begin{bmatrix} \mathbf{e}^c_t \\
                 \end{bmatrix}
 \end{align}
 $$
