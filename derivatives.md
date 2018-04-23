@@ -60,13 +60,13 @@ In matrix representation (smallest element partial derivatives), with $$f(\mathb
 $$
 \begin{align}
 \begin{split}
-\partial_\mathbf{p} f
+\partial_\mathbf{p} f(\mathbf{p}, \mathbf{q})
   &= \begin{bmatrix} 
          \frac{\partial f}{\partial p_0} 
        & \frac{\partial f}{\partial p_1} 
        & \frac{\partial f}{\partial p_2}
        & \frac{\partial f}{\partial p_3}
-     \end{bmatrix} \\
+     \end{bmatrix} (\mathbf{p}, \mathbf{q})\\
   &= \begin{bmatrix}
          \frac{\partial f_0}{\partial p_0} 
        & \frac{\partial f_0}{\partial p_1} 
@@ -84,7 +84,7 @@ $$
        & \frac{\partial f_3}{\partial p_1} 
        & \frac{\partial f_3}{\partial p_2}
        & \frac{\partial f_3}{\partial p_3}
-     \end{bmatrix} \\
+     \end{bmatrix} (\mathbf{p}, \mathbf{q})\\
   &= \begin{bmatrix}
        q_0 & -q_1 & -q_2 & -q_3 \\
        q_1 &  q_0 &  q_3 & -q_2 \\
@@ -94,13 +94,13 @@ $$
 \end{split}
 %
 \begin{split}
-\partial_\mathbf{q} f
+\partial_\mathbf{q} f(\mathbf{p}, \mathbf{q})
   &= \begin{bmatrix} 
          \frac{\partial f}{\partial q_0} 
        & \frac{\partial f}{\partial q_1} 
        & \frac{\partial f}{\partial q_2}
        & \frac{\partial f}{\partial q_3}
-     \end{bmatrix} \\
+     \end{bmatrix} (\mathbf{p}, \mathbf{q})\\
   &= \begin{bmatrix}
          \frac{\partial f_0}{\partial q_0} 
        & \frac{\partial f_0}{\partial q_1} 
@@ -118,7 +118,7 @@ $$
        & \frac{\partial f_3}{\partial q_1} 
        & \frac{\partial f_3}{\partial q_2}
        & \frac{\partial f_3}{\partial q_3}
-     \end{bmatrix} \\
+     \end{bmatrix} (\mathbf{p}, \mathbf{q})\\
   &= \begin{bmatrix}
        p_0 & -p_1 & -p_2 & -p_3 \\
        p_1 &  p_0 & -p_3 &  p_2 \\
@@ -149,30 +149,30 @@ $$
 \end{align}
 $$
 
-In matrix representation (smallest element partial derivatives), with $$f(\mathbf{v}) = \exp(\mathbf{v})$$:
+In matrix representation (smallest element partial derivatives):
 
 $$
 \begin{align}
-\partial_\mathbf{v} f
+\partial_\mathbf{v} \exp(\mathbf{v})
   &= \begin{bmatrix}
-         \frac{\partial f}{\partial v_0} 
-       & \frac{\partial f}{\partial v_1} 
-       & \frac{\partial f}{\partial v_2}
-     \end{bmatrix} \\
+         \frac{\partial \exp}{\partial v_0} 
+       & \frac{\partial \exp}{\partial v_1} 
+       & \frac{\partial \exp}{\partial v_2}
+     \end{bmatrix} (\mathbf{v}) \\
   &= \begin{bmatrix}
-         \frac{\partial f_0}{\partial v_0} 
-       & \frac{\partial f_0}{\partial v_1} 
-       & \frac{\partial f_0}{\partial v_2} \\
-         \frac{\partial f_1}{\partial v_0} 
-       & \frac{\partial f_1}{\partial v_1} 
-       & \frac{\partial f_1}{\partial v_2} \\
-         \frac{\partial f_2}{\partial v_0} 
-       & \frac{\partial f_2}{\partial v_1} 
-       & \frac{\partial f_2}{\partial v_2} \\
-         \frac{\partial f_3}{\partial v_0} 
-       & \frac{\partial f_3}{\partial v_1} 
-       & \frac{\partial f_3}{\partial v_2} \\
-     \end{bmatrix} \\
+         \frac{\partial \exp_0}{\partial v_0} 
+       & \frac{\partial \exp_0}{\partial v_1} 
+       & \frac{\partial \exp_0}{\partial v_2} \\
+         \frac{\partial \exp_1}{\partial v_0} 
+       & \frac{\partial \exp_1}{\partial v_1} 
+       & \frac{\partial \exp_1}{\partial v_2} \\
+         \frac{\partial \exp_2}{\partial v_0} 
+       & \frac{\partial \exp_2}{\partial v_1} 
+       & \frac{\partial \exp_2}{\partial v_2} \\
+         \frac{\partial \exp_3}{\partial v_0} 
+       & \frac{\partial \exp_3}{\partial v_1} 
+       & \frac{\partial \exp_3}{\partial v_2} \\
+     \end{bmatrix} (\mathbf{v}) \\
   &= \begin{bmatrix}
        -v_0 s & -v_1 s & -v_2 s \\
        \frac{v_0^2}{\mathbf{v}\cdot\mathbf{v}} c - \frac{v_0^2}{\|\mathbf{v}\|^3} + s
@@ -330,6 +330,8 @@ Use matrix representations in $$\mathbf{D}_{\omega_{s,t-T}}^{q_{sw,t-T}}$$!
 
 ### Measurement model
 
+We are dealing with two measurement models here, which can be split into an angular velocity model $$h^\omega$$ and a camera-based pose estimation model $$h^c$$.  For the angular velocity model we have:
+
 $$
 \begin{align}
 \mathbf{y}^\omega_{s,t}
@@ -338,11 +340,20 @@ $$
 %
 \partial_\mathbf{x} h^\omega(\mathbf{x}_t, \mathbf{e}^\omega_{s,t})
   &= \begin{bmatrix} 0 & 0 & 0 & I_3 & I_3 \end{bmatrix} \\
-
-\partial_\mathbf{e} h^\omega(\mathbf{x}_t, \mathbf{e}^\omega_{s,t})
-  &= \begin{bmatrix} I_3 & 0 \end{bmatrix} \\
 %
-h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t)
+\partial_\mathbf{e} h^\omega(\mathbf{x}_t, \mathbf{e}^\omega_{s,t})
+  &= \begin{bmatrix} 0 & \partial_{\mathbf{e}^\omega} h^\omega & 0 \end{bmatrix} (\mathbf{x}_t, \mathbf{e}^\omega_{s,t}) \\
+\partial_{\mathbf{e}^\omega} h^\omega(\mathbf{x}_t, \mathbf{e}^\omega_{s,t})
+  &= I_3 \\
+\end{align}
+$$
+
+The camera-based pose-estimation model $$h^c$$ is defined by:
+
+$$
+\begin{align}
+\mathbf{y}^c_t
+  &= h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t) \\
   &= \begin{bmatrix}I_2 & -\mathbf{m}_{n,t}\end{bmatrix} Q_{cs} \left(Q_{sw,t} \left(\mathbf{m}_{w,t} - \mathbf{s}_{w,t}\right) - \mathbf{c}_s\right) + \mathbf{e}^c_t \\
 %
 \partial_\mathbf{x} h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t)
@@ -365,7 +376,7 @@ h^c(\mathbf{x}_t, \mathbf{m}_{n,t}, \mathbf{m}_{w,t}, \mathbf{e}^c_t)
 \end{align}
 $$
 
-To compute the camera measurement covariance $$R^c_t \approx \begin{bmatrix}\partial_{\mathbf{m}_{n,t}} h^c_t & \partial_{\mathbf{m}_{w,t}} h^c_t\end{bmatrix} \begin{bmatrix}R_{nn,t} & 0_{2 \times 3} \\ 0_{3 \times 2} & R_{ww,t} \end{bmatrix} \begin{bmatrix}\left(\partial_{\mathbf{m}_{n,t}} h^c_t\right)^\top \\ \left(\partial_{\mathbf{m}_{w,t}} h^c_t\right)^\top\end{bmatrix}$$, we need to know two more derivatives:
+To compute the camera measurement covariance $$R^c_t \approx \begin{bmatrix}\partial_{\mathbf{m}_{n,t}} h^c_t & \partial_{\mathbf{m}_{w,t}} h^c_t\end{bmatrix} \begin{bmatrix}R^c_{nn,t} & 0_{2 \times 3} \\ 0_{3 \times 2} & R^c_{ww,t} \end{bmatrix} \begin{bmatrix}\left(\partial_{\mathbf{m}_{n,t}} h^c_t\right)^\top \\ \left(\partial_{\mathbf{m}_{w,t}} h^c_t\right)^\top\end{bmatrix}$$, we need to know two more derivatives:
 
 $$
 \begin{align}
@@ -610,7 +621,7 @@ f(\mathbf{x}_{t-T}, \mathbf{u}_t, \mathbf{v}_t)
     &= \begin{bmatrix}
         I_3 & T I_3 & \frac{T^2}{2} \left(\partial_{\mathbf{q}_{sw,t-T}} Q_{sw,t-T}^* \right) \left(\mathbf{y}^a_{s,t} - \mathbf{b}^a_{s,t-T} - \mathbf{v}^a_{s,t}\right) & 0   & -\frac{T^2}{2} Q_{ws,t-T} \\
         0   & I_3   & T \left(\partial_{\mathbf{q}_{sw,t-T}} Q_{sw,t-T}^* \right) \left(\mathbf{y}^a_{s,t} - \mathbf{b}^a_{s,t-T} - \mathbf{v}^a_{s,t}\right)             & 0   & -T Q_{ws,t-T} \\
-        0   & 0     & \partial_{\mathbf{q}_{sw,t-T}} \left(\exp\left(\mathbf{a}'\right) \odot \mathbf{q}_{sw,t-T}\right)                                                & \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left({\mathbf{b}^\omega{s,t-T}}\right) & 0 \\
+        0   & 0     & \partial_{\mathbf{q}_{sw,t-T}} \left(\exp\left(\mathbf{a}'\right) \odot \mathbf{q}_{sw,t-T}\right)                                                & \mathbf{D}^{\mathbf{q}_{sw,t-T}}\left({\mathbf{b}^\omega_{s,t-T}}\right) & 0 \\
         0   & 0     & 0                                                                                                                                                 & I_3 & 0 \\
         0   & 0     & 0                                                                                                                                                 & 0   & I_3 \\
     \end{bmatrix} \\
