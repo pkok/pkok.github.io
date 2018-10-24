@@ -13,24 +13,20 @@ permalink:        :year/:month/:day/:title/
 # Setup
 title:            "Patrick de Kok"
 tagline:          "On robotics, augmented reality and localization."
-description:      "Patrick de Kok is a <a href=\"http://dutchnaoteam.nl\">RoboCup participant</a>, knows some geometric algebra, and likes to row.  On top of that, he is currently busy with his thesis for the Master of Artificial Intelligence at the <a href=\"http://isla.science.uva.nl/\">Universiteit van Amsterdam</a>.  He is doing this thesis in collaboration with <a href=\"http://www.dbl.tudelft.nl\">Delft University of Technology</a> and <a href=\"http://cybermindnl.com\">Cybermind</a>."
+description:      "Patrick de Kok enjoys rowing, knows some geometric algebra, and tinkers with robots.  On top of that, he is currently busy with his thesis for the Master of Artificial Intelligence at the <a href=\"http://isla.science.uva.nl/\">Universiteit van Amsterdam</a>."
 url:              
 
 author:
   name:           "Patrick de Kok"
-  url:            http://cxiu.nl/
   phone:          +31653285375
   email:          dhrdekok@gmail.com
-  facebook:       patrick.dekok
   twitter:        pdkok
   github:         pkok
   linkedin:       pdkok
-  disqus:         pdkok
-  google_plus:    https://plus.google.com/u/0/+PatrickdeKok
   pgp_fingerprint: 916AF090DE430ADB
   #pgp_keyserver:  pgp.surfnet.nl
 
-gems:
+plugins:
   - jekyll-paginate
 
 paginate:         20
