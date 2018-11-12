@@ -5,7 +5,7 @@
 <h3 class="no_toc">References</h3>
 <ul class="bibliography">
 
-{% if (keys contains "dorstCombining") or !(keys | size) %}
+{% if keys contains "dorstCombining" or keys.size == 0 %}
 <li id="dorstCombining">
 Leo Dorst.
  Combining orientation estimates.
@@ -19,7 +19,7 @@ Leo Dorst.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "potmesil1983modeling") or !(keys | size) %}
+{% endif %}{% if keys contains "potmesil1983modeling" or keys.size == 0 %}
 <li id="potmesil1983modeling">
 Michael Potmesil and Indranil Chakravarty.
  Modeling motion blur in computer-generated images.
@@ -46,7 +46,7 @@ Michael Potmesil and Indranil Chakravarty.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "horn1987closed") or !(keys | size) %}
+{% endif %}{% if keys contains "horn1987closed" or keys.size == 0 %}
 <li id="horn1987closed">
 Berthold&nbsp;KP Horn.
  Closed-form solution of absolute orientation using unit quaternions.
@@ -68,7 +68,7 @@ Berthold&nbsp;KP Horn.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "thomas1997free-d") or !(keys | size) %}
+{% endif %}{% if keys contains "thomas1997free-d" or keys.size == 0 %}
 <li id="thomas1997free-d">
 G.A. Thomas, J.&nbsp;Jin, T.&nbsp;Niblett, and C.&nbsp;Urquhart.
  A versatile camera position measurement system for virtual reality tv
@@ -91,7 +91,7 @@ G.A. Thomas, J.&nbsp;Jin, T.&nbsp;Niblett, and C.&nbsp;Urquhart.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "you1999hybrid") or !(keys | size) %}
+{% endif %}{% if keys contains "you1999hybrid" or keys.size == 0 %}
 <li id="you1999hybrid">
 Suya You, Ulrich Neumann, and Ronald Azuma.
  Hybrid inertial and vision tracking for augmented reality
@@ -112,7 +112,7 @@ Suya You, Ulrich Neumann, and Ronald Azuma.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "brostow2001image") or !(keys | size) %}
+{% endif %}{% if keys contains "brostow2001image" or keys.size == 0 %}
 <li id="brostow2001image">
 Gabriel&nbsp;J. Brostow and Irfan Essa.
  Image-based motion blur for stop motion animation.
@@ -138,7 +138,7 @@ Gabriel&nbsp;J. Brostow and Irfan Essa.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "tamura2002steady") or !(keys | size) %}
+{% endif %}{% if keys contains "tamura2002steady" or keys.size == 0 %}
 <li id="tamura2002steady">
 Hideyuki Tamura.
  Steady steps and giant leap toward practical mixed reality systems
@@ -159,7 +159,7 @@ Hideyuki Tamura.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "chen2003bayesian") or !(keys | size) %}
+{% endif %}{% if keys contains "chen2003bayesian" or keys.size == 0 %}
 <li id="chen2003bayesian">
 Zhe Chen.
  Bayesian filtering: from Kalman filters to particle filters, and
@@ -178,7 +178,7 @@ Zhe Chen.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "farneback2003twoframe") or !(keys | size) %}
+{% endif %}{% if keys contains "farneback2003twoframe" or keys.size == 0 %}
 <li id="farneback2003twoframe">
 Gunnar Farneb&auml;ck.
  Two-frame motion estimation based on polynomial expansion.
@@ -197,7 +197,7 @@ Gunnar Farneb&auml;ck.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "hol2005model") or !(keys | size) %}
+{% endif %}{% if keys contains "hol2005model" or keys.size == 0 %}
 <li id="hol2005model">
 Jeroen Hol, Per Slycke, Thomas Schoen, and Fredrik Gustafsson.
  2D-3D model correspondence for camera pose estimation using sensor
@@ -215,7 +215,7 @@ Jeroen Hol, Per Slycke, Thomas Schoen, and Fredrik Gustafsson.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "schon2005marginalized") or !(keys | size) %}
+{% endif %}{% if keys contains "schon2005marginalized" or keys.size == 0 %}
 <li id="schon2005marginalized">
 Thomas Sch&ouml;n, Fredrik Gustafsson, and Per-Johan Nordlund.
  Marginalized particle filters for mixed linear/nonlinear state-space
@@ -237,7 +237,7 @@ Thomas Sch&ouml;n, Fredrik Gustafsson, and Per-Johan Nordlund.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "hol2006sensor") or !(keys | size) %}
+{% endif %}{% if keys contains "hol2006sensor" or keys.size == 0 %}
 <li id="hol2006sensor">
 J.D. Hol, T.B. Schon, F.&nbsp;Gustafsson, and P.J. Slycke.
  Sensor fusion for augmented reality.
@@ -257,7 +257,7 @@ J.D. Hol, T.B. Schon, F.&nbsp;Gustafsson, and P.J. Slycke.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "zheng2006enhanced") or !(keys | size) %}
+{% endif %}{% if keys contains "zheng2006enhanced" or keys.size == 0 %}
 <li id="zheng2006enhanced">
 Yuan Zheng, Harald Köstler, Nils Thürey, and Ulrich Rüde.
  Enhanced motion blur calculation with optical flow.
@@ -277,7 +277,7 @@ Yuan Zheng, Harald Köstler, Nils Thürey, and Ulrich Rüde.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "lobo2007relative") or !(keys | size) %}
+{% endif %}{% if keys contains "lobo2007relative" or keys.size == 0 %}
 <li id="lobo2007relative">
 Jorge Lobo and Jorge Dias.
  Relative pose calibration between visual and inertial sensors.
@@ -300,7 +300,7 @@ Jorge Lobo and Jorge Dias.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "ko2007gp-ukf") or !(keys | size) %}
+{% endif %}{% if keys contains "ko2007gp-ukf" or keys.size == 0 %}
 <li id="ko2007gp-ukf">
 Jonathan Ko, Daniel&nbsp;J. Klein, Dieter Fox, and Dirk Haehnel.
  GP-UKF: Unscented Kalman filters with Gaussian process
@@ -322,7 +322,7 @@ Jonathan Ko, Daniel&nbsp;J. Klein, Dieter Fox, and Dirk Haehnel.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "klein2007ptam") or !(keys | size) %}
+{% endif %}{% if keys contains "klein2007ptam" or keys.size == 0 %}
 <li id="klein2007ptam">
 Georg Klein and David Murray.
  Parallel tracking and mapping for small AR workspaces.
@@ -342,7 +342,7 @@ Georg Klein and David Murray.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "hol2008new") or !(keys | size) %}
+{% endif %}{% if keys contains "hol2008new" or keys.size == 0 %}
 <li id="hol2008new">
 Jeroen&nbsp;D. Hol, Thomas&nbsp;B. Sch&ouml;n, and Fredrik Gustafsson.
  A new algorithm for calibrating a combined camera and imu sensor
@@ -365,7 +365,7 @@ Jeroen&nbsp;D. Hol, Thomas&nbsp;B. Sch&ouml;n, and Fredrik Gustafsson.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "mirzaei2008kfbased") or !(keys | size) %}
+{% endif %}{% if keys contains "mirzaei2008kfbased" or keys.size == 0 %}
 <li id="mirzaei2008kfbased">
 Faraz&nbsp;M. Mirzaei and Stergios&nbsp;I. Roumeliotis.
  A kalman filter-based algorithm for imu-camera calibration:
@@ -389,7 +389,7 @@ Faraz&nbsp;M. Mirzaei and Stergios&nbsp;I. Roumeliotis.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "bleser2008advanced") or !(keys | size) %}
+{% endif %}{% if keys contains "bleser2008advanced" or keys.size == 0 %}
 <li id="bleser2008advanced">
 Gabriele Bleser and Didier Stricker.
  Advanced tracking through efficient image processing and
@@ -408,7 +408,7 @@ Gabriele Bleser and Didier Stricker.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dunser2008survey") or !(keys | size) %}
+{% endif %}{% if keys contains "dunser2008survey" or keys.size == 0 %}
 <li id="dunser2008survey">
 Andreas D&uuml;nser, Raphael Grasset, and Mark Billinghurst.
  A survey of evaluation techniques used in augmented reality studies.
@@ -429,7 +429,7 @@ Andreas D&uuml;nser, Raphael Grasset, and Mark Billinghurst.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "bleser2009towards") or !(keys | size) %}
+{% endif %}{% if keys contains "bleser2009towards" or keys.size == 0 %}
 <li id="bleser2009towards">
 Gabriele Bleser.
  <em>Towards visual-inertial SLAM for mobile augmented reality</em>.
@@ -445,7 +445,7 @@ Gabriele Bleser.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "ko2009gp-bayesfilter") or !(keys | size) %}
+{% endif %}{% if keys contains "ko2009gp-bayesfilter" or keys.size == 0 %}
 <li id="ko2009gp-bayesfilter">
 Jonathan Ko and Dieter Fox.
  GP-BayesFilters: Bayesian filtering using Gaussian process
@@ -470,7 +470,7 @@ Jonathan Ko and Dieter Fox.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "caarls2009pose") or !(keys | size) %}
+{% endif %}{% if keys contains "caarls2009pose" or keys.size == 0 %}
 <li id="caarls2009pose">
 Jurjen Caarls.
  <em>Pose estimation for mobile devices and augmented reality</em>.
@@ -485,7 +485,7 @@ Jurjen Caarls.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "hol2010modeling") or !(keys | size) %}
+{% endif %}{% if keys contains "hol2010modeling" or keys.size == 0 %}
 <li id="hol2010modeling">
 Jeroen&nbsp;D. Hol, Thomas&nbsp;B. Schön, and Fredrik Gustafsson.
  Modeling and calibration of inertial and vision sensors.
@@ -510,7 +510,7 @@ Jeroen&nbsp;D. Hol, Thomas&nbsp;B. Schön, and Fredrik Gustafsson.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "vankrevelen2010survey") or !(keys | size) %}
+{% endif %}{% if keys contains "vankrevelen2010survey" or keys.size == 0 %}
 <li id="vankrevelen2010survey">
 D.W.F. Van&nbsp;Krevelen and R.&nbsp;Poelman.
  A survey of augmented reality technologies, applications and
@@ -530,7 +530,7 @@ D.W.F. Van&nbsp;Krevelen and R.&nbsp;Poelman.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "ko2011gpbf-learn") or !(keys | size) %}
+{% endif %}{% if keys contains "ko2011gpbf-learn" or keys.size == 0 %}
 <li id="ko2011gpbf-learn">
 Jonathan Ko and Dieter Fox.
  Learning GP-BayesFilters via Gaussian process latent variable
@@ -555,7 +555,7 @@ Jonathan Ko and Dieter Fox.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "nutzi2011fusion") or !(keys | size) %}
+{% endif %}{% if keys contains "nutzi2011fusion" or keys.size == 0 %}
 <li id="nutzi2011fusion">
 Gabriel Nützi, Weiss Stephan, Davide Scaramuzza, and Roland Siegwart.
  Fusion of IMU and vision for absolute scale estimation in monocular
@@ -578,7 +578,7 @@ Gabriel Nützi, Weiss Stephan, Davide Scaramuzza, and Roland Siegwart.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "navarro2011motionblur") or !(keys | size) %}
+{% endif %}{% if keys contains "navarro2011motionblur" or keys.size == 0 %}
 <li id="navarro2011motionblur">
 Fernando Navarro, Francisco&nbsp;J. Serón, and Diego Gutierrez.
  Motion blur rendering: State of the art.
@@ -602,7 +602,7 @@ Fernando Navarro, Francisco&nbsp;J. Serón, and Diego Gutierrez.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "corke2011robotics") or !(keys | size) %}
+{% endif %}{% if keys contains "corke2011robotics" or keys.size == 0 %}
 <li id="corke2011robotics">
 Peter Corke.
  <em>Robotics, Vision and Control: fundamental algorithms in
@@ -622,7 +622,7 @@ Peter Corke.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dunser2011evaluating") or !(keys | size) %}
+{% endif %}{% if keys contains "dunser2011evaluating" or keys.size == 0 %}
 <li id="dunser2011evaluating">
 Andreas D&uuml;nser and Mark Billinghurst.
  Evaluating Augmented Reality Systems.
@@ -644,7 +644,7 @@ Andreas D&uuml;nser and Mark Billinghurst.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "hol2011sensor") or !(keys | size) %}
+{% endif %}{% if keys contains "hol2011sensor" or keys.size == 0 %}
 <li id="hol2011sensor">
 Jeroen&nbsp;D Hol.
  <em>Sensor fusion and calibration of inertial sensors, vision,
@@ -661,7 +661,7 @@ Jeroen&nbsp;D Hol.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "kelly2011visualinertial") or !(keys | size) %}
+{% endif %}{% if keys contains "kelly2011visualinertial" or keys.size == 0 %}
 <li id="kelly2011visualinertial">
 Jonathan Kelly and Gaurav&nbsp;S Sukhatme.
  Visual-inertial sensor fusion: Localization, mapping and
@@ -687,7 +687,7 @@ Jonathan Kelly and Gaurav&nbsp;S Sukhatme.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "siegwart2011autonomous") or !(keys | size) %}
+{% endif %}{% if keys contains "siegwart2011autonomous" or keys.size == 0 %}
 <li id="siegwart2011autonomous">
 Roland Siegwart, Illah&nbsp;Reza Nourbakhsh, and Davide Scaramuzza.
  <em>Autonomous Mobile Robots</em>.
@@ -703,7 +703,7 @@ Roland Siegwart, Illah&nbsp;Reza Nourbakhsh, and Davide Scaramuzza.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "akman2012robust") or !(keys | size) %}
+{% endif %}{% if keys contains "akman2012robust" or keys.size == 0 %}
 <li id="akman2012robust">
 Oytun Akman.
  <em>Robust Augmented Reality</em>.
@@ -718,7 +718,7 @@ Oytun Akman.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dekok2012pga") or !(keys | size) %}
+{% endif %}{% if keys contains "dekok2012pga" or keys.size == 0 %}
 <li id="dekok2012pga">
 Patrick&nbsp;M. de&nbsp;Kok.
  Visualization of the projective line geometry for geometric algebra.
@@ -736,7 +736,7 @@ Patrick&nbsp;M. de&nbsp;Kok.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "galvez2012bags") or !(keys | size) %}
+{% endif %}{% if keys contains "galvez2012bags" or keys.size == 0 %}
 <li id="galvez2012bags">
 Dorian Galvez-López and Juan&nbsp;D. Tardós.
  Bags of binary words for fast place recognition in image sequences.
@@ -758,7 +758,7 @@ Dorian Galvez-López and Juan&nbsp;D. Tardós.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "gudi2013feature") or !(keys | size) %}
+{% endif %}{% if keys contains "gudi2013feature" or keys.size == 0 %}
 <li id="gudi2013feature">
 Amogh Gudi, Patrick de&nbsp;Kok, Georgios Methenitis, and Nikolaas Steenbergen.
  Feature detection and localization for the RoboCup Soccer
@@ -777,7 +777,7 @@ Amogh Gudi, Patrick de&nbsp;Kok, Georgios Methenitis, and Nikolaas Steenbergen.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dnt2013tdp") or !(keys | size) %}
+{% endif %}{% if keys contains "dnt2013tdp" or keys.size == 0 %}
 <li id="dnt2013tdp">
 Patrick de&nbsp;Kok, Nicolò Girardi, Amogh Gudi, Chiel Kooijman, Georgios
   Methenitis, Sébastien Negrijn, Nikolaas Steenbergen, Duncan ten Velthuis,
@@ -800,7 +800,7 @@ Patrick de&nbsp;Kok, Nicolò Girardi, Amogh Gudi, Chiel Kooijman, Georgios
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "verschoor2013irl") or !(keys | size) %}
+{% endif %}{% if keys contains "verschoor2013irl" or keys.size == 0 %}
 <li id="verschoor2013irl">
 Camiel Verschoor, Patrick de&nbsp;Kok, and Arnoud Visser.
  Intelligent Robotics Lab.
@@ -817,7 +817,7 @@ Camiel Verschoor, Patrick de&nbsp;Kok, and Arnoud Visser.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dekok2013victoria") or !(keys | size) %}
+{% endif %}{% if keys contains "dekok2013victoria" or keys.size == 0 %}
 <li id="dekok2013victoria">
 Patrick&nbsp;M. de&nbsp;Kok, Georgios Methenitis, and Sander Nugteren.
  ViCTOriA: Visual Compass To Orientate Accurately.
@@ -835,7 +835,7 @@ Patrick&nbsp;M. de&nbsp;Kok, Georgios Methenitis, and Sander Nugteren.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "methenitis2013orientation") or !(keys | size) %}
+{% endif %}{% if keys contains "methenitis2013orientation" or keys.size == 0 %}
 <li id="methenitis2013orientation">
 Georgios Methenitis, Patrick&nbsp;M. de&nbsp;Kok, Sander Nugteren, and Arnoud Visser.
  Orientation finding using a grid based visual compass.
@@ -855,7 +855,7 @@ Georgios Methenitis, Patrick&nbsp;M. de&nbsp;Kok, Sander Nugteren, and Arnoud Vi
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "ta2013monocular") or !(keys | size) %}
+{% endif %}{% if keys contains "ta2013monocular" or keys.size == 0 %}
 <li id="ta2013monocular">
 Duy-Nguyen Ta, Kyel Ok, and Frank Dellaert.
  Monocular parallel tracking and mapping with odometry fusion for
@@ -877,7 +877,7 @@ Duy-Nguyen Ta, Kyel Ok, and Frank Dellaert.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "furgale2013unified") or !(keys | size) %}
+{% endif %}{% if keys contains "furgale2013unified" or keys.size == 0 %}
 <li id="furgale2013unified">
 Paul Furgale, Joern Rehder, and Roland Siegwart.
  Unified temporal and spatial calibration for multi-sensor systems.
@@ -899,7 +899,7 @@ Paul Furgale, Joern Rehder, and Roland Siegwart.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "pirchheim2013handling") or !(keys | size) %}
+{% endif %}{% if keys contains "pirchheim2013handling" or keys.size == 0 %}
 <li id="pirchheim2013handling">
 Christian Pirchheim, Dieter Schmalstieg, and Gerhard Reitmayr.
  Handling pure camera rotation in keyframe-based SLAM.
@@ -918,7 +918,7 @@ Christian Pirchheim, Dieter Schmalstieg, and Gerhard Reitmayr.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "tan2013robust") or !(keys | size) %}
+{% endif %}{% if keys contains "tan2013robust" or keys.size == 0 %}
 <li id="tan2013robust">
 Wei Tan, Haomin Liu, Zilong Dong, Guofeng Zhang, and Hujun Bao.
  Robust monocular SLAM in dynamic environments.
@@ -937,7 +937,7 @@ Wei Tan, Haomin Liu, Zilong Dong, Guofeng Zhang, and Hujun Bao.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "dnt2014tdp") or !(keys | size) %}
+{% endif %}{% if keys contains "dnt2014tdp" or keys.size == 0 %}
 <li id="dnt2014tdp">
 Patrick de&nbsp;Kok, Sébastien Negrijn, Eugenio Bargiacchi, Amogh Gudi, Chiel
   Kooijman, Ilse van&nbsp;der Linden, Georgios Methenitis, Duncan ten Velthuis,
@@ -961,7 +961,7 @@ Patrick de&nbsp;Kok, Sébastien Negrijn, Eugenio Bargiacchi, Amogh Gudi, Chiel
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "billinghurst2014survey") or !(keys | size) %}
+{% endif %}{% if keys contains "billinghurst2014survey" or keys.size == 0 %}
 <li id="billinghurst2014survey">
 Mark Billinghurst, Adrian Clark, and Gun Lee.
  A survey of augmented reality.
@@ -981,7 +981,7 @@ Mark Billinghurst, Adrian Clark, and Gun Lee.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "bloesch2015robust") or !(keys | size) %}
+{% endif %}{% if keys contains "bloesch2015robust" or keys.size == 0 %}
 <li id="bloesch2015robust">
 Michael Bloesch, Sammy Omari, Marco Hutter, and Roland Siegwart.
  Robust visual inertial odometry using a direct EKF-based approach.
@@ -1001,7 +1001,7 @@ Michael Bloesch, Sammy Omari, Marco Hutter, and Roland Siegwart.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "murartal2015orbslam") or !(keys | size) %}
+{% endif %}{% if keys contains "murartal2015orbslam" or keys.size == 0 %}
 <li id="murartal2015orbslam">
 Raúl Mur-Artal, J.M.M. Montiel, and Juan&nbsp;D. Tardós.
  ORB-SLAM: A versatile and accurate monocular SLAM system.
@@ -1023,7 +1023,7 @@ Raúl Mur-Artal, J.M.M. Montiel, and Juan&nbsp;D. Tardós.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "murartal2017visual") or !(keys | size) %}
+{% endif %}{% if keys contains "murartal2017visual" or keys.size == 0 %}
 <li id="murartal2017visual">
 Raúl Mur-Artal and Juan&nbsp;D. Tardós.
  Visual-inertial monocular SLAM with map reuse.
@@ -1046,7 +1046,7 @@ Raúl Mur-Artal and Juan&nbsp;D. Tardós.
 </code>
 </pre>
 </li>
-{% endif %}{% if (keys contains "murartal2017orbslam2") or !(keys | size) %}
+{% endif %}{% if keys contains "murartal2017orbslam2" or keys.size == 0 %}
 <li id="murartal2017orbslam2">
 Raúl Mur-Artal and Juan&nbsp;D. Tardós.
  ORB-SLAM2: An open-source SLAM system for monocular, stereo, and
@@ -1054,9 +1054,9 @@ Raúl Mur-Artal and Juan&nbsp;D. Tardós.
  <em>IEEE Transactions on Robotics</em>, 33(5):1255&ndash;1262, October 2017.
 [&nbsp;<a href="#murartal2017orbslam2_bib">bib</a>&nbsp;|&nbsp;<a href="http://dx.doi.org/10.1109/TRO.2017.2705103">DOI</a>&nbsp;]<pre id="murartal2017orbslam2_bib"><code>
 @article{murartal2017orbslam2,
+  title = { {ORB-SLAM2}: An Open-Source {SLAM} System for Monocular, Stereo, and {RGB-D} Cameras},
   author = {Mur-Artal, Raúl and Tardós, Juan D.},
   journal = {IEEE Transactions on Robotics},
-  title = { {ORB-SLAM2}: An Open-Source {SLAM} System for Monocular, Stereo, and {RGB-D} Cameras},
   year = {2017},
   month = oct,
   volume = {33},

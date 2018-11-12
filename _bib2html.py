@@ -22,7 +22,7 @@ def html2jekyll(html_str):
     html_str = re.sub(r'<!--[\S\s]*-->', r'', html_str)
     html_str = re.sub(r'\n\n+', r'\n', html_str)
     html_str = re.sub(r'<p><a name="(?P<key>[^"]+)"></a>',
-                  r'{% if (keys contains "\g<key>") or !(keys | size) %}\n<li id="\g<key>">',
+                  r'{% if keys contains "\g<key>" or keys.size == 0 %}\n<li id="\g<key>">',
                   html_str)
     html_str = re.sub(r'<a name="(?P<key>[^"]+)"></a><pre>',
                   r'[&nbsp;<a href="#\g<key>_bib">bib</a>&nbsp;]<pre id="\g<key>_bib"><code>',
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     print sys.argv
     if len(sys.argv) == 2 and sys.argv[1] == "--default":
         sys.argv = [sys.argv[0], 
-                    "../msc-thesis/thesis/bibliography.bib",
+                    "../../../Papers/bibliography.bib",
                     "./_includes/bibliography.html"]
     print sys.argv
 
