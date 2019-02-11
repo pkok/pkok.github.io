@@ -59,6 +59,20 @@ address {
 
 /* In-article styles */
 /*article.post > p:first-of-type,*/
+article {
+  counter-reset: figures;
+}
+
+figure {
+  counter-increment: figures;
+}
+
+figure figcaption:before {
+  font-style: normal;
+  font-weight: bold;
+  content: 'Figure ' counter(figures) '.';
+}
+
 figure,
 #intro {
   color: #717171;
