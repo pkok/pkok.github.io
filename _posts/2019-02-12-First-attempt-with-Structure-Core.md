@@ -1,0 +1,49 @@
+---
+layout: post
+categories:
+  - thesis
+  - sensor/structure
+---
+
+Installed the drivers for the Structure Core, and the complete device works directly.
+
+Under Ubuntu 16.04 with Linux kernel 4.15.0-45, I installed the "Structure SDK (Cross-Platform)", version 0.6.1 from the [Structure developers portal](https://developer.structure.io/portal).  After unpacking the download, I followed the instructions in `./Linux/README.html`:
+
+```sh
+sudo apt-get install libc6-dev libstdc++-5-dev libgl1-mesa-dev libegl1-mesa-dev libusb-1.0-0-dev libxcursor-dev libxinerama-dev libxrandr-dev 
+# Navigate to the location of the unpacked download
+cd Linux/
+sudo Driver/install-structure-core-linux.sh 
+./Scripts/build.sh 
+```
+
+In the download, two sample applications with source code are included:
+- `SimpleStreamer`, which provides a nice example of how to handle data from the sensor.
+- `Recorder`, which provides a primitive GUI around the sensor's outputs.
+
+The following images are screenshots from `Recorder`, with different settings.  `Recorder` shows the following four streams: a depth image computed from the left and right infrared cameras in the top left, the regular RGB image in the top right, the infrared image from the left camera in the bottom left, and the infrared image from the right camera in the bottom right. 
+
+<figure>
+![Uncorrected images of my cat, captured by the Structure Core](/assets/img/core_cat_uncorrected.png)
+<figcaption>
+A view of `Recorder`, showing an uncorrected depth image.  You can see the captured image is pretty noisy (top left).  As for the RGB image (top right), the camera returns a black image while lighting conditions are similar to those in the post on a [first attempt with the D435i](/2019/01/21/First-attempt-with-RealSense-D435i/).  My initial guess the Core has a much higher shutter speed than the D435i (exposing each pixel to less light per frame), a smaller diaphragm (same story), or the RGB camera is broken (giving no signal).  An easy test to see if the RGB camera is broken is in Figure 2.
+</figcaption>
+</figure>
+
+<figure>
+![Uncorrected images of my cat, captured by the Structure Core](/assets/img/core_cat_uncorrected_flashlight.png)
+<figcaption>To see if the camera is broken, I used my smartphone as a flashlight.  The flashlight is just out of view, on the top side of the image.  While the phone does provide a lot of light using its flash LED, the RGB image is still pretty dark.  However, this does show that the RGB signal is not zero, and thus the camera works.  Future point is to investigate if the shutter speed/diaphragm can be adjusted.
+</figcaption>
+</figure>
+
+<figure>
+![Corrected images of my cat, captured up close by the Structure Core](/assets/img/core_cat_corrected_close.png)
+<figcaption>"Depth correction" (second last option on the sidebar) has been turned on. The depth image (top left) seems to be filtered for precision.  Probably the algorithm thinks the cat is too close for proper computations (too little parallax?).
+</figcaption>
+</figure>
+
+<figure>
+![Corrected images of my cat, captured a bit farther away by the Structure Core](/assets/img/core_cat_corrected_farther.png)
+<figcaption>Still with "depth correction", I moved the camera about approximately 15 cm back.  Now the depth of the cat can be computed.
+</figcaption>
+</figure>
