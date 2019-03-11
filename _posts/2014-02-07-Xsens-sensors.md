@@ -1,4 +1,5 @@
 ---
+title: Xsens sensors
 layout: post
 categories:
   - thesis

@@ -1,4 +1,5 @@
 ---
+title: Second attempt with RealSense D435i
 layout: post
 categories:
   - thesis

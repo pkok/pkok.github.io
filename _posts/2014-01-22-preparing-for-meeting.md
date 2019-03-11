@@ -1,4 +1,5 @@
 ---
+title: Preparing for meeting
 layout: post
 categories:
   - thesis

@@ -1,4 +1,5 @@
 ---
+title: Designing the data collector
 layout: post
 categories:
   - thesis

@@ -1,4 +1,5 @@
 ---
+title: Polling, or why ROS's timestamps still might work
 layout: post
 categories:
   - thesis

@@ -1,4 +1,5 @@
 ---
+title: Experiment design
 layout: post
 categories:
   - thesis

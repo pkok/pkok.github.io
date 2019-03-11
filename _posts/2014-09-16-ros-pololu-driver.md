@@ -1,4 +1,5 @@
 ---
+title: ROS Pololu driver
 layout: post
 categories:
   - ROS

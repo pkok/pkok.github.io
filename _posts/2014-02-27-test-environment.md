@@ -1,4 +1,5 @@
 ---
+title: Test environment
 layout: post
 categories:
   - thesis

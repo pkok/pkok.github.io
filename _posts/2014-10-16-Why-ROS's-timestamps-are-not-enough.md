@@ -1,4 +1,5 @@
 ---
+title: Why ROS's timestamps are not enough
 layout: post
 categories:
   - thesis

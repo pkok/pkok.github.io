@@ -1,4 +1,5 @@
 ---
+title: First attempt with Structure Core
 layout: post
 categories:
   - thesis

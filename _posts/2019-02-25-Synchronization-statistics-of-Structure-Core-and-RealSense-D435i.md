@@ -1,4 +1,5 @@
 ---
+title: Synchronization statistics of Structure Core and RealSense D435i
 layout: post
 categories:
   - thesis
