@@ -1,0 +1,25 @@
+---
+layout: hidden_page
+title: Posts by topic
+---
+
+<div class="topics">
+  Topics:
+  <ul>
+  {% assign categories = site.categories | sort %}
+  {% for category in categories %}
+    {% assign category_name = category | first %}
+    {% assign category_posts = category | last %}
+    <li>
+    <section id="{{ category_name | slugize }}" class="category">
+    <a href="#{{category_name | slugize }}">{{ category_name }} ({{ category_posts | size }})</a>
+    <span>
+    {% for post in category_posts %}
+      {% include post_snippet.html %}
+    {% endfor %}
+    </span>
+    </section>
+    </li>
+  {% endfor %}
+  </ul>
+</div>

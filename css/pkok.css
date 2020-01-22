@@ -209,3 +209,11 @@ ul#markdown-toc li:before, ul#markdown-toc ul li:before {
   counter-increment: none;
   content: "";
 }
+
+section.category > span { 
+  display: none;
+}
+
+section.category:target > span {
+  display: block;
+}

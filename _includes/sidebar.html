@@ -36,11 +36,12 @@
           {% comment %}
             The code below dynamically generates a sidebar nav of post categories.
           {% endcomment %}
-          {% for category in site.categories %}
+          {% assign categories = site.categories | sort %}
+          {% for category in categories %}
             {% assign category_name = category | first %}
             <li class="sidebar-nav-item{% if (page.categories contains category_name) or (category_name == (page.title | downcase)) %} active{% endif %}">
-              <a href="/{{ category_name | slugize }}.html">
-                {{ category_name | capitalize }}
+              <a href="/topic/#{{ category_name | slugize }}">
+                {{ category_name }}
               </a>
             </li>
           {% endfor %}
