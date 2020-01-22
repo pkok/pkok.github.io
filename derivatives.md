@@ -1,6 +1,6 @@
 ---
 layout: page
-text: Derivatives cheat sheet
+title: Derivatives cheat sheet
 ---
 
 This document includes an overview of derivatives of functions I will need to use. Kind of like a personal, very specific, math cheat sheet.
