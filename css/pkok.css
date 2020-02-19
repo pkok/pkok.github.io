@@ -1,4 +1,17 @@
 /* My own edits on top of the Hyde style sheets. */
+html {
+  font-family: utopia-std, "Times New Roman", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-variant-ligatures: common-ligatures;
+}
+
+.sidebar-about h1 {
+  font-family: utopia-std-headline, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   font-size: 0.8rem;
   counter-reset: htwo hthree hfour hfive hsix;
@@ -157,6 +170,8 @@ code {
 ul#markdown-toc, ul#markdown-toc ul {
   counter-reset: toc_counter;
   list-style-type: none;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 ul#markdown-toc li:before, ul#markdown-toc ul li:before {
@@ -165,18 +180,18 @@ ul#markdown-toc li:before, ul#markdown-toc ul li:before {
 }
 
 .post h2 {
-  counter-reset: hthree;
+  counter-reset: hthree hfour hfive hsix;
 }
 
-.post h2, .post h3 {
-  counter-reset: hfour;
+.post h3 {
+  counter-reset: hfour hfive hsix;
 }
 
-.post h2, .post h3, .post h4 {
-  counter-reset: hfive;
+.post h4 {
+  counter-reset: hfive hsix;
 }
 
-.post h2, .post h3, .post h4, .post h5 {
+.post h5 {
   counter-reset: hsix;
 }
 
@@ -217,3 +232,23 @@ section.category > span {
 section.category:target > span {
   display: block;
 }
+
+/** Themes **/
+/* UvA color scheme */
+.theme-uva .sidebar {
+  background-color: #BC0031;
+}
+.theme-uva .content a,
+.theme-uva .related-posts li a:hover {
+  color: #BC0031;
+}
+
+/* UvA-FNWI color scheme */
+.theme-uva-fnwi .sidebar {
+  background-color: #751b68;
+}
+.theme-uva-fnwi .content a,
+.theme-uva-fnwi .related-posts li a:hover {
+  color: #751b68;
+}
+
