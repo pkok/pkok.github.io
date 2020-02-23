@@ -345,9 +345,11 @@ class Labbook:
         """
         Start the local Jekyll server.
         """
-        jekyll_dir = self._config['dir']
+        source_dir = self._config['dir']
+        destination_dir = os.path.join(source_dir, "_site")
         subprocess.run(args=["jekyll", "s",
-            "-s", jekyll_dir])
+            "--source", source_dir,
+            "--destination", destination_dir])
 
 
 def __cli():
