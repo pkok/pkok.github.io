@@ -1,7 +1,15 @@
 #!/usr/bin/env python
+import argparse
 import re
 import subprocess
 import sys
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+            description="I use this program to generate a bibtex overview for my blog.")
+    parser.add_argument('--input', default="../../../Papers/bibliography.bib")
+    parser.add_argument('--output', default="./_includes/bibliography.html")
+    return parser.parse_args()
 
 def bib2html(bibliography, html_filename):
     command = "bibtex2html"
@@ -56,29 +64,14 @@ def html2jekyll(html_str):
 """
     return jekyll_str
 
-
 if __name__ == "__main__":
-    print sys.argv
-    if len(sys.argv) == 2 and sys.argv[1] == "--default":
-        sys.argv = [sys.argv[0], 
-                    "../../../Papers/bibliography.bib",
-                    "./_includes/bibliography.html"]
-    print sys.argv
+    args = parse_args()
+    bib2html(args.input, args.output)
 
-    if len(sys.argv) <= 2:
-        print "Incorrect usage.  Proper calls"
-        print "    python %s bibtex_in html_out" % sys.argv[0]
-        print "    python %s --default" % sys.argv[0]
-        print ""
-        print "I use this program to generate a bibtex overview for my blog."
-        sys.exit(1)
-
-    bib2html(sys.argv[1], sys.argv[2])
-
-    with open(sys.argv[2], 'r') as file_:
+    with open(args.output, 'r') as file_:
         html = file_.read()
 
     jekyll = html2jekyll(html)
 
-    with open(sys.argv[2], 'w') as file_:
+    with open(args.output, 'w') as file_:
         file_.write(jekyll)
