@@ -122,8 +122,11 @@ class Labbook:
         """
         Check if the configuration file is setup for the current labbook.
         """
-        if self._labbook_name not in self._global_config \
-                or len(self._global_config) == 0:
+        known_name = self._labbook_name in self._global_config
+        global_config = bool(len(self._global_config))
+        default_config = bool(len(self._global_config[configparser.DEFAULTSECT]))
+
+        if not (known_name and global_config and default_config):
             raise RuntimeError("No labbook configuration found. "
                     + "You can add this with the --config option.")
         self._config = self._global_config[self._labbook_name]
