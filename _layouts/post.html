@@ -8,7 +8,7 @@ layout: default
       {% if page.title != empty %}{{ page.title }}{% else %}<time class="published" datetime="{{ page.date }}">{{ page.date | date: "%-d %B %Y" }}</time>{% endif %}
     </h1>
     <span class="metadata">
-      {% if page.title != empty %}<time class="published" datetime="{{ page.date }}">{{ page.date | date_to_string }}</time>{% endif %}
+      {% if page.title != empty %}<time class="published" datetime="{{ page.date }}">{{ page.date | date: "%-d %B %Y" }}</time>{% endif %}
       {% if page.categories != empty %}
       <ul class="categories">
         {% for category in page.categories %}
