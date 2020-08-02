@@ -276,6 +276,21 @@ class Labbook:
         return config_editor or external_editor or default_editor
 
 
+    def _get_days_ago(self, post):
+        """
+        Return the post's age in days.
+
+        post is a labbook filename.
+        """
+        # Filenames are formatted according to:
+        #     %Y-%m-%d-OPTIONAL_TITLE.md
+        # so only the first 10 characters are of interest.
+        filename_date = post[:10]
+        post_date = datetime.datetime.strptime(filename_date, "%Y-%m-%d")
+        today = datetime.datetime.today()
+        return (today - post_date).days
+
+
     def list_entries(self):
         """
         Print & return a list of entries in the labbook.
@@ -287,12 +302,13 @@ class Labbook:
             if not post.endswith('.md'):
                 continue
             entry_title = self._get_entry_title(os.path.join(posts_dir, post))
-            if entry_title:
-                msg += "  - {}: {}\n".format(post, title)
-            else:
-                msg += "  - {}\n".format(post)
             entries.append((post, entry_title))
         entries.sort()
+        for post, entry_title in entries:
+            if entry_title:
+                msg += "  - {:>5} {}: {}\n".format(self._get_days_ago(post), post, entry_title)
+            else:
+                msg += "  - {:>5} {}\n".format(self._get_days_ago(post), post)
         pager(msg)
         return entries
 
