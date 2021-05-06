@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-A tool to help you manage a labbook in Jekyll.
+A tool to help me manage a labbook in Jekyll.
 
 Author: Patrick de Kok
 License: BSD 3-clause
 """
 
-LABBOOK_VERSION = "0.1.0"
+LABBOOK_VERSION = "0.1.1"
 
 import argparse
 import configparser
@@ -20,15 +20,6 @@ CONFIG_FILE = os.path.abspath(
         os.path.join(HOME, ".config", "labbook", "config"))
 
 IS_INTERACTIVE = False
-
-POST_TEMPLATE = """---
-title: {title}
-layout: post
-categories:
-  - thesis
----
-
-"""
 
 def __parse_arguments():
     """
@@ -92,12 +83,13 @@ def pager(msg):
 
 class Labbook:
     RequiredConfiguration = {
-        "dir": "The project's home directory"
+        "dir": "The project's home directory",
     }
 
     OptionalConfiguration = {
         "editor": "The text editor",
-        "posts_dir": "The directory containing labbook entries (default: ./_posts)"
+        "posts_dir": "The directory containing labbook entries (default: ./_posts)",
+        "post_template": "The template file for new posts (default: ./_post_template.md)"
     }
 
     def __init__(self, labbook_name):
@@ -197,7 +189,7 @@ class Labbook:
         Search order:
           - config['posts_dir']
           - abspath(config['posts_dir'])
-          - config['dir']/config['posts_dir]
+          - config['dir']/config['posts_dir']
           - config['dir']/_posts
 
         If none of these is a directory, raise a RuntimeError.
@@ -218,6 +210,36 @@ class Labbook:
                 return candidate
         raise RuntimeError("""posts_dir not found.  Candidates did not point to
                 a directory: {}""".format(candidates))
+
+
+    def _get_post_template(self):
+        """
+        Find the template file for new posts.
+
+        Search order:
+          - config['post_template']
+          - abspath(config['post_template'])
+          - config['dir']/config['post_template']
+          - config['dir']/_post_template.md
+
+        If none of these point to a file, raise a RuntimeError.
+        """
+        candidates = []
+        if 'post_template' in self._config:
+            template = self._config['post_template']
+            candidates.append(template)
+            candidates.append(os.path.abspath(template))
+            candidates.append(os.path.join(
+                self._config['dir'],
+                template))
+            candidates.append(os.path.join(
+                self._config['dir'],
+                '_post_template.md'))
+            for candidate in candidates:
+                if os.path.isfile(candidate):
+                    return candidate
+            raise RuntimeError("""post_template not found.  Candidates did not
+                    point to a directory: {}""".format(candidates))
 
 
     def _get_entry_title(self, post_path):
@@ -345,8 +367,14 @@ class Labbook:
         # If we open a new file, first fill it with some info
         is_new = False
         if not os.path.isfile(entry_file):
+            try:
+                with open(self._get_post_template(), 'r') as f:
+                    template = "".join(f.readlines())
+                    template = template.format(title=title)
+            except:
+                template = ""
             with open(entry_file, 'w') as f:
-                f.write(POST_TEMPLATE.format(title=title))
+                f.write(template)
             is_new = True
         if is_new:
             created_time = os.stat(entry_file).st_mtime
