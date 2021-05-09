@@ -7,7 +7,7 @@ import sys
 def parse_args():
     parser = argparse.ArgumentParser(
             description="I use this program to generate a bibtex overview for my blog.")
-    parser.add_argument('--input', default="../../../Papers/bibliography.bib")
+    parser.add_argument('--input', default="_bibliography.bib")
     parser.add_argument('--output', default="./_includes/bibliography.html")
     return parser.parse_args()
 
